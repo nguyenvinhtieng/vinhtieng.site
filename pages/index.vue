@@ -12,5 +12,6 @@ import Hero from '~/components/home/Hero.vue'
 import About from '~/components/home/About.vue'
 import Experience from '~/components/home/Experience.vue';
 import Project from '~/components/home/Project.vue';
+
 </script>
 

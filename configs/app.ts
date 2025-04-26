@@ -24,7 +24,7 @@ export const app = {
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://vinhtieng.site" },
-      { property: "og:image", content: "https://vinhtieng.site/cover.png" },
+      { property: "og:image", content: "https://vinhtieng.site/cover.webp" },
 
       // Twitter Card
       { name: "twitter:card", content: "summary_large_image" },
@@ -35,7 +35,7 @@ export const app = {
         content:
           "Frontend and backend development guides, tips, and resources.",
       },
-      { name: "twitter:image", content: "https://vinhtieng.site/cover.png" },
+      { name: "twitter:image", content: "https://vinhtieng.site/cover.webp" },
 
       // SEO
       { name: "robots", content: "index, follow" },
