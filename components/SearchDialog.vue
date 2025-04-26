@@ -7,7 +7,7 @@
       class="absolute inset-0 bg-black/40 dark:bg-white/20"
       @click="commonStore.toggleOpenSearchDialog(false)"
     ></span>
-    <div class="bg-white rounded-xl shadow-xl w-full max-w-xl p-4 z-10 dark:bg-neutral-900">
+    <div class="bg-white rounded-xl shadow-xl w-full max-w-xl p-4 z-10 dark:bg-neutral-900 mx-2">
       <input
         v-model="searchTerm"
         ref="inputRef"

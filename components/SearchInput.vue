@@ -12,7 +12,7 @@
       )
     "
   >
-    <p class="flex-1 text-neutral-400">
+    <p class="flex-1 text-neutral-400 truncate pr-12">
       {{ $t("search.placeholder") }}
     </p>
     <button

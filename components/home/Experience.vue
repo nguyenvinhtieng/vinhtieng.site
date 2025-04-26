@@ -21,7 +21,7 @@
           class="flex items-start mb-12"
         >
           <!-- Left Side: Timeline -->
-          <div class="flex flex-col items-center w-1/4">
+          <div class="flex flex-col h-full items-center w-1/4">
             <div
               class="text-sm font-medium text-gray-500 dark:text-neutral-400 mb-2"
             >
@@ -31,16 +31,15 @@
               class="w-4 h-4 bg-blue-500 dark:bg-blue-400 rounded-full border-4 border-white dark:border-black"
             ></div>
             <div
-              class="flex-1 w-px bg-gray-300 dark:bg-neutral-700"
-              style="min-height: 60px"
+              class="w-px bg-gray-300 dark:bg-neutral-700 min-h-56 md:min-h-16 flex-1"
             ></div>
           </div>
 
           <!-- Right Side: Content -->
           <div class="w-3/4 pl-8">
-            <div class="flex items-center space-x-4 mb-4">
+            <div class="md:flex items-center space-x-4 mb-4">
               <div
-                class="w-14 h-14 rounded-full overflow-hidden shadow-md border border-neutral-200 bg-white"
+                class="w-14 h-14 mb-2 md:md-0 rounded-full overflow-hidden shadow-md border border-neutral-200 bg-white"
               >
                 <img
                   :src="job.logo"

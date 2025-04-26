@@ -33,13 +33,11 @@
     </div>
 
     <!-- Code Display -->
-    <pre class="text-sm overflow-auto my-0 p-0 whitespace-pre-line bg-transparent flex">
-		<code
+    <pre class="text-sm overflow-auto my-0 p-0 bg-transparent  whitespace-pre-wrap break-all"><code
 		  ref="codeBlock"
 		  :key="activeIndex"
-		  :class="`language-${activeFile.language} p-0 flex-1`"
-		>{{ activeFile.content }}</code>
-	  </pre>
+		  :class="`language-${activeFile.language} p-0 w-full `"
+		>{{ activeFile.content }}</code></pre>
   </div>
 </template>
 
