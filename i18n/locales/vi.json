@@ -1,0 +1,20 @@
+{
+	"header": {
+	  "home": "Trang chủ",
+	  "blog": "Bài viết",
+	  "github": "Github"
+	},
+	"search": {
+		"placeholder": "Tìm kiếm bài viết theo tiêu đề, thẻ hoặc nội dung..."
+	},
+	"related_posts": "Bài viết liên quan",
+	"post_not_found": "Bài viết không tồn tại hoặc đã bị xóa!",
+	"back_to_blog": "Quay lại danh sách bài viết",
+	"no_posts": "Không tìm thấy bài viết nào!",
+	"refresh": "Tải lại",
+	"load_more": "Tải thêm",
+	"footer": {
+	  "copyright": "Bản quyền thuộc về vinhtieng.site",
+	  "author": "Được tạo với ❤️ bởi"
+	}
+  }

@@ -1,0 +1,17 @@
+{
+	"header": {
+		"home": "Home",
+		"blog": "Blog",
+		"github": "Github"
+	},
+	"search": {
+		"placeholder": "Search posts by title, tags, or content..."
+	},
+	"related_posts": "Related Posts",
+	"post_not_found": "Post not found or has been deleted!",
+	"back_to_blog": "Back to blog list",
+	"footer": {
+		"copyright": "vinhtieng.site. All rights reserved.",
+		"author": "Make with ❤️ by"
+	}
+}
