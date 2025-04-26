@@ -1,1 +1,0 @@
-import{as as a}from"./1wyo-SBP.js";const s=a("common",{state:()=>({isOpenSearchDialog:!1}),getters:{getIsOpenSearchDialog:e=>e.isOpenSearchDialog},actions:{toggleOpenSearchDialog(e){this.isOpenSearchDialog=e??!this.isOpenSearchDialog}}});export{s as u};
