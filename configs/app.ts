@@ -45,7 +45,7 @@ export const app = {
     ],
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-      { rel: "canonical", href: "https://vinhtieng.site" },
+      { rel: "canonical", href: "https://vinhtieng.site/en" },
     ],
   },
 };

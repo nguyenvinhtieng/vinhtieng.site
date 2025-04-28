@@ -34,11 +34,13 @@
 				  opacity: ${tech.opacity};
 			  `"
         >
-          <img
+          <NuxtImg
             v-if="techsImg[tech.name]"
             :src="techsImg[tech.name]"
             class="w-4 h-4 object-cover m-0 border-none"
             alt="language icon"
+            width="16"
+            height="16"
             :title="tech.name"
           />
         </div>
