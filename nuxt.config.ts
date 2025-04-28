@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "@pinia/nuxt",
     "@nuxtjs/i18n",
-    "@nuxt/fonts"
+    "@nuxt/fonts",
   ],
   content: {},
   css,
@@ -29,5 +29,10 @@ export default defineNuxtConfig({
         fallbacks: ["sans-serif"],
       },
     ],
+  },
+  icon: {
+    componentName: "Icon",
+    provider: "server",
+    serverBundle: 'local',
   },
 });
