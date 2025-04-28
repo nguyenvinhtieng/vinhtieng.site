@@ -35,7 +35,7 @@
 			  `"
         >
           <Icon
-            :name="`logos:${tech.name}`"
+            :name="`${tech.name}`"
             :class="`w-${tech.size} h-${tech.size}`"
           />
         </div>
@@ -48,32 +48,32 @@
 import { computed } from "vue";
 
 const techNames = [
-  "vue",
-  "react",
-  "typescript",
-  "tailwindcss",
-  "javascript",
-  "html-5",
-  "css-3",
-  "nodejs",
-  "nuxt",
-  "nextjs",
-  "git",
-  "github",
-  "visual-studio-code",
-  "webpack",
-  "sass",
-  "firebase",
-  "mongodb",
-  "postgresql",
-  "docker",
-  "aws",
-  "linux-tux",
-  "ubuntu",
-  "python",
-  "java",
-  "php",
-  "laravel",
+  "logos:vue",
+  "logos:react",
+  "logos:typescript",
+  "logos:tailwindcss",
+  "logos:javascript",
+  "logos:html-5",
+  "logos:css-3",
+  "logos:nodejs",
+  "logos:nuxt",
+  "logos:nextjs",
+  "logos:git",
+  "logos:github",
+  "logos:visual-studio-code",
+  "logos:webpack",
+  "logos:sass",
+  "logos:firebase",
+  "logos:mongodb",
+  "logos:postgresql",
+  "logos:docker",
+  "logos:aws",
+  "logos:linux-tux",
+  "logos:ubuntu",
+  "logos:python",
+  "logos:java",
+  "logos:php",
+  "logos:laravel",
 ];
 
 const floatingTechs = computed(() => {
