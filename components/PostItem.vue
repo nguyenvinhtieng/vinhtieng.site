@@ -31,7 +31,6 @@
 </template>
 <script setup lang="ts">
 import type { BlogCollectionItem } from '@nuxt/content';
-import { defineProps } from 'vue';
 import Tag from './Tag.vue';
 import { useLocalePath } from '#i18n';
 const localePath = useLocalePath()

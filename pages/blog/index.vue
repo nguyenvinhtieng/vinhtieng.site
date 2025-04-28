@@ -65,8 +65,13 @@ async function fetchData() {
 
   posts.value = paginated;
   totalPosts.value = count;
+
+  return {
+    posts: paginated,
+    totalPosts: count,
+  };
 }
-console.log(posts.value);
+
 const handlePageChange = (page: number) => {
   currentPage.value = page;
 };

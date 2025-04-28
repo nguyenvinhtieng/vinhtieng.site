@@ -555,6 +555,13 @@
   resolved "https://registry.npmjs.org/@fastify/busboy/-/busboy-3.1.1.tgz#af3aea7f1e52ec916d8b5c9dcc0f09d4c060a3fc"
   integrity sha512-5DGmA8FTdB2XbDeEwc/5ZXBl6UbBAyBOOLlPuBnZ/N1SwdH9Ii+cOX3tBROlDgcTXxjOYnLMVoKk9+FXAw0CJw==
 
+"@iconify-json/logos@^1.2.4":
+  version "1.2.4"
+  resolved "https://registry.npmjs.org/@iconify-json/logos/-/logos-1.2.4.tgz#1591937349a487da360fb10000d5e7ab0601bfd7"
+  integrity sha512-XC4If5D/hbaZvUkTV8iaZuGlQCyG6CNOlaAaJaGa13V5QMYwYjgtKk3vPP8wz3wtTVNVEVk3LRx1fOJz+YnSMw==
+  dependencies:
+    "@iconify/types" "*"
+
 "@iconify/collections@^1.0.536":
   version "1.0.542"
   resolved "https://registry.npmjs.org/@iconify/collections/-/collections-1.0.542.tgz#380cb86d61a33f1600cec522822ac91808cfc346"
