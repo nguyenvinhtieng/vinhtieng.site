@@ -1,0 +1,1 @@
+import{aw as a}from"./Brlg86Z1.js";const i=a("common",{state:()=>({isOpenSearchDialog:!1}),getters:{getIsOpenSearchDialog:e=>e.isOpenSearchDialog},actions:{toggleOpenSearchDialog(e){this.isOpenSearchDialog=e??!this.isOpenSearchDialog}}});export{i as u};
