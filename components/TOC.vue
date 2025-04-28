@@ -34,7 +34,7 @@ const displayToc = computed<MinimalElement[]>(() =>
 		['h1', 'h2', 'h3'].includes(item[0])
 	)
 );
-console.log(displayToc.value);
+
 const activeId = ref<string | null>(null);
 
 const handleScrollTo = (id: string | unknown) => {

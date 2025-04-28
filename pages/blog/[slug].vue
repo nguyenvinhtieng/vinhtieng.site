@@ -3,7 +3,6 @@ import { useAsyncData, useHead } from "#app";
 import { queryCollection } from "#imports";
 import { useRoute } from "vue-router";
 import { computed } from "vue";
-import moment from "moment";
 import { useLocalePath } from "#i18n";
 
 const localePath = useLocalePath();
@@ -54,10 +53,7 @@ const relatedDisplayPosts = computed(() => {
 });
 
 const formattedDate = computed(() => {
-  if (post.value && post.value.date) {
-    return moment(post.value.date).format("DD/MM/YYYY");
-  }
-  return "";
+  return post?.value?.date || '';
 });
 
 useHead({
