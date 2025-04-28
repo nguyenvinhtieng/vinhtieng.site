@@ -25,6 +25,8 @@
           src="/images/home/avatar.webp"
           alt="About Tieng Nguyen"
           class="object-cover w-full h-full"
+          width="500"
+          height="500"
         />
       </div>
     </div>
@@ -73,7 +75,7 @@
             </div>
           </div>
           <div class="flex flex-col items-center">
-            <div class="text-2xl font-bold text-blue-500">9999+</div>
+            <div class="text-2xl font-bold text-blue-500">999+</div>
             <div class="text-sm text-gray-500 dark:text-neutral-400">
               Coffee Cups
             </div>

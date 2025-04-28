@@ -9,6 +9,7 @@
 				alt="Post Image"
 				class="w-full aspect-video object-cover group-hover:scale-110 transition-transform duration-300"
 				 width="500"
+				 height="281"
 			/>
 		</div>
 		<div class="flex items-center mb-2 gap-2">

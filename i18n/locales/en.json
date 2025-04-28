@@ -10,6 +10,9 @@
 	"related_posts": "Related Posts",
 	"post_not_found": "Post not found or has been deleted!",
 	"back_to_blog": "Back to blog list",
+	"no_posts": "No posts found!",
+	"refresh": "Refresh",
+	"load_more": "Load more",
 	"footer": {
 		"copyright": "vinhtieng.site. All rights reserved.",
 		"author": "Make with ❤️ by"

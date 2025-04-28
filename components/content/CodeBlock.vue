@@ -25,7 +25,7 @@
       <!-- Copy Button -->
       <button
         @click="copyToClipboard"
-        class="flex items-center gap-2 text-neutral-500 hover:text-green-500 cursor-pointer transition-colors px-2 py-1 rounded-md hover:bg-gray-200 active:scale-95 dark:hover:bg-neutral-800"
+        class="flex items-center gap-2 text-neutral-500 dark:text-neutral-300 hover:text-green-500 cursor-pointer transition-colors px-2 py-1 rounded-md hover:bg-gray-200 active:scale-95 dark:hover:bg-neutral-800"
       >
         <Icon name="mdi:content-copy" class="w-5 h-5" />
         <span class="inline">{{ copied ? "Copied!" : "Copy" }}</span>
@@ -101,7 +101,6 @@ const copyToClipboard = async () => {
       timer = null;
     }, 1000);
   } catch (err) {
-    console.error("Copy failed:", err);
   }
 };
 

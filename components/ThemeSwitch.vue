@@ -2,6 +2,7 @@
   <button
     ref="buttonRef"
     @click="toggleTheme"
+    aria-label="Toggle theme"
     class="md:w-10 md:h-10 w-6 h-6 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-neutral-800 transition cursor-pointer"
   >
     <Icon

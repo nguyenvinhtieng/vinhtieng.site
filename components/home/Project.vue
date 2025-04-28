@@ -27,10 +27,12 @@
         :style="`--i:${index}`"
       >
         <div class="w-full overflow-hidden">
-          <img
+          <NuxtImg
             :src="project.image || '/placeholder.svg'"
             :alt="project.name + ' image'"
             class="w-full aspect-video object-cover transition-transform duration-300 group-hover:scale-110"
+            width="500"
+            height="281"
           />
         </div>
         <div class="p-4 flex flex-col space-y-3">
@@ -45,7 +47,7 @@
             <span
               v-for="(tech, idx) in project.technologies"
               :key="idx"
-              class="px-2 py-0.5 bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-100 text-xs rounded-full"
+              class="px-4 py-1 bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-blue-100 text-xs rounded-full"
             >
               {{ tech }}
             </span>

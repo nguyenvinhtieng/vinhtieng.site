@@ -5,7 +5,6 @@ export const app = {
       lang: "en",
     },
     meta: [
-      // Basic meta
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       {
@@ -15,7 +14,12 @@ export const app = {
       },
       { name: "author", content: "Tieng Nguyen" },
 
-      // Open Graph (for Facebook, LinkedIn, etc.)
+      {
+        name: "description:vi",
+        content:
+          "Blog kỹ thuật chia sẻ mẹo, hướng dẫn và bài viết chuyên sâu về phát triển web, JavaScript, TypeScript và công nghệ hiện đại.",
+      },
+
       { property: "og:title", content: "Tieng Nguyen | Technical Blog" },
       {
         property: "og:description",
@@ -26,9 +30,8 @@ export const app = {
       { property: "og:url", content: "https://vinhtieng.site" },
       { property: "og:image", content: "https://vinhtieng.site/cover.webp" },
 
-      // Twitter Card
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@yourTwitterHandle" },
+      { property: "og:locale:alternate", content: "vi_VN" },
+
       { name: "twitter:title", content: "Tieng Nguyen | Technical Blog" },
       {
         name: "twitter:description",
@@ -37,7 +40,6 @@ export const app = {
       },
       { name: "twitter:image", content: "https://vinhtieng.site/cover.webp" },
 
-      // SEO
       { name: "robots", content: "index, follow" },
       { name: "theme-color", content: "#0ea5e9" },
     ],

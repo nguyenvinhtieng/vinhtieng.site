@@ -3,18 +3,31 @@ import { app, css, vite, i18n } from "./configs"
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
-  modules: ["@nuxt/content", "@nuxt/icon", "@nuxt/image", "@pinia/nuxt", "@nuxtjs/i18n"],
+  modules: [
+    "@nuxt/content",
+    "@nuxt/icon",
+    "@nuxt/image",
+    "@pinia/nuxt",
+    "@nuxtjs/i18n",
+    "@nuxt/fonts"
+  ],
   content: {},
   css,
   vite,
   imports: {
     autoImport: false,
   },
-  icon: {
-    clientBundle: {
-      scan: true,
-    }
-  },
   app,
-  i18n
+  i18n,
+  fonts: {
+    families: [
+      {
+        name: "Montserrat",
+        provider: "google",
+        weights: [400, 500, 600, 700],
+        styles: ["normal", "italic"],
+        fallbacks: ["sans-serif"],
+      },
+    ],
+  },
 });

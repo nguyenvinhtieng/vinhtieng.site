@@ -2,7 +2,7 @@
 	<main>
 		<Header />
 		<main class="min-h-screen flex flex-col pt-14 bg-gradient-to-br from-white to-slate-100 dark:from-neutral-950 dark:to-neutral-900 z-10">
-			<NuxtPage class="flex-1"/>
+			<NuxtPage class="flex-1 md:mb-8 mb-4"/>
 			<Footer />
 		</main>
 		<Background />

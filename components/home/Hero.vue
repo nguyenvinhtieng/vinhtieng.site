@@ -3,13 +3,13 @@
     class="relative min-h-screen flex flex-col items-center justify-center px-6 text-center overflow-hidden text-gray-800 dark:text-white bg-white dark:bg-black transition-colors duration-500"
   >
     <!-- Main Content -->
-    <div class="relative z-10 flex flex-col items-center space-y-8 py-20">
+    <div class="relative z-10 flex flex-col items-center space-y-8 py-20 min-h-screen">
       <!-- Avatar -->
       <div class="relative mb-4">
         <div
           class="w-32 h-32 rounded-full overflow-hidden border-2 border-gray-200 dark:border-white/20 shadow-xl transition-colors duration-500"
         >
-          <NuxtImg src="/images/home/avatar.webp" alt="Vinh Tieng" />
+          <NuxtImg src="/images/home/avatar.webp" alt="Vinh Tieng" width="200" height="200"/>
         </div>
         <div
           class="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 blur-xl opacity-20 dark:opacity-30 animate-pulse"
@@ -31,6 +31,7 @@
       <!-- Subtitle -->
       <h2
         class="text-xl md:text-2xl font-medium max-w-3xl text-gray-600 dark:text-neutral-300 transition-colors duration-500"
+        aria-label="Crafting beautiful, functional, and accessible web experiences"
       >
         Crafting
         <span class="text-blue-600 dark:text-blue-400">beautiful</span>,

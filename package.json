@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@nuxt/content": "^3.5.0",
+    "@nuxt/fonts": "0.11.2",
     "@nuxt/icon": "^1.12.0",
     "@nuxt/image": "^1.10.0",
     "@nuxtjs/i18n": "^9.5.3",
@@ -33,6 +34,7 @@
     "@iconify-json/logos": "^1.2.4",
     "@iconify-json/mdi": "^1.2.3",
     "@iconify-json/mynaui": "^1.2.9",
+    "@iconify-json/solar": "^1.2.2",
     "@iconify-json/uil": "^1.2.3"
   }
 }

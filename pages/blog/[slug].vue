@@ -84,7 +84,7 @@ useHead({
 
 <template>
   <main
-    class="min-h-screen text-gray-800 dark:text-gray-100 p-container z-10 pt-10 relative mb-4"
+    class="min-h-screen text-gray-800 dark:text-gray-100 p-container z-10 pt-10 relative"
   >
     <div v-if="post" class="max-w-4xl mx-auto relative flex gap-8">
       <div class="fixed top-24 left-2 right-0 w-[300px]">

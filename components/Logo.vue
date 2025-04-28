@@ -14,7 +14,7 @@ const localePath = useLocalePath()
 </script>
 
 <template>
-  <NuxtLink :to="localePath(url)">
+  <NuxtLink :to="localePath(url)" :aria-label="'Vinh Tieng Logo - Back To Home'">
     <svg
       :width="displayWidth"
       :height="displayHeight"

@@ -87,6 +87,10 @@ const handleFilterTag = (tag: string) => {
 
 await useAsyncData("filtered-blog", fetchData);
 
+const refreshPost = () => {
+  currentPage.value = 1;
+  activeTags.value = [];
+}
 </script>
 
 <template>
@@ -120,9 +124,9 @@ await useAsyncData("filtered-blog", fetchData);
     <div v-if="posts.length === 0" class="text-center text-gray-500">
       <p>{{ $t("no_posts") }}
 
-        <NuxtLink :to="localePath('/blog')" class="text-blue-500 hover:underline">
-        {{ $t("refresh") }}
-      </NuxtLink>
+        <span @click="refreshPost" class="text-blue-500 hover:underline cursor-pointer">
+          {{ $t("refresh") }}
+        </span>
       </p>
       
     </div>

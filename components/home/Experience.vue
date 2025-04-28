@@ -41,10 +41,12 @@
               <div
                 class="w-14 h-14 mb-2 md:md-0 rounded-full overflow-hidden shadow-md border border-neutral-200 bg-white"
               >
-                <img
+                <NuxtImg
                   :src="job.logo"
                   :alt="job.company + ' logo'"
                   class="w-full h-full object-cover p-2"
+                  width="56"
+                  height="56"
                 />
               </div>
               <div>
@@ -78,7 +80,7 @@ const jobs = [
     location: "Ho Chi Minh City, Vietnam",
     description:
       "Creating frontend features for gaming platforms and internal tools using Vue.js, focusing on performance and UX.",
-    logo: "/images/home/smilegate.png",
+    logo: "/images/home/smilegate.webp",
   },
   {
     company: "Dudaji",
@@ -87,7 +89,7 @@ const jobs = [
     location: "Ho Chi Minh City, Vietnam",
     description:
       "Built fullstack applications with Next.js, Electron for desktop apps, and designed backend services using NestJS.",
-    logo: "/images/home/dudaji.png",
+    logo: "/images/home/dudaji.webp",
   },
   {
     company: "VAND",
@@ -96,7 +98,7 @@ const jobs = [
     location: "Ho Chi Minh City, Vietnam",
     description:
       "Developed frontend projects for various clients using Vue.js and Angular. Focused on delivering high-quality customer-facing applications.",
-    logo: "/images/home/vand.png",
+    logo: "/images/home/vand.webp",
   },
   {
     company: "Laichi",
@@ -105,7 +107,7 @@ const jobs = [
     location: "Ho Chi Minh City, Vietnam",
     description:
       "Responsible for slicing HTML/CSS designs to pixel-perfect accuracy and implementing interactive UI elements using jQuery.",
-    logo: "/images/home/laichi.png",
+    logo: "/images/home/laichi.webp",
   },
 ];
 </script>
