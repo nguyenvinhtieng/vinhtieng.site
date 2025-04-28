@@ -1,1 +1,0 @@
-import{_ as o}from"./DlAUqK2U.js";import{c as r,d as t,X as s}from"./CnU6nKTc.js";const c={};function n(e,a){return t(),r("tbody",null,[s(e.$slots,"default")])}const f=o(c,[["render",n]]);export{f as default};
