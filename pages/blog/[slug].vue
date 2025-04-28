@@ -53,7 +53,12 @@ const relatedDisplayPosts = computed(() => {
 });
 
 const formattedDate = computed(() => {
-  return post?.value?.date || '';
+  const date = new Date(post?.value?.date || '');
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 });
 
 useHead({

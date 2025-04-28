@@ -5,12 +5,11 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
     "@nuxt/content",
-    "@nuxt/icon",
     "@nuxt/image",
     "@pinia/nuxt",
     "@nuxtjs/i18n",
     "@nuxt/fonts",
-    'unplugin-icons/nuxt',
+    "nuxt-icons",
   ],
   content: {},
   css,
@@ -31,8 +30,4 @@ export default defineNuxtConfig({
       },
     ],
   }
-  clientBundle: {
-    scan: true,
-    sizeLimitKb: 256,
-  },
 });

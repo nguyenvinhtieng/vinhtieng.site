@@ -18,7 +18,15 @@
               activeIndex !== index,
           }"
         >
-		<Icon :name="icons[file.language] || 'solar:document-text-bold'" class="w-2 h-2" />
+          <NuxtImg
+            v-if="icons[file.language]"
+            :src="icons[file.language]"
+            class="w-4 h-4 object-cover m-0 border-none"
+            alt="language icon"
+            width="16"
+            height="16"
+            :title="file.language"
+          />
           <span>{{ file.title }}</span>
         </button>
       </div>
@@ -27,7 +35,7 @@
         @click="copyToClipboard"
         class="flex items-center gap-2 text-neutral-500 dark:text-neutral-300 hover:text-green-500 cursor-pointer transition-colors px-2 py-1 rounded-md hover:bg-gray-200 active:scale-95 dark:hover:bg-neutral-800"
       >
-        <Icon name="mdi:content-copy" class="w-5 h-5" />
+        <NuxtIcon name="content-copy" class="text-md" />
         <span class="inline">{{ copied ? "Copied!" : "Copy" }}</span>
       </button>
     </div>
@@ -52,23 +60,22 @@ interface FileBlock {
   content: string;
 }
 const icons: Record<string, string> = {
-	typescript: 'logos:typescript-icon',
-	python: 'logos:python',
-	javascript: 'logos:javascript',
-	html: 'logos:html-5',
-	css: 'logos:css-3',
-	bash: 'logos:bash-icon',
-	dockerfile: 'logos:docker-icon',
-	babel: 'logos:babel',
-	graphql: 'logos:graphql',
-	json: 'logos:json',
-	go: 'logos:gopher',
-	php: 'logos:php',
-	java: 'logos:java',
-	csharp: 'logos:c-sharp',
-	jenkins: 'logos:jenkins',
-	vite: 'logos:vitejs',
-  nginx: 'logos:nginx',
+	typescript: '/images/icons/typescript.svg',
+	python: '/images/icons/python.svg',
+	javascript: '/images/icons/javascript.svg',
+	html: '/images/icons/html.svg',
+	css: '/images/icons/css.svg',
+	bash: '/images/icons/bash.svg',
+	json: '/images/icons/json.svg',
+	dockerfile: '/images/icons/dockerfile.svg',
+  babel: '/images/icons/babel.svg',
+  gopher: '/images/icons/gopher.svg',
+  php: '/images/icons/php.svg',
+  java: '/images/icons/java.svg',
+  csharp: '/images/icons/csharp.svg',
+  jenkins: '/images/icons/jenkins.svg',
+  vite: '/images/icons/vite.svg',
+  nginx: '/images/icons/nginx.svg',
 }
 
 const props = defineProps<{

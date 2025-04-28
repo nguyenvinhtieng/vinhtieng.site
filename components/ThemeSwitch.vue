@@ -5,16 +5,15 @@
     aria-label="Toggle theme"
     class="md:w-10 md:h-10 w-6 h-6 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-neutral-800 transition cursor-pointer"
   >
-    <Icon
-      :icon="isDark ? 'mdi:moon-waning-crescent' : 'mdi:weather-sunny'"
-      class="w-6 h-6 text-yellow-500 dark:text-yellow-400 transition-transform duration-300"
+    <NuxtIcon
+      :name="isDark ? 'moon' : 'sun'"
+      class="text-xl text-yellow-500 dark:text-yellow-400 transition-transform duration-300"
     />
   </button>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, watch } from 'vue'
-import { Icon } from '@iconify/vue'
 
 const isDark = ref<boolean>(false)
 const buttonRef = ref<HTMLElement | null>(null)

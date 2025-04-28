@@ -24,7 +24,7 @@
       <div class="pointer-events-none absolute inset-0">
         <div
           v-for="(tech, index) in floatingTechs"
-          :key="`float-${tech.name}-${index}`"
+          :key="index"
           class="absolute animate-float-tech"
           :style="`
 				  left: ${tech.x}%;
@@ -34,9 +34,14 @@
 				  opacity: ${tech.opacity};
 			  `"
         >
-          <Icon
-            :name="`${tech.name}`"
-            :class="`w-${tech.size} h-${tech.size}`"
+          <NuxtImg
+            v-if="techsImg[tech.name]"
+            :src="techsImg[tech.name]"
+            class="w-4 h-4 object-cover m-0 border-none"
+            alt="language icon"
+            width="16"
+            height="16"
+            :title="tech.name"
           />
         </div>
       </div>
@@ -47,34 +52,39 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-const techNames = [
-  "logos:vue",
-  "logos:react",
-  "logos:typescript",
-  "logos:tailwindcss",
-  "logos:javascript",
-  "logos:html-5",
-  "logos:css-3",
-  "logos:nodejs",
-  "logos:nuxt",
-  "logos:nextjs",
-  "logos:git",
-  "logos:github",
-  "logos:visual-studio-code",
-  "logos:webpack",
-  "logos:sass",
-  "logos:firebase",
-  "logos:mongodb",
-  "logos:postgresql",
-  "logos:docker",
-  "logos:aws",
-  "logos:linux-tux",
-  "logos:ubuntu",
-  "logos:python",
-  "logos:java",
-  "logos:php",
-  "logos:laravel",
-];
+const techsImg: Record<string, string> = {
+  typescript: '/images/icons/typescript.svg',
+	javascript: '/images/icons/javascript.svg',
+	html: '/images/icons/html.svg',
+	css: '/images/icons/css.svg',
+	bash: '/images/icons/bash.svg',
+	json: '/images/icons/json.svg',
+	dockerfile: '/images/icons/dockerfile.svg',
+  babel: '/images/icons/babel.svg',
+  gopher: '/images/icons/gopher.svg',
+  php: '/images/icons/php.svg',
+  jenkins: '/images/icons/jenkins.svg',
+  vite: '/images/icons/vite.svg',
+  nginx: '/images/icons/nginx.svg',
+  laravel: '/images/icons/laravel.svg',
+  ubuntu: '/images/icons/ubuntu.svg',
+  linux: '/images/icons/linux.svg',
+  aws: '/images/icons/aws.svg',
+  postgresql: '/images/icons/postgresql.svg',
+  mongodb: '/images/icons/mongodb.svg',
+  firebase: '/images/icons/firebase.svg',
+  sass: '/images/icons/sass.svg',
+  webpack: '/images/icons/webpack.svg',
+  'visual-studio-code': '/images/icons/visual-studio-code.svg',
+  github: '/images/icons/github.svg',
+  git: '/images/icons/git.svg',
+  nextjs: '/images/icons/nextjs.svg',
+  nuxt: '/images/icons/nuxt.svg',
+  nodejs: '/images/icons/nodejs.svg',
+  tailwindcss: '/images/icons/tailwindcss.svg',
+  react: '/images/icons/react.svg',
+  vue: '/images/icons/vue.svg',
+}
 
 const floatingTechs = computed(() => {
   const techs: {
@@ -86,13 +96,13 @@ const floatingTechs = computed(() => {
     delay: number;
     opacity: number;
   }[] = [];
-  techNames.forEach((tech) => {
+  Object.keys(techsImg).forEach((tech) => {
     techs.push({
       name: tech,
       x: Math.random() * 100,
       y: Math.random() * 100,
       size: Math.floor(Math.random() * 3) + 5,
-      duration: Math.random() * 20 + 20,
+      duration: Math.random() * 20 + 10,
       delay: Math.random() * 10,
       opacity: Math.random() * 0.3 + 0.1,
     });

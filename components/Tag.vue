@@ -7,7 +7,7 @@
 		'!bg-blue-500 !text-white': isActive,
 	 })"
   >
-  <Icon name="mdi:tag-multiple" class="w-4 h-4 mr-1" />
+  	<NuxtIcon name="tag" class="text-md mr-1" />
 	<span class="font-medium">{{ label }}</span>
   </span>
 </template>

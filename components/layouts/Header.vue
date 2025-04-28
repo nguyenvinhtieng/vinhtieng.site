@@ -13,30 +13,30 @@
 					class="flex items-center gap-2 px-3 py-1.5 rounded-md transition-all duration-200 hover:bg-blue-50 hover:text-blue-600 group  dark:hover:bg-neutral-800 dark:text-neutral-200 dark:hover:text-blue-500"
 					active-class="text-blue-600 bg-blue-50 font-semibold dark:bg-neutral-800 dark:text-blue-600"
 				>
-					<Icon v-if="header.icon" :name="header.icon" class="w-4 h-4 text-inherit" />
+					<NuxtIcon v-if="header.icon" :name="header.icon" class="text-md text-inherit" />
 					<span>{{ header.title }}</span>
-					<Icon
+					<NuxtIcon
 						v-if="header.type === 'external'"
-						name="heroicons-solid:arrow-top-right-on-square"
-						class="w-3.5 h-3.5 opacity-60 text-inherit"
+						name="external"
+						class="text-md opacity-60 text-inherit"
 					/>
 				</NuxtLink>
 				<div class="flex items-center justify-center dark:hover:bg-neutral-800 dark:text-neutral-200 text-neutral-700 hover:bg-neutral-100 p-2 cursor-pointer rounded-full transition-all duration-200"
 					@click="commonStore.toggleOpenSearchDialog(true)"
 				>
-					<Icon name="mynaui:search" class="text-lg " />
+					<NuxtIcon name="search" class="text-lg bg-w" />
 				</div>
 				<ThemeSwitch />
 			</nav>
 
 			<!-- Mobile Toggle -->
-			<button @click="menuOpen = !menuOpen" class="md:hidden text-gray-700 hover:text-blue-600 transition">
-				<Icon :name="menuOpen ? 'heroicons-solid:x-mark' : 'heroicons-solid:bars-3'" class="w-6 h-6" />
+			<button @click="menuOpen = !menuOpen" class="md:hidden text-gray-700 hover:text-blue-600 transition" :aria-label="menuOpen ? 'Close menu' : 'Open menu'">
+				<NuxtIcon :name="menuOpen ? 'x-mark' : 'bars-3'" class="text-lg" />
 			</button>
 		</section>
 
 		<!-- Mobile Menu -->
-		<div v-if="menuOpen" class="md:hidden border-t border-neutral-200 bg-white shadow-md dark:border-neutral-700 dark:bg-neutral-900">
+		<div v-if="menuOpen" class="md:hidden border-t border-neutral-200 bg-white/30 shadow-md dark:border-neutral-700 dark:bg-neutral-900/10">
 			<div class="flex flex-col px-6 py-4 gap-4 text-sm font-medium text-gray-700 dark:text-neutral-200">
 				<NuxtLink
 					v-for="header in headers"
@@ -48,12 +48,12 @@
 					active-class="text-blue-600 font-semibold"
 					@click="menuOpen = false"
 				>
-					<Icon v-if="header.icon" :name="header.icon" class="w-4 h-4 text-inherit" />
+					<NuxtIcon v-if="header.icon" :name="header.icon" class="text-md text-inherit" />
 					<span>{{ header.title }}</span>
-					<Icon
+					<NuxtIcon
 						v-if="header.type === 'external'"
-						name="heroicons-solid:arrow-top-right-on-square"
-						class="w-3.5 h-3.5 opacity-60 text-inherit"
+						name="external"
+						class="text-md opacity-60 text-inherit"
 					/>
 				</NuxtLink>
 
@@ -83,19 +83,19 @@ const headers = computed(() => [
 		title: t('header.home'),
 		url: localePath('/'),
 		type: 'link',
-		icon: 'heroicons-solid:home',
+		icon: 'home',
 	},
 	{
 		title: t('header.blog'),
 		url: localePath('/blog'),
 		type: 'link',
-		icon: 'heroicons-solid:document-text',
+		icon: 'document',
 	},
 	{
 		title: t('header.github'),
 		url: 'https://github.com/nguyenvinhtieng/vinhtieng.site',
 		type: 'external',
-		icon: 'mynaui:brand-github-solid',
+		icon: 'github',
 	},
 ]);
 </script>

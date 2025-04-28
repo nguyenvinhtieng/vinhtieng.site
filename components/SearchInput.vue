@@ -18,7 +18,7 @@
     <button
       class="absolute inset-y-0 right-0 flex items-center gap-1 px-3 text-neutral-400"
     >
-      <Icon name="ic:baseline-window" class="w-4 h-4" />
+      <NuxtIcon name="window" class="text-lg" />
       +
       <span class="font-mono text-xs">K</span>
     </button>

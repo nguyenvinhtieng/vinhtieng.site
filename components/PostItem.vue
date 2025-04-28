@@ -18,6 +18,7 @@
 				:key="tag"
 				:label="tag"
 				size="sm"
+				class="text-md"
 			/>
 		</div>
 		<div>

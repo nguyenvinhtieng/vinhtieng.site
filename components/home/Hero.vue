@@ -62,7 +62,7 @@
           external
           class="text-gray-500 hover:text-gray-800 dark:text-neutral-400 dark:hover:text-white transition-colors duration-300"
         >
-          <Icon :name="social.icon" class="w-6 h-6" />
+          <NuxtIcon :name="social.icon" class="text-lg" />
           <span class="sr-only">{{ social.icon }}</span>
         </NuxtLink>
       </div>
@@ -70,15 +70,15 @@
 
     <!-- Scroll Indicator -->
     <div
-      class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce"
+      class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce z-10"
     >
       <span
         class="text-sm text-gray-500 dark:text-neutral-500 mb-2 transition-colors duration-500"
         >Scroll Down</span
       >
-      <Icon
-        name="uil:angle-down"
-        class="w-6 h-6 text-gray-500 dark:text-neutral-500 transition-colors duration-500"
+      <NuxtIcon
+        name="angle-down"
+        class="text-lg text-gray-500 dark:text-neutral-500 transition-colors duration-500"
       />
     </div>
 
@@ -90,11 +90,11 @@ import { SOCIAL } from "~/constants/common";
 import {NuxtLink} from "#components";
 
 const socials = [
-  { icon: "uil:github", url: SOCIAL.GITHUB },
-  { icon: "uil:linkedin", url: SOCIAL.LINKEDIN },
-  { icon: "uil:envelope", url: `mailto:${SOCIAL.EMAIL}` },
-  { icon: "uil:facebook-f", url: SOCIAL.FACEBOOK },
-  { icon: "uil:instagram", url: SOCIAL.INSTAGRAM },
+  { icon: "github1", url: SOCIAL.GITHUB },
+  { icon: "linkedin", url: SOCIAL.LINKEDIN },
+  { icon: "mail", url: `mailto:${SOCIAL.EMAIL}` },
+  { icon: "facebook", url: SOCIAL.FACEBOOK },
+  { icon: "instagram", url: SOCIAL.INSTAGRAM },
 ];
 
 </script>
