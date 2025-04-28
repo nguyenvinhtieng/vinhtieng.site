@@ -19,15 +19,15 @@ export default defineNuxtConfig({
   },
   app,
   i18n,
-  // fonts: {
-  //   families: [
-  //     {
-  //       name: "Montserrat",
-  //       provider: "google",
-  //       weights: [400, 500, 600, 700],
-  //       styles: ["normal", "italic"],
-  //       fallbacks: ["sans-serif"],
-  //     },
-  //   ],
-  // },
+  fonts: {
+    families: [
+      {
+        name: "Montserrat",
+        provider: "google",
+        weights: [400, 500, 600, 700],
+        styles: ["normal", "italic"],
+        fallbacks: ["sans-serif"],
+      },
+    ],
+  },
 });
