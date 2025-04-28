@@ -10,6 +10,11 @@ export default defineNuxtConfig({
   imports: {
     autoImport: false,
   },
+  icon: {
+    clientBundle: {
+      scan: true,
+    }
+  },
   app,
   i18n
 });
