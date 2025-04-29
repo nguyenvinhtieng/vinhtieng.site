@@ -1,12 +1,12 @@
 <template>
   <button
     ref="buttonRef"
-    @click="toggleTheme"
+    @click="onToggleTheme"
     aria-label="Toggle theme"
     class="md:w-10 md:h-10 w-6 h-6 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-neutral-800 transition cursor-pointer"
   >
     <NuxtIcon
-      :name="isDark ? 'moon' : 'sun'"
+      :name="theme === 'dark' ? 'moon' : 'sun'"
       class="text-xl text-yellow-500 dark:text-yellow-400 transition-transform duration-300"
     />
   </button>
@@ -14,24 +14,26 @@
 
 <script setup lang="ts">
 import { ref, onMounted, watch } from 'vue'
+import { storeToRefs } from 'pinia'
+import useCommonStore  from '@/stores/common.store'
 
-const isDark = ref<boolean>(false)
 const buttonRef = ref<HTMLElement | null>(null)
+const commonStore = useCommonStore()
+const { theme } = storeToRefs(commonStore)
 
-const toggleTheme = async () => {
+const onToggleTheme = async () => {
+  const nextTheme = theme.value === 'dark' ? 'light' : 'dark'
   if (
     !document.startViewTransition ||
     !buttonRef.value ||
     window.matchMedia('(prefers-reduced-motion: reduce)').matches
   ) {
-    isDark.value = !isDark.value
+    commonStore.setTheme(nextTheme)
     return
   }
 
-  const nextIsDark = !isDark.value
-
   await document.startViewTransition(() => {
-    isDark.value = nextIsDark
+    commonStore.setTheme(nextTheme)
   }).ready
 
   const { top, left, width, height } = buttonRef.value.getBoundingClientRect()
@@ -56,24 +58,6 @@ const toggleTheme = async () => {
   )
 }
 
-watch(isDark, (value) => {
-  document.documentElement.classList.toggle('dark', value)
-  localStorage.setItem('isDarkTheme', JSON.stringify(value))
-})
-
-onMounted(() => {
-  try {
-    const isDarkThemeLocalStorage = localStorage.getItem('isDarkTheme')
-    if (isDarkThemeLocalStorage !== null) {
-      isDark.value = JSON.parse(isDarkThemeLocalStorage)
-    } else {
-      isDark.value = window.matchMedia('(prefers-color-scheme: dark)').matches
-    }
-  } catch {
-    isDark.value = window.matchMedia('(prefers-color-scheme: dark)').matches
-  }
-  document.documentElement.classList.toggle('dark', isDark.value)
-})
 </script>
 
 <style scoped>

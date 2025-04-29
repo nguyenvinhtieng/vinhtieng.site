@@ -21,7 +21,7 @@
           v-for="file in filtered"
           :key="file.id"
           tabindex="0"
-          class="py-2 cursor-pointer hover:bg-gray-100 px-2 rounded block border-b border-neutral-100 dark:border-neutral-800 dark:hover:bg-neutral-800 dark:text-neutral-300 dark:active:bg-neutral-800 dark:focus:bg-neutral-800 "
+          class="py-2 cursor-pointer hover:bg-gray-100 px-2 rounded block border-b border-neutral-100 dark:border-neutral-800 dark:hover:bg-neutral-800 dark:text-neutral-300 "
           @click="navigateTo(file.id)"
           @keydown.enter="navigateTo(file.id)"
         >
@@ -122,6 +122,6 @@ onBeforeUnmount(() => {
 @reference "@/assets/css/main.css";
 
 [tabindex="0"]:focus {
-  @apply  bg-neutral-100 outline-none;
+  @apply outline-none;
 }
 </style>

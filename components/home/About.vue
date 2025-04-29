@@ -64,19 +64,19 @@
         <div class="flex justify-center space-x-8 mt-2">
           <div class="flex flex-col items-center">
             <div class="text-2xl font-bold text-blue-500">3+</div>
-            <div class="text-sm text-gray-500 dark:text-neutral-400">
+            <div class="text-sm text-gray-500 dark:text-neutral-400 text-center">
               Years Experience
             </div>
           </div>
           <div class="flex flex-col items-center">
             <div class="text-2xl font-bold text-blue-500">30+</div>
-            <div class="text-sm text-gray-500 dark:text-neutral-400">
+            <div class="text-sm text-gray-500 dark:text-neutral-400 text-center">
               Projects Delivered
             </div>
           </div>
           <div class="flex flex-col items-center">
             <div class="text-2xl font-bold text-blue-500">999+</div>
-            <div class="text-sm text-gray-500 dark:text-neutral-400">
+            <div class="text-sm text-gray-500 dark:text-neutral-400 text-center">
               Coffee Cups
             </div>
           </div>
