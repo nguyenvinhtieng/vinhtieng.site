@@ -1,26 +1,31 @@
 <template>
   <footer
-    class="text-gray-800 dark:text-gray-100 p-container z-10 relative border-t border-neutral-300 dark:border-neutral-800"
+    class="w-full border-t border-neutral-300 dark:border-neutral-800 bg-white/80 dark:bg-black/30 backdrop-blur-sm relative z-10"
   >
-    <div class="flex flex-col items-center justify-center w-full py-6">
-      <div class="text-sm text-neutral-500 dark:text-neutral-200">
-        &copy; {{ currentYear }} {{ $t("footer.copyright") }}
+    <div class="p-container py-6 flex flex-col md:flex-row items-center justify-between text-gray-700 dark:text-gray-300">
+      
+      <!-- Left side -->
+      <div class="text-sm flex items-center space-x-2">
+        <span>&copy; {{ currentYear }} {{ $t("footer.copyright") }}</span>
       </div>
-      <div class="text-sm text-neutral-500 dark:text-neutral-400 space-x-2">
-        <button
-          v-for="locale in availableLocales"
-          :key="locale.code"
-          @click="switchLocale(locale.code)"
-          class="hover:underline"
-          :class="
-            locale.code === currentLocale
-              ? 'text-blue-600 font-semibold'
-              : 'text-blue-500 cursor-alias'
-          "
-        >
-          {{ locale.name }}
-        </button>
+
+      <!-- Right side: Locale switcher -->
+      <div class="flex items-center space-x-4 mt-4 md:mt-0">
+        <div class="flex space-x-2">
+          <button
+            v-for="locale in availableLocales"
+            :key="locale.code"
+            @click="switchLocale(locale.code)"
+            class="flex items-center space-x-1 text-sm hover:text-blue-600 transition-all font-medium"
+            :class="locale.code === currentLocale ? 'text-blue-600' : 'text-neutral-500'"
+          >
+            <span v-if="locale.code === 'en'">🇺🇸</span>
+            <span v-else-if="locale.code === 'vi'">🇻🇳</span>
+            <span>{{ locale.name }}</span>
+          </button>
+        </div>
       </div>
+
     </div>
   </footer>
 </template>
@@ -31,11 +36,9 @@ import { useI18n } from "vue-i18n";
 import { storeToRefs } from "pinia";
 import useCommonStore from "@/stores/common.store";
 
-// Store
 const commonStore = useCommonStore();
 const { locale: currentLocale } = storeToRefs(commonStore);
 
-// I18n
 const { locales, setLocale: setI18nLocale } = useI18n();
 
 const availableLocales = computed(() =>
@@ -48,11 +51,10 @@ const availableLocales = computed(() =>
 const switchLocale = async (code: string) => {
   if (code !== currentLocale.value && ["en", "vi"].includes(code)) {
     commonStore.setLocale(code as "en" | "vi");
-    await setI18nLocale(code as any); // cập nhật luôn i18n runtime
+    await setI18nLocale(code as any);
   }
 };
 
-// Đồng bộ store.locale -> i18n.locale mỗi khi reload
 watch(
   currentLocale,
   (newLocale) => {
