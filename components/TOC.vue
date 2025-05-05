@@ -7,9 +7,9 @@
 			:class="cn(
 				'block py-[2px] cursor-pointer transition-colors truncate',
 				{
-					'ml-0 text-[14px] font-semibold mt-2': toc[0] === 'h1',
-					'ml-2 text-[14px] mt-0': toc[0] === 'h2',
-					'ml-6 text-[14px] mt-0': toc[0] === 'h3',
+					'ml-0 text-[14px] dark:text-neutral-300 font-semibold mt-2': toc[0] === 'h1',
+					'ml-2 text-[14px] dark:text-neutral-400 mt-0': toc[0] === 'h2',
+					'ml-6 text-[14px] dark:text-neutral-400 mt-0': toc[0] === 'h3',
 					'text-blue-500 dark:text-blue-400': activeId === toc[1].id,
 					'hover:text-blue-500': activeId !== toc[1].id,
 				}

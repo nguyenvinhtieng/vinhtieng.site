@@ -1,9 +1,9 @@
 <template>
   <section
-    class="relative min-h-screen flex flex-col items-center justify-center px-6 text-center overflow-hidden text-gray-800 dark:text-white bg-white dark:bg-black transition-colors duration-500"
+    class="relative flex flex-col items-center justify-center px-6 text-center overflow-hidden text-gray-800 dark:text-white bg-white dark:bg-black transition-colors duration-500"
   >
     <!-- Main Content -->
-    <div class="relative z-10 flex flex-col items-center space-y-8 py-20 min-h-screen">
+    <div class="relative z-10 flex flex-col items-center space-y-8 py-20">
       <!-- Avatar -->
       <div class="relative mb-4">
         <div
@@ -70,7 +70,7 @@
 
     <!-- Scroll Indicator -->
     <div
-      class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce z-10"
+      class="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce z-10"
     >
       <span
         class="text-sm text-gray-500 dark:text-neutral-500 mb-2 transition-colors duration-500"

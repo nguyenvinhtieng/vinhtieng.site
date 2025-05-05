@@ -1,7 +1,7 @@
 <template>
   <section
     id="about"
-    class="relative min-h-screen flex flex-col md:flex-row items-center justify-center px-8 py-20 space-y-12 md:space-y-0 md:space-x-16 overflow-hidden text-gray-800 dark:text-white bg-white dark:bg-black transition-colors duration-500"
+    class="relative flex flex-col md:flex-row items-center justify-center px-8 py-20 space-y-12 md:space-y-0 md:space-x-16 overflow-hidden text-gray-800 dark:text-white bg-white dark:bg-black transition-colors duration-500"
   >
     <!-- Background Animation Layer -->
     <div class="absolute inset-0 overflow-hidden mr-0">

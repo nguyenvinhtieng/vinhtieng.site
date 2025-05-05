@@ -21,7 +21,7 @@
           <NuxtImg
             v-if="icons[file.language]"
             :src="icons[file.language]"
-            class="w-4 h-4 object-cover m-0 border-none"
+            class="w-4 h-4 object-contain m-0 border-none rounded-none"
             alt="language icon"
             width="16"
             height="16"

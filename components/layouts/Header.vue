@@ -36,7 +36,11 @@
 		</section>
 
 		<!-- Mobile Menu -->
-		<div v-if="menuOpen" class="md:hidden border-t border-neutral-200 bg-white/30 shadow-md dark:border-neutral-700 dark:bg-neutral-900/10">
+		<div 
+			v-if="menuOpen"
+			ref="menuRef" 
+			class="md:hidden border-t border-neutral-200 bg-white/30 shadow-md dark:border-neutral-700 dark:bg-neutral-900/10"
+		>
 			<div class="flex flex-col px-6 py-4 gap-4 text-sm font-medium text-gray-700 dark:text-neutral-200">
 				<NuxtLink
 					v-for="header in headers"
@@ -64,38 +68,25 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue';
-import Logo from '../Logo.vue';
-import { NuxtLink } from '#components';
-import { useI18n,  } from 'vue-i18n';
+import { ref, computed } from 'vue';
+import { onClickOutside } from '@vueuse/core';
+import useCommonStore from "~/stores/common.store";
+import { useI18n } from 'vue-i18n';
 import { useLocalePath } from '#i18n';
 
-const {t} = useI18n();
-const localePath = useLocalePath()
-import useCommonStore from "~/stores/common.store";
-
+const { t } = useI18n();
+const localePath = useLocalePath();
 const commonStore = useCommonStore();
-
 const menuOpen = ref(false);
+const menuRef = ref(null);
+
+onClickOutside(menuRef, () => {
+  menuOpen.value = false;
+});
 
 const headers = computed(() => [
-	{
-		title: t('header.home'),
-		url: localePath('/'),
-		type: 'link',
-		icon: 'home',
-	},
-	{
-		title: t('header.blog'),
-		url: localePath('/blog'),
-		type: 'link',
-		icon: 'document',
-	},
-	{
-		title: t('header.github'),
-		url: 'https://github.com/nguyenvinhtieng/vinhtieng.site',
-		type: 'external',
-		icon: 'github',
-	},
+  { title: t('header.home'), url: localePath('/'), type: 'link', icon: 'home' },
+  { title: t('header.blog'), url: localePath('/blog'), type: 'link', icon: 'document' },
+  { title: t('header.github'), url: 'https://github.com/nguyenvinhtieng/vinhtieng.site', type: 'external', icon: 'github' },
 ]);
 </script>

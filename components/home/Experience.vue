@@ -1,7 +1,7 @@
 <template>
   <section
     id="experience"
-    class="relative min-h-screen flex flex-col items-center justify-center px-8 py-20 space-y-16 overflow-hidden text-gray-800 dark:text-white bg-white dark:bg-black transition-colors duration-500"
+    class="relative flex flex-col items-center justify-center px-8 py-20 space-y-16 overflow-hidden text-gray-800 dark:text-white bg-white dark:bg-black transition-colors duration-500"
   >
     <!-- Title -->
     <div class="relative z-10 mb-10">

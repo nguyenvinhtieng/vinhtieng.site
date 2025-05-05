@@ -441,5 +441,3 @@ files:
 
 Nginx là công cụ cực kỳ mạnh mẽ và linh hoạt, không chỉ giới hạn ở web server mà còn là reverse proxy, caching layer, và load balancer. Việc nắm vững và khai thác tốt các tính năng sẽ giúp hệ thống của bạn hiệu suất cao, bảo mật và dễ mở rộng.
 
-> **Chúc bạn triển khai thành công!** 🚀
-
