@@ -1,8 +1,8 @@
 ---
-title: "Tổng quan và cấu hình nâng cao Nginx" 
+title: "Tổng quan và cấu hình thông dụng Nginx" 
 description: "Hướng dẫn chi tiết về cấu hình mặc định, PHP-FPM và thiết lập Load Balancer với Nginx." 
 tags: ["nginx"] 
-image: "/images/blog/basic-nginx/banner.png" 
+image: "/images/blog/basic-nginx/banner.webp" 
 date: 2025-04-25 
 published: true
 ---

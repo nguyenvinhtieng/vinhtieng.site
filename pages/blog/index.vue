@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { ref, watch, watchEffect } from "vue";
-import { useAsyncData } from "#app";
+import { ref, watch } from "vue";
 import { queryCollection } from "#imports";
 import Pagination from "~/components/Pagination.vue";
 import SearchInput from "~/components/SearchInput.vue";
@@ -8,9 +7,6 @@ import Tag from "~/components/Tag.vue";
 import useGetAllTag from "~/composables/useGetAllTag";
 import useUrlParams from "~/composables/useUrlParams";
 import type { BlogCollectionItem } from '@nuxt/content';
-import { useLocalePath } from '#i18n';
-
-const localePath = useLocalePath()
 
 const PER_PAGE = 9;
 const TAG_PARAM = "tags";
@@ -24,25 +20,8 @@ const posts = ref<BlogCollectionItem[]>([]);
 const totalPosts = ref(0);
 const tags = await useGetAllTag();
 
-watch(
-  [activeTags, currentPage],
-  (newVal) => {
-    setParams({
-      [TAG_PARAM]: newVal[0].join(","),
-      [PAGE_PARAM]: newVal[1].toString(),
-    });
-  },
-  {
-    deep: true,
-  }
-);
-
-watchEffect(() => {
-  fetchData();
-});
-
-
-async function fetchData() {
+// Function to fetch data
+const fetchData = async () => {
   const createQuery = () => {
     let query = queryCollection("blog").where("published", "=", true);
     if (activeTags.value.length) {
@@ -55,7 +34,7 @@ async function fetchData() {
     }
     return query;
   };
-  
+
   const paginated = await createQuery()
     .limit(PER_PAGE)
     .skip((currentPage.value - 1) * PER_PAGE)
@@ -65,12 +44,18 @@ async function fetchData() {
 
   posts.value = paginated;
   totalPosts.value = count;
+};
 
-  return {
-    posts: paginated,
-    totalPosts: count,
-  };
-}
+await fetchData();
+
+// Watch for changes in activeTags and currentPage and fetch data again
+watch([activeTags, currentPage], async () => {
+  setParams({
+    [TAG_PARAM]: activeTags.value.join(","),
+    [PAGE_PARAM]: currentPage.value.toString(),
+  });
+  await fetchData();
+});
 
 const handlePageChange = (page: number) => {
   currentPage.value = page;
@@ -85,12 +70,11 @@ const handleFilterTag = (tag: string) => {
   handlePageChange(1);
 };
 
-await useAsyncData("filtered-blog", fetchData);
-
 const refreshPost = () => {
   currentPage.value = 1;
   activeTags.value = [];
-}
+  fetchData();
+};
 </script>
 
 <template>
@@ -123,12 +107,10 @@ const refreshPost = () => {
 
     <div v-if="posts.length === 0" class="text-center text-gray-500">
       <p>{{ $t("no_posts") }}
-
         <span @click="refreshPost" class="text-blue-500 hover:underline cursor-pointer">
           {{ $t("refresh") }}
         </span>
       </p>
-      
     </div>
 
     <!-- Pagination -->

@@ -37,7 +37,7 @@
           <img
             v-if="techsImg[tech.name]"
             :src="techsImg[tech.name]"
-            class="w-4 h-4 object-cover m-0 border-none"
+            class="h-4 m-0 border-none"
             alt="language icon"
             :title="tech.name"
           />

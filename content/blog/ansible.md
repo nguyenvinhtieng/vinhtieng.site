@@ -2,7 +2,7 @@
 title: "Tổng quan và cấu hình Ansible" 
 description: "Hướng dẫn chi tiết về cài đặt, cấu hình SSH, inventory và sử dụng Playbook trong Ansible." 
 tags: ["ansible"] 
-image: "/images/blog/ansible/banner.png" 
+image: "/images/blog/ansible/banner.webp" 
 date: 2025-04-25 
 published: true
 ---

@@ -2,7 +2,7 @@
 title: "Cơ Bản Về Redis và Tích Hợp Với Node.js"
 description: "Tìm hiểu các khái niệm cơ bản về Redis bao gồm các kiểu dữ liệu và phương thức, cũng như cách tích hợp Redis vào ứng dụng Node.js để sử dụng bộ nhớ đệm và các tính năng thời gian thực."
 tags: ["redis"]
-image: "/images/blog/basic-redis/banner.png"
+image: "/images/blog/basic-redis/banner.webp"
 date: 2025-04-25
 published: true
 ---
