@@ -73,7 +73,7 @@ Nếu bạn chưa bật ufw (Uncomplicated Firewall), bạn có thể bật bằ
 Kiểm tra hoạt động của Nginx:
 
 Mở trình duyệt và truy cập địa chỉ:
-👉 http://<địa_chỉ_IP_của_bạn> hoặc http://localhost nếu kiểm tra cục bộ.
+👉 `http://<địa_chỉ_IP_của_bạn>` hoặc `http://localhost` nếu kiểm tra cục bộ.
 
 Bạn sẽ thấy trang mặc định “Welcome to nginx!” nếu mọi thứ hoạt động đúng cách.
 
