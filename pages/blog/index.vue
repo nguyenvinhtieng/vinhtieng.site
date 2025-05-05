@@ -55,6 +55,8 @@ watch([activeTags, currentPage], async () => {
     [PAGE_PARAM]: currentPage.value.toString(),
   });
   await fetchData();
+}, {
+  deep: true,
 });
 
 const handlePageChange = (page: number) => {
