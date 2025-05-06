@@ -23,7 +23,7 @@ const tags = await useGetAllTag();
 // Function to fetch data
 const fetchData = async () => {
   const createQuery = () => {
-    let query = queryCollection("blog").where("published", "=", true);
+    let query = queryCollection("blog").where("published", "=", true).order("date", "DESC");
     if (activeTags.value.length) {
       query = query.orWhere((group) => {
         activeTags.value.forEach((tag) => {
