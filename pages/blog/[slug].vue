@@ -62,7 +62,7 @@ const formattedDate = computed(() => {
 });
 
 useHead({
-  title: post.value?.title,
+  title: post.value?.title || "",
   meta: [
     { name: "description", content: post.value?.description },
     { property: "og:title", content: post.value?.title },
@@ -74,14 +74,16 @@ useHead({
     { property: "og:image:width", content: "1200" },
     { property: "og:image:height", content: "630" },
     { property: "og:site_name", content: "Vinh Tieng" },
-    { property: "og:title", content: post.value?.title },
     { property: "og:type", content: "article" },
     { property: "og:url", content: `https://vinhtieng.site/blog/${slug}` },
 
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:title", content: post.value?.title },
     { name: "twitter:description", content: post.value?.description },
-    { name: "twitter:image", content: post.value?.image },
+    {
+      name: "twitter:image",
+      content: post.value?.image || "/images/blog/default.jpg",
+    },
   ],
   link: [{ rel: "canonical", href: `https://vinhtieng.site/blog/${slug}` }],
 });
@@ -100,7 +102,7 @@ useHead({
         </aside>
       </div>
 
-      <section class="flex-1">
+      <section class="flex-1 overflow-hidden">
         <h1 class="text-4xl dark:text-neutral-200 font-bold mb-2">
           {{ post.title }}
         </h1>
