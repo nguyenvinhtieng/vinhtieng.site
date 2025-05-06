@@ -19,8 +19,7 @@
           }"
         >
           <NuxtImg
-            v-if="icons[file.language]"
-            :src="icons[file.language]"
+            :src="icons[file.language] || '/images/icons/default.svg'"
             class="w-4 h-4 object-contain m-0 border-none rounded-none"
             alt="language icon"
             width="16"
@@ -41,7 +40,7 @@
     </div>
 
     <!-- Code Display -->
-    <pre class="text-sm overflow-auto my-0 p-0 bg-transparent  whitespace-pre-wrap break-all"><code
+    <pre class="text-sm overflow-auto my-0 p-0 bg-transparent"><code
 		  ref="codeBlock"
 		  :key="activeIndex"
 		  :class="`language-${activeFile.language} p-0 w-full `"
@@ -97,6 +96,28 @@ const highlightCode = () => {
   });
 };
 
+const fallbackCopyText = (text: string) => {
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  textarea.style.position = "fixed";
+  document.body.appendChild(textarea);
+  textarea.focus();
+  textarea.select();
+
+  try {
+    document.execCommand("copy");
+    copied.value = true;
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => {
+      copied.value = false;
+      timer = null;
+    }, 1000);
+  } catch (err) {
+  }
+
+  document.body.removeChild(textarea);
+}
+
 const copyToClipboard = async () => {
   try {
     await navigator.clipboard.writeText(activeFile.value.content);
@@ -108,8 +129,11 @@ const copyToClipboard = async () => {
       timer = null;
     }, 1000);
   } catch (err) {
+    fallbackCopyText(activeFile.value.content);
   }
 };
+
+
 
 onMounted(highlightCode);
 watch(() => activeFile.value.content, highlightCode);
