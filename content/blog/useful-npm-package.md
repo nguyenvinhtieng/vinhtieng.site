@@ -2,6 +2,7 @@
 title: "Tổng hợp các npm package hữu ích cho Frontend và Backend"
 description: "Danh sách các npm package hữu ích cho lập trình Frontend và Backend, được tổng hợp từ kinh nghiệm thực tế và các chia sẻ trong cộng đồng."
 tags: ["npm"]
+keywords: "npm, package, frontend, backend"
 image: "/images/blog/useful-npm-package/banner.webp"
 date: 2025-05-05
 published: true

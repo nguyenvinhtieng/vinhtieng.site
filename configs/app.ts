@@ -13,7 +13,7 @@ export const app = {
           "A technical blog sharing tips, tutorials, and deep-dives on web development, JavaScript, TypeScript, and modern technologies.",
       },
       { name: "author", content: "Vinh Tieng" },
-
+      { name: "keywords", content:  "web development, JavaScript, TypeScript, programming, tutorials" },
       {
         name: "description:vi",
         content:

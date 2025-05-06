@@ -2,6 +2,7 @@
 title: "JWT là gì? Cách hoạt động và ứng dụng thực tế"
 description: "JWT (JSON Web Token) là gì? Cách JWT hoạt động, cấu trúc gồm Header, Payload, Signature và cách ứng dụng trong xác thực bảo mật."
 tags: ["npm"]
+keywords: "jwt, jsonwebtoken, nodejs, bảo mật, xác thực"
 image: "/images/blog/jwt/banner.webp"
 date: 2025-05-05
 published: true

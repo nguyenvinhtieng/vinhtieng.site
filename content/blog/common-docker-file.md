@@ -2,6 +2,7 @@
 title: "Các Dockerfile Phổ Biến Cho Nhiều Dự Án Khác Nhau"
 description: "Tìm hiểu về Docker và khám phá các Dockerfile phổ biến cho nhiều dự án như Node.js, PHP với Laravel, React, Vue, Nuxt và Next.js. Khám phá các kỹ thuật tối ưu và thực hành tốt nhất."
 tags: ["docker"]
+keywords: "docker, dockerfile, file docker mẫu, dockerfile cho nodejs, dockerfile cho php, dockerfile cho react, dockerfile cho vue, dockerfile cho nuxt, dockerfile cho next"
 image: "/images/blog/common-docker-file/banner.webp"
 date: 2025-04-25
 published: true
