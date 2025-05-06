@@ -34,14 +34,15 @@
 				  opacity: ${tech.opacity};
 			  `"
         >
-          <img
-            v-if="techsImg[tech.name]"
-            :src="techsImg[tech.name]"
-            class="h-4 m-0 border-none"
-            alt="language icon"
-            height="16"
-            :title="tech.name"
-          />
+        <img
+          v-if="techsImg[tech.name]"
+          :src="techsImg[tech.name]"
+          class="h-4 m-0 border-none"
+          :alt="tech.name"
+          width="16"
+          height="16"
+          :title="tech.name"
+        />
         </div>
       </div>
     </section>

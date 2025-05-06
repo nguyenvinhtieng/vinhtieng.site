@@ -987,7 +987,7 @@
   resolved "https://registry.npmjs.org/@nuxt/devalue/-/devalue-2.0.2.tgz#5749f04df13bda4c863338d8dabaf370f45ef7c7"
   integrity sha512-GBzP8zOc7CGWyFQS6dv1lQz8VVpz5C2yRszbXufwG/9zhStTIH50EtD87NmWbTMwXDvZLNg8GIpb1UFdH93JCA==
 
-"@nuxt/devtools-kit@2.4.0", "@nuxt/devtools-kit@^2.4.0":
+"@nuxt/devtools-kit@2.4.0", "@nuxt/devtools-kit@^2.3.2", "@nuxt/devtools-kit@^2.4.0":
   version "2.4.0"
   resolved "https://registry.npmjs.org/@nuxt/devtools-kit/-/devtools-kit-2.4.0.tgz#a64070ea8f48cccdb5d6f815a197533fcea513bf"
   integrity sha512-GdxdxEDN1f6uxJOPooYQTLC6X1QUe5kRs83A0PVH/uD0sqoXCjpKHOw+H0vdhkHOwOIsVIsbL+TdaF4k++p9TA==
@@ -1266,6 +1266,25 @@
     unist-util-visit "^5.0.0"
     unwasm "^0.3.9"
     vfile "^6.0.3"
+
+"@nuxtjs/sitemap@^7.2.10":
+  version "7.2.10"
+  resolved "https://registry.npmjs.org/@nuxtjs/sitemap/-/sitemap-7.2.10.tgz#708bdca3fc1c2fc73ba45ecdce7675452df248ea"
+  integrity sha512-7w1Ys2XIE/QVTJn5dbt2p/hrmDoGO9Ay1S3o6LI5M/MDRzKPvnXi5ByRUcc7Sfa3LUpLad5/w4IOQ4lyxhq9Hw==
+  dependencies:
+    "@nuxt/devtools-kit" "^2.3.2"
+    "@nuxt/kit" "^3.16.2"
+    chalk "^5.4.1"
+    defu "^6.1.4"
+    h3-compression "^0.3.2"
+    nuxt-site-config "^3.1.9"
+    ofetch "^1.4.1"
+    pathe "^2.0.3"
+    pkg-types "^2.1.0"
+    radix3 "^1.1.2"
+    semver "^7.7.1"
+    sirv "^3.0.1"
+    ufo "^1.5.4"
 
 "@oxc-parser/binding-darwin-arm64@0.61.2":
   version "0.61.2"
@@ -1943,30 +1962,12 @@
   dependencies:
     "@types/unist" "*"
 
-"@types/linkify-it@^5":
-  version "5.0.0"
-  resolved "https://registry.npmjs.org/@types/linkify-it/-/linkify-it-5.0.0.tgz#21413001973106cda1c3a9b91eedd4ccd5469d76"
-  integrity sha512-sVDA58zAw4eWAffKOaQH5/5j3XeayukzDk+ewSsnv3p4yJEZHCCzMDiZM8e0OUrRvmpGZ85jf4yDHkHsgBNr9Q==
-
-"@types/markdown-it@^14.1.2":
-  version "14.1.2"
-  resolved "https://registry.npmjs.org/@types/markdown-it/-/markdown-it-14.1.2.tgz#57f2532a0800067d9b934f3521429a2e8bfb4c61"
-  integrity sha512-promo4eFwuiW+TfGxhi+0x3czqTYJkG8qB17ZUJiVF10Xm7NLVRSLUsfRTU/6h1e24VvRnXCx+hG7li58lkzog==
-  dependencies:
-    "@types/linkify-it" "^5"
-    "@types/mdurl" "^2"
-
 "@types/mdast@^4.0.0", "@types/mdast@^4.0.4":
   version "4.0.4"
   resolved "https://registry.npmjs.org/@types/mdast/-/mdast-4.0.4.tgz#7ccf72edd2f1aa7dd3437e180c64373585804dd6"
   integrity sha512-kGaNbPh1k7AFzgpud/gMdvIm5xuECykRR+JnWKQno9TAXVa6WIVCGTPvYGekIDL4uwCZQSYbUxNBSb1aUo79oA==
   dependencies:
     "@types/unist" "*"
-
-"@types/mdurl@^2":
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/@types/mdurl/-/mdurl-2.0.0.tgz#d43878b5b20222682163ae6f897b20447233bdfd"
-  integrity sha512-RGdgjQUZba5p6QEFAVx2OGb8rQDL/cPRG7GiedRzMcJ1tYnUANBncjbSB1NRGwbvjcPeikRABz2nshyPk1bhWg==
 
 "@types/ms@*":
   version "2.1.0"
@@ -2881,6 +2882,11 @@ ccount@^2.0.0:
   version "2.0.1"
   resolved "https://registry.npmjs.org/ccount/-/ccount-2.0.1.tgz#17a3bf82302e0870d6da43a01311a8bc02a3ecf5"
   integrity sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==
+
+chalk@^5.4.1:
+  version "5.4.1"
+  resolved "https://registry.npmjs.org/chalk/-/chalk-5.4.1.tgz#1b48bf0963ec158dce2aacf69c093ae2dd2092d8"
+  integrity sha512-zgVZuo2WcZgfUEmsn6eO3kINexW8RAE4maiQ8QNs8CtpPCSyMiYsULR3HQYkm3w8FIA3SberyMJMSldGsW+U3w==
 
 char-regex@^1.0.2:
   version "1.0.2"
@@ -4353,6 +4359,11 @@ gzip-size@^7.0.0:
   integrity sha512-O1Ld7Dr+nqPnmGpdhzLmMTQ4vAsD+rHwMm1NLUmoUFFymBOMKxCCrtDxqdBRYXdeEPEi3SyoR4TizJLQrnKBNA==
   dependencies:
     duplexer "^0.1.2"
+
+h3-compression@^0.3.2:
+  version "0.3.2"
+  resolved "https://registry.npmjs.org/h3-compression/-/h3-compression-0.3.2.tgz#2d5e803a0a51fabf32deb34fa82e108577f6922b"
+  integrity sha512-B+yCKyDRnO0BXSfjAP4tCXJgJwmnKp3GyH5Yh66mY9KuOCrrGQSPk/gBFG2TgH7OyB/6mvqNZ1X0XNVuy0qRsw==
 
 h3@^1.10.0, h3@^1.12.0, h3@^1.15.1, h3@^1.15.2, h3@^1.15.3:
   version "1.15.3"
@@ -6229,6 +6240,30 @@ nuxt-icons@3.2.1:
   dependencies:
     "@nuxt/kit" "^3.0.0"
 
+nuxt-site-config-kit@3.1.9:
+  version "3.1.9"
+  resolved "https://registry.npmjs.org/nuxt-site-config-kit/-/nuxt-site-config-kit-3.1.9.tgz#fcd8d5092061b502f273811124fb80b9677262c5"
+  integrity sha512-bcmpajYJgkNzA0jTq6CmmhKF2wHZUUKeVx/CIGI8lwWuAD81EBUZN0T4iKvVDo54g9UBrUUl8/5GhD65YBBG0A==
+  dependencies:
+    "@nuxt/kit" "^3.16.2"
+    pkg-types "^2.1.0"
+    site-config-stack "3.1.9"
+    std-env "^3.9.0"
+    ufo "^1.5.4"
+
+nuxt-site-config@^3.1.9:
+  version "3.1.9"
+  resolved "https://registry.npmjs.org/nuxt-site-config/-/nuxt-site-config-3.1.9.tgz#8497f3eab293b0e467a87f809e1776ff66b333eb"
+  integrity sha512-YB69GX0st8drv1d5xypweseiEWeR22tfGdyVH3U4R+mpUSz8paBx48ArKC6MgV22DKItoQm51LVoapF5pl5bEQ==
+  dependencies:
+    "@nuxt/kit" "^3.16.2"
+    nuxt-site-config-kit "3.1.9"
+    pathe "^2.0.3"
+    pkg-types "^2.1.0"
+    sirv "^3.0.1"
+    site-config-stack "3.1.9"
+    ufo "^1.5.4"
+
 nuxt@^3.16.2:
   version "3.17.1"
   resolved "https://registry.npmjs.org/nuxt/-/nuxt-3.17.1.tgz#9ad65140a4b53bd76ecad7c3108a2cda269c3b47"
@@ -7602,6 +7637,13 @@ sisteransi@^1.0.5:
   version "1.0.5"
   resolved "https://registry.npmjs.org/sisteransi/-/sisteransi-1.0.5.tgz#134d681297756437cc05ca01370d3a7a571075ed"
   integrity sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==
+
+site-config-stack@3.1.9:
+  version "3.1.9"
+  resolved "https://registry.npmjs.org/site-config-stack/-/site-config-stack-3.1.9.tgz#efc76ba2bcc86217b3fdf74fe679a8a5044b1ade"
+  integrity sha512-ed53+wLi+36SGqidU+YUpl7f1OHClPLmvUJ/aYZny1dCBnXvOsuFottrMkXDIK2N5UaMED9mz8KrRZTk94ARCg==
+  dependencies:
+    ufo "^1.5.4"
 
 skin-tone@^2.0.0:
   version "2.0.0"

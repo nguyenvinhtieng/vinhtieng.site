@@ -10,8 +10,10 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
     "@nuxt/fonts",
     "nuxt-icons",
+    '@nuxtjs/sitemap'
   ],
   content: {},
+  site: { url: 'vinhtieng.site' },
   css,
   vite,
   imports: {
@@ -29,5 +31,11 @@ export default defineNuxtConfig({
         fallbacks: ["sans-serif"],
       },
     ],
+  },
+  sitemap: {
+    strictNuxtContentPaths: true,
+    enabled: true,
+    minify: true,
+    xslTips: false
   }
 });
