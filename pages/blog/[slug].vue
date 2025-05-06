@@ -2,7 +2,7 @@
 import { useAsyncData, useHead } from "#app";
 import { queryCollection } from "#imports";
 import { useRoute } from "vue-router";
-import { computed } from "vue";
+import { computed, nextTick, onMounted } from "vue";
 import { useLocalePath } from "#i18n";
 
 const localePath = useLocalePath();
@@ -58,6 +58,20 @@ const formattedDate = computed(() => {
     year: "numeric",
     month: "long",
     day: "numeric",
+  });
+});
+
+onMounted(() => {
+  nextTick(() => {
+    setTimeout(() => {
+      if (window.location.hash) {
+        const decodedHash = decodeURIComponent(window.location.hash);
+        const el = document.querySelector(decodedHash);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }, 100);
   });
 });
 

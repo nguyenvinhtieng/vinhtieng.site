@@ -41,7 +41,6 @@ const useCommonStore = defineStore("common", () => {
 
     watch(theme, (newTheme) => {
       if (!newTheme) return;
-      console.log("Theme changed to:", newTheme);
       localStorage.setItem("theme", newTheme);
       document.documentElement.classList.toggle('dark', newTheme === "dark");
     });
