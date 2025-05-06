@@ -1,6 +1,6 @@
 export const app = {
   head: {
-    title: "Tieng Nguyen | Technical Blog",
+    title: "Vinh Tieng | Technical Blog",
     htmlAttrs: {
       lang: "en",
     },
@@ -12,7 +12,7 @@ export const app = {
         content:
           "A technical blog sharing tips, tutorials, and deep-dives on web development, JavaScript, TypeScript, and modern technologies.",
       },
-      { name: "author", content: "Tieng Nguyen" },
+      { name: "author", content: "Vinh Tieng" },
 
       {
         name: "description:vi",
@@ -20,11 +20,11 @@ export const app = {
           "Blog kỹ thuật chia sẻ mẹo, hướng dẫn và bài viết chuyên sâu về phát triển web, JavaScript, TypeScript và công nghệ hiện đại.",
       },
 
-      { property: "og:title", content: "Tieng Nguyen | Technical Blog" },
+      { property: "og:title", content: "Vinh Tieng | Technical Blog" },
       {
         property: "og:description",
         content:
-          "Explore web development tutorials, tips, and technical articles written by Tieng Nguyen.",
+          "Explore web development tutorials, tips, and technical articles written by Vinh Tieng.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://vinhtieng.site" },
@@ -32,7 +32,7 @@ export const app = {
 
       { property: "og:locale:alternate", content: "vi_VN" },
 
-      { name: "twitter:title", content: "Tieng Nguyen | Technical Blog" },
+      { name: "twitter:title", content: "Vinh Tieng | Technical Blog" },
       {
         name: "twitter:description",
         content:
