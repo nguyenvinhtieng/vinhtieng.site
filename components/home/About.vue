@@ -27,6 +27,11 @@
           class="object-cover w-full h-full"
           width="500"
           height="500"
+          sizes="(max-width: 768px) 288px, 384px"
+          format="webp"
+          quality="80"
+          loading="lazy"
+          priority
         />
       </div>
     </div>

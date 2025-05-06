@@ -33,6 +33,10 @@
             class="w-full aspect-video object-cover transition-transform duration-300 group-hover:scale-110"
             width="500"
             height="281"
+            sizes="(max-width: 768px) 288px, 384px"
+            format="webp"
+            quality="80"
+            loading="lazy"
           />
         </div>
         <div class="p-4 flex flex-col space-y-3">
