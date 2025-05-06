@@ -1,9 +1,9 @@
 <template>
   <footer
-    class="w-full border-t border-neutral-300 dark:border-neutral-800 bg-white/80 dark:bg-black/30 backdrop-blur-sm relative z-10"
+    class="w-full border-t border-neutral-200 dark:border-neutral-900 bg-white/80 dark:bg-black/30 backdrop-blur-sm relative z-10"
   >
     <div class="p-container py-6 flex flex-col md:flex-row items-center justify-between text-gray-700 dark:text-gray-300">
-      
+
       <!-- Left side -->
       <div class="text-sm flex items-center space-x-2">
         <span>&copy; {{ currentYear }} {{ $t("footer.copyright") }}</span>
