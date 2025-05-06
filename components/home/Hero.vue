@@ -18,7 +18,7 @@
 
       <!-- Title -->
       <h1
-        class="text-5xl md:text-7xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-gray-800 via-gray-600 to-gray-800 dark:from-white dark:via-blue-200 dark:to-white transition-colors duration-500 leading-tight"
+        class="text-5xl md:text-7xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-gray-800 via-gray-600 to-gray-800 dark:from-white dark:via-blue-200 dark:to-white leading-tight"
       >
         Vinh Tieng
       </h1>
@@ -30,7 +30,7 @@
 
       <!-- Subtitle -->
       <h2
-        class="text-xl md:text-2xl font-medium max-w-3xl text-gray-600 dark:text-neutral-300 transition-colors duration-500"
+        class="text-xl md:text-2xl font-medium max-w-3xl text-gray-600 dark:text-neutral-300 "
         aria-label="Crafting beautiful, functional, and accessible web experiences"
       >
         Crafting

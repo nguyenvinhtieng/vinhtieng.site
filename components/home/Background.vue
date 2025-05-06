@@ -39,6 +39,7 @@
             :src="techsImg[tech.name]"
             class="h-4 m-0 border-none"
             alt="language icon"
+            height="16"
             :title="tech.name"
           />
         </div>
