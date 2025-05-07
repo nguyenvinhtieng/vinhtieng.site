@@ -1,6 +1,6 @@
 <template>
   <section
-    class=" flex flex-col items-center justify-center px-6 text-center overflow-hidden text-gray-800 dark:text-white transition-colors duration-500"
+    class="relative flex flex-col items-center justify-center px-6 text-center overflow-hidden text-gray-800 dark:text-white transition-colors duration-500"
   >
     <!-- Main Content -->
     <div class="relative z-10 flex flex-col items-center space-y-8 py-20">
