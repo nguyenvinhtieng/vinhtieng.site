@@ -84,8 +84,8 @@ import VueJsonPretty from "vue-json-pretty";
 import "vue-json-pretty/lib/styles.css";
 import YAML from "yaml";
 import { useI18n } from "vue-i18n";
-import { useHead } from '@unhead/vue';
 import { SITE } from "~/constants/common";
+import { useHead } from "#app";
 
 useHead({
   title: 'Free Online JSON Formatter & Viewer | Beautify JSON Easily',
@@ -114,7 +114,7 @@ useHead({
     },
     { property: 'og:type', content: 'website' },
     { property: 'og:url', content: `${SITE}/tool/json-formatter` },
-    { property: 'og:image', content: `${SITE}/images/tool/json-format.webp` },
+    { property: 'og:image', content: `${SITE}/images/tools/json-format.webp` },
     // Twitter Card
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: 'Free Online JSON Formatter & Viewer' },
@@ -123,7 +123,7 @@ useHead({
       content:
         'Beautify and explore JSON instantly with this free online tool. Includes copy, download, and YAML export.',
     },
-    { name: 'twitter:image', content: `${SITE}/images/tool/json-format.webp` },
+    { name: 'twitter:image', content: `${SITE}/images/tools/json-format.webp` },
   ],
   link: [
     { rel: 'canonical', href: `${SITE}/tool/json-formatter` },

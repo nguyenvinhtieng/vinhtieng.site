@@ -34,7 +34,7 @@
 import { ref, computed } from 'vue';
 import { marked } from 'marked';
 import { SITE } from '~/constants/common';
-import { useHead } from '@unhead/vue';
+import { useHead } from '#app';
 
 useHead({
   title: 'Free Online Markdown Viewer | Preview Markdown Instantly',
@@ -72,10 +72,10 @@ useHead({
       content:
         'Preview your markdown instantly with this clean, fast, and 100% free online tool.',
     },
-    { name: 'twitter:image', content: `${SITE}/images/tool/markdown-viewer.webp` },
+    { name: 'twitter:image', content: `${SITE}/images/tools/markdown-viewer.webp` },
   ],
   link: [
-    { rel: 'canonical', href: `${SITE}/tool/markdown-viewer` },
+    { rel: 'canonical', href: `${SITE}/tools/markdown-viewer` },
   ],
 });
 const markdown = ref(`# Markdown Preview

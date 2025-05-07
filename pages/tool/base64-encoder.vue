@@ -44,7 +44,7 @@
 </template>
 
 <script setup lang="ts">
-import { useHead } from '@unhead/vue';
+import { useHead } from '#app';
 import { ref, computed } from 'vue';
 import { SITE } from '~/constants/common';
 
@@ -80,7 +80,7 @@ useHead({
     },
     { property: 'og:type', content: 'website' },
     { property: 'og:url', content: `${SITE}/tool/base64-encoder` },
-    { property: 'og:image', content: `${SITE}/images/tool/base64-encoder.webp` },
+    { property: 'og:image', content: `${SITE}/images/tools/base64-encoder.webp` },
     // Twitter Card
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: 'Free Online Base64 Encoder' },
@@ -89,7 +89,7 @@ useHead({
       content:
         'Quickly encode text to Base64 with our free online tool. Includes copy to clipboard support.',
     },
-    { name: 'twitter:image', content: `${SITE}/images/tool/base64-encoder.webp` },
+    { name: 'twitter:image', content: `${SITE}/images/tools/base64-encoder.webp` },
   ],
   link: [{ rel: 'canonical', href: `${SITE}/tool/base64-encoder` }],
 });
