@@ -50,7 +50,39 @@
 
 <script setup lang="ts">
 import { ref, computed, watch, onMounted, nextTick } from "vue";
-import hljs from "highlight.js";
+
+// Import highlight.js and support languages
+import hljs from "highlight.js/lib/core";
+import javascript from "highlight.js/lib/languages/javascript";
+import typescript from "highlight.js/lib/languages/typescript";
+import bash from "highlight.js/lib/languages/bash";
+import css from "highlight.js/lib/languages/css";
+import html from "highlight.js/lib/languages/xml";
+import json from "highlight.js/lib/languages/json";
+import dockerfile from "highlight.js/lib/languages/dockerfile";
+import php from "highlight.js/lib/languages/php";
+import java from "highlight.js/lib/languages/java";
+import csharp from "highlight.js/lib/languages/csharp";
+import gopher from "highlight.js/lib/languages/go";
+import ini from "highlight.js/lib/languages/ini";
+import yaml from "highlight.js/lib/languages/yaml";
+import nginx from "highlight.js/lib/languages/nginx";
+
+hljs.registerLanguage("javascript", javascript);
+hljs.registerLanguage("typescript", typescript);
+hljs.registerLanguage("bash", bash);
+hljs.registerLanguage("css", css);
+hljs.registerLanguage("html", html);
+hljs.registerLanguage("json", json);
+hljs.registerLanguage("dockerfile", dockerfile);
+hljs.registerLanguage("php", php);
+hljs.registerLanguage("java", java);
+hljs.registerLanguage("csharp", csharp);
+hljs.registerLanguage("go", gopher);
+hljs.registerLanguage("ini", ini);
+hljs.registerLanguage("yaml", yaml);
+hljs.registerLanguage("nginx", nginx);
+
 import "highlight.js/styles/vs2015.min.css";
 
 interface FileBlock {
