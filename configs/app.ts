@@ -49,7 +49,7 @@ export const app = {
     ],
     script: [
       {
-        src: "https://www.googletagmanager.com/gtag/js?id=G-3JX8K0Z5Q4",
+        src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7479988152616473",
         async: true,
         crossorigin: "anonymous",
       }
