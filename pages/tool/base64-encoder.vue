@@ -1,13 +1,5 @@
 <template>
   <div class="p-6 max-w-screen-xl w-full mx-auto text-gray-900 dark:text-gray-100 relative">
-    <!-- Toast Notification -->
-    <div
-      v-if="toastMessage"
-      class="absolute top-4 right-4 bg-green-500 text-white px-4 py-2 rounded shadow-lg transition-opacity duration-300 z-50"
-    >
-      {{ toastMessage }}
-    </div>
-
     <h1 class="text-3xl font-bold mb-6 text-center">🔁 Base64 Converter</h1>
 
     <div class="flex flex-col lg:flex-row gap-6">
@@ -31,11 +23,20 @@
 
       <!-- Output Area -->
       <div class="w-full relative">
-        <label class="block text-sm font-medium mb-3">Result ({{ mode === 'encode' ? 'Base64' : 'Decoded' }})</label>
+        <div class="flex justify-between items-center mb-2">
+          <span class="text-sm font-medium">Result ({{ mode === 'encode' ? 'Base64' : 'Decoded' }})</span>
+          <div class="space-x-2">
+            <button
+              @click="copyToClipboard"
+              :disabled="!result"
+              class="text-xs px-2 py-1 bg-sky-500 text-white rounded hover:bg-sky-600 transition cursor-pointer disabled:pointer-none disabled:bg-gray-400">
+              {{ copied ? $t("json_format.copied") : $t("json_format.copy") }}
+            </button>
+          </div>
+        </div>
         <textarea
           :value="result"
           readonly
-          @click="copyToClipboard"
           class="w-full h-64 px-4 py-2 rounded-md border bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100 border-gray-300 dark:border-gray-700 shadow-sm resize-none"
         />
       </div>
@@ -51,8 +52,6 @@ import { SITE } from '~/constants/common';
 const input = ref('');
 const mode = ref<'encode' | 'decode'>('encode');
 
-const toastMessage = ref('');
-let toastTimeout: number | null = null;
 useHead({
   title: 'Free Online Base64 Encoder | Encode Text to Base64 Easily',
   meta: [
@@ -94,14 +93,6 @@ useHead({
   link: [{ rel: 'canonical', href: `${SITE}/tool/base64-encoder` }],
 });
 
-const showToast = (message: string, duration = 2000) => {
-  toastMessage.value = message;
-  if (toastTimeout) clearTimeout(toastTimeout);
-  toastTimeout = window.setTimeout(() => {
-    toastMessage.value = '';
-  }, duration);
-};
-
 const result = computed(() => {
   try {
     if (!input.value) return '';
@@ -113,16 +104,15 @@ const result = computed(() => {
   }
 });
 
+const copied = ref<boolean>(false);
 const copyToClipboard = async () => {
-  if (!result.value) {
-    showToast('Nothing to copy.', 2500);
-    return;
-  }
   try {
     await navigator.clipboard.writeText(result.value);
-    showToast('Copied to clipboard!');
-  } catch {
-    showToast('Failed to copy.', 2500);
-  }
+    copied.value = true;
+
+    setTimeout(() => {
+      copied.value = false;
+    }, 2000);
+  } catch {}
 };
 </script>
