@@ -36,9 +36,9 @@
 		</section>
 
 		<!-- Mobile Menu -->
-		<div 
+		<div
 			v-if="menuOpen"
-			ref="menuRef" 
+			ref="menuRef"
 			class="md:hidden border-t border-neutral-200 bg-white/30 shadow-md dark:border-neutral-700 dark:bg-neutral-900/10"
 		>
 			<div class="flex flex-col px-6 py-4 gap-4 text-sm font-medium text-gray-700 dark:text-neutral-200">
@@ -87,6 +87,7 @@ onClickOutside(menuRef, () => {
 const headers = computed(() => [
   { title: t('header.home'), url: localePath('/'), type: 'link', icon: 'home' },
   { title: t('header.blog'), url: localePath('/blog'), type: 'link', icon: 'document' },
+  { title: t('header.tool'), url: localePath('/tool'), type: 'link', icon: 'document' },
   { title: t('header.github'), url: 'https://github.com/nguyenvinhtieng/vinhtieng.site', type: 'external', icon: 'github' },
 ]);
 </script>

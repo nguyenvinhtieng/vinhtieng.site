@@ -4,6 +4,7 @@ import { queryCollection } from "#imports";
 import { useRoute } from "vue-router";
 import { computed, nextTick, onMounted } from "vue";
 import { useLocalePath } from "#i18n";
+import { SITE } from "~/constants/common";
 
 const localePath = useLocalePath();
 
@@ -92,7 +93,7 @@ useHead({
     { property: "og:image", content: post.value?.image || "/images/blog/default.jpg" },
     { property: "og:image:width", content: "1200" },
     { property: "og:image:height", content: "630" },
-    { property: "og:url", content: `https://vinhtieng.site/blog/${slug}` },
+    { property: "og:url", content: `${SITE}/blog/${slug}` },
     { property: "og:site_name", content: "Vinh Tieng" },
 
     // --- Twitter Card ---
@@ -105,7 +106,7 @@ useHead({
     { "http-equiv": "Content-Type", content: "text/html; charset=UTF-8" },
     { "http-equiv": "Content-Language", content: "vi" },
   ],
-  link: [{ rel: "canonical", href: `https://vinhtieng.site/blog/${slug}` }],
+  link: [{ rel: "canonical", href: `${SITE}/blog/${slug}` }],
 });
 </script>
 

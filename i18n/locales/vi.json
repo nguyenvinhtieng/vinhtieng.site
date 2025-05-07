@@ -2,10 +2,11 @@
 	"header": {
 	  "home": "Trang chủ",
 	  "blog": "Bài viết",
-	  "github": "Github"
+	  "github": "Github",
+	  "tool": "Công cụ"
 	},
 	"search": {
-		"placeholder": "Tìm kiếm bài viết theo tiêu đề, thẻ hoặc nội dung..."
+	  "placeholder": "Tìm kiếm bài viết theo tiêu đề, thẻ hoặc nội dung..."
 	},
 	"related_posts": "Bài viết liên quan",
 	"post_not_found": "Bài viết không tồn tại hoặc đã bị xóa!",
@@ -16,5 +17,21 @@
 	"footer": {
 	  "copyright": "Bản quyền thuộc về vinhtieng.site",
 	  "author": "Được tạo với ❤️ bởi"
+	},
+	"json_format": {
+	  "title": "Công cụ định dạng JSON",
+	  "paste_json": "Dán JSON",
+	  "paste_placeholder": "Dán JSON của bạn vào đây...",
+	  "formatted_json": "JSON được định dạng",
+	  "no_result": "Không có kết quả được định dạng",
+	  "tab_size": "Cỡ tab",
+	  "clear": "Xóa",
+	  "copy": "Sao chép",
+	  "download_json": "Tải xuống JSON",
+	  "export_yaml": "Xuất YAML",
+	  "copied": "Đã sao chép",
+	  "error": "Lỗi",
+	  "invalid_json": "JSON không hợp lệ:"
 	}
   }
+  

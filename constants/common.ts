@@ -7,3 +7,5 @@ export const SOCIAL = {
 	WEBSITE: 'https://vinhtieng.site',
 	RESUME: 'https://vinhtieng.site/resume.pdf',
 }
+
+export const SITE = "https://vinhtieng.site"

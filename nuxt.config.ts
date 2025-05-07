@@ -33,7 +33,6 @@ export default defineNuxtConfig({
     ],
   },
   sitemap: {
-    strictNuxtContentPaths: true,
     enabled: true,
     minify: true,
     xslTips: false

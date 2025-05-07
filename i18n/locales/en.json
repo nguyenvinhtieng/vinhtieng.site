@@ -2,7 +2,8 @@
 	"header": {
 		"home": "Home",
 		"blog": "Blog",
-		"github": "Github"
+		"github": "Github",
+    "tool": "Tool"
 	},
 	"search": {
 		"placeholder": "Search posts by title, tags, or content..."
@@ -16,5 +17,20 @@
 	"footer": {
 		"copyright": "vinhtieng.site. All rights reserved.",
 		"author": "Make with ❤️ by"
-	}
+	},
+  "json_format": {
+    "title": "JSON Formatter",
+    "paste_json": "Paste JSON",
+    "paste_placeholder": "Paste your JSON here...",
+    "formatted_json": "Formatted JSON",
+    "no_result": "No formatted result",
+    "tab_size": "Tab Size",
+    "clear": "Clear",
+    "copy": "Copy",
+    "download_json": "Download JSON",
+    "export_yaml": "Export YAML",
+    "copied": "Copied",
+    "error": "Error",
+    "invalid_json": "Invalid JSON: "
+  }
 }

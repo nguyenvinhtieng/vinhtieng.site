@@ -1,21 +1,8 @@
 <template>
   <section
     id="about"
-    class="relative flex flex-col md:flex-row items-center justify-center px-8 py-20 space-y-12 md:space-y-0 md:space-x-16 overflow-hidden text-gray-800 dark:text-white bg-white dark:bg-black transition-colors duration-500"
+    class="relative flex flex-col md:flex-row items-center justify-center px-8 py-20 space-y-12 md:space-y-0 md:space-x-16 overflow-hidden text-gray-800 dark:text-white transition-colors duration-500"
   >
-    <!-- Background Animation Layer -->
-    <div class="absolute inset-0 overflow-hidden mr-0">
-      <div
-        class="absolute inset-0 animate-gradient bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50 dark:from-black dark:via-gray-900 dark:to-black transition-colors duration-500"
-      ></div>
-      <div
-        class="absolute -top-32 -left-32 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-3xl animate-blob"
-      ></div>
-      <div
-        class="absolute bottom-10 right-10 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-3xl animate-blob animation-delay-2000"
-      ></div>
-    </div>
-
     <!-- Avatar -->
     <div class="flex-shrink-0 relative z-10 animate-fade-in-up delay-200">
       <div
