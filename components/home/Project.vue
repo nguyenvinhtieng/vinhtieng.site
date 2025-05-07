@@ -129,8 +129,7 @@ const projects = [
     description:
       "A growing collection of web apps, SaaS platforms, and digital experiences — continually pushing the boundaries of creativity and technology.",
     technologies: [],
-    image: "/placeholder.svg",
-    demo: "",
+    image: "/images/home/projects/many-more.webp",
   },
 ];
 </script>
