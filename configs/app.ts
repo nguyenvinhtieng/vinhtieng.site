@@ -47,5 +47,12 @@ export const app = {
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       { rel: "canonical", href: "https://vinhtieng.site/en" },
     ],
+    script: [
+      {
+        src: "https://www.googletagmanager.com/gtag/js?id=G-3JX8K0Z5Q4",
+        async: true,
+        crossorigin: "anonymous",
+      }
+    ],
   },
 };
