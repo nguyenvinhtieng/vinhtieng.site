@@ -137,6 +137,8 @@ useHead({
             class="rounded-lg shadow-md object-cover w-full aspect-video max-w-[800px] mx-auto"
             width="800"
             :alt="post.title"
+            :title="post.title"
+            format="webp"
           />
         </div>
         <ContentRenderer

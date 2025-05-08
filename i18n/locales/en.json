@@ -32,5 +32,18 @@
     "copied": "Copied",
     "error": "Error",
     "invalid_json": "Invalid JSON: "
+  },
+  "word_counter": {
+    "title": "Word Counter",
+    "enter_text": "Enter your text",
+    "placeholder": "Type or paste your text here...",
+    "clear": "Clear",
+    "result": "Statistics",
+    "words": "Words",
+    "characters": "Characters",
+    "sentences": "Sentences",
+    "paragraphs": "Paragraphs",
+    "undo": "Undo",
+    "redo": "Redo"
   }
 }

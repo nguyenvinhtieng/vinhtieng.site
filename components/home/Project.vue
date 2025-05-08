@@ -30,6 +30,7 @@
           <NuxtImg
             :src="project.image || '/placeholder.svg'"
             :alt="project.name + ' image'"
+            :title="project.name"
             class="w-full aspect-video object-cover transition-transform duration-300 group-hover:scale-110"
             width="500"
             height="281"

@@ -11,6 +11,7 @@
         <NuxtImg
           src="/images/home/avatar.webp"
           alt="About Tieng Nguyen"
+          title="About Tieng Nguyen"
           class="object-cover w-full h-full"
           width="500"
           height="500"

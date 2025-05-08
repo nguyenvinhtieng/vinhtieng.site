@@ -66,6 +66,12 @@ const tools = [
     url: localePath('/tool/markdown-viewer'),
     image: '/images/tools/markdown-viewer.webp',
   },
+  {
+    name: 'Word Counter',
+    description: 'Count words, characters, sentences, and paragraphs',
+    url: localePath('/tool/word-counter'),
+    image: '/images/tools/word-counter.webp',
+  }
 ];
 
 const filteredTools = computed(() =>

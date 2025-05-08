@@ -32,6 +32,19 @@
 	  "copied": "Đã sao chép",
 	  "error": "Lỗi",
 	  "invalid_json": "JSON không hợp lệ:"
+	},
+	"word_counter": {
+	  "title": "Đếm từ",
+	  "enter_text": "Nhập văn bản của bạn",
+	  "placeholder": "Nhập hoặc dán văn bản của bạn vào đây...",
+	  "clear": "Xóa",
+	  "result": "Thống kê",
+	  "words": "Từ",
+	  "characters": "Ký tự",
+	  "sentences": "Câu",
+	  "paragraphs": "Đoạn văn",
+	  "undo": "Hoàn tác",
+	  "redo": "Làm lại"
 	}
   }
   

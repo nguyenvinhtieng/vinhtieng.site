@@ -47,6 +47,8 @@
                   class="w-full h-full object-cover p-2"
                   width="56"
                   height="56"
+                  :title="job.company"
+                  format="webp"
                 />
               </div>
               <div>

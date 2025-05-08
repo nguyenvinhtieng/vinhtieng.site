@@ -4,7 +4,7 @@
 @layer base {
   body {
     font-family: 'Montserrat', sans-serif;
-    @apply dark:bg-neutral-900;
+    @apply dark:bg-neutral-900 dark:selection:bg-white/10;
   }
   html {
     scroll-padding-top: 70px;
@@ -18,65 +18,66 @@
 }
 
 @layer components {
+  /* Post content Styles */
   .post-content {
     @apply leading-relaxed text-neutral-700 dark:text-neutral-200;
-  
+
     h1 {
       @apply text-3xl font-bold text-neutral-800 mb-2 mt-10 dark:text-neutral-100;
     }
-  
+
     h2 a {
       @apply block text-2xl font-semibold text-neutral-800 mb-2 mt-2 no-underline hover:underline dark:text-neutral-200;
     }
-    
+
     h3 a {
       @apply block text-xl font-semibold text-neutral-800 mb-1 mt-2  no-underline hover:underline dark:text-neutral-200;
     }
-  
+
     h4 {
       @apply block text-xl font-medium text-neutral-700 mb-1 mt-1 dark:text-neutral-200;
     }
-  
+
     p {
       @apply mb-4 text-base text-neutral-700 dark:text-neutral-400;
     }
-  
+
     ul {
       @apply list-disc list-inside mb-4 text-base text-neutral-700 dark:text-neutral-400;
     }
-  
+
     ol {
       @apply list-decimal list-inside mb-4 text-base text-neutral-700  dark:text-neutral-400;
     }
-  
+
     li {
       @apply mb-1;
     }
-  
+
     a {
       @apply text-blue-500 hover:underline transition-colors;
     }
-  
+
     blockquote {
       @apply p-4 rounded-md border-l-8 border-blue-400 bg-blue-50 dark:text-neutral-600;
     }
-  
+
     pre {
       @apply bg-neutral-900 text-white p-4 rounded my-4 overflow-x-auto;
     }
-  
+
     img {
       @apply my-6 rounded shadow-md mx-auto;
     }
-  
+
     table {
       @apply w-full border border-collapse my-6 dark:border-neutral-800;
     }
-  
+
     th {
       @apply border border-neutral-200 px-4 py-2 bg-neutral-100 text-left font-medium dark:bg-neutral-900 dark:border-neutral-800;
     }
-  
+
     td {
       @apply border border-neutral-200 px-4 py-2 dark:border-neutral-800;
     }
@@ -93,4 +94,10 @@
       @apply text-neutral-200
     }
   }
+
+  /* Override libs */
+  .vjs-tree-node {
+    @apply dark:hover:!bg-white/10;
+  }
 }
+
