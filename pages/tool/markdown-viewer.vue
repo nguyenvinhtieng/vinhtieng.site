@@ -1,31 +1,33 @@
 <template>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 h-screen text-gray-900 dark:text-gray-100 bg-white dark:bg-black">
+  <div
+    class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 h-screen text-gray-900 dark:text-gray-100">
     <!-- Markdown Input -->
     <div class="flex flex-col">
       <div class="flex justify-between items-center mb-2">
         <span class="text-sm font-medium">Markdown Input</span>
         <div class="space-x-2">
-          <button @click="clear" class="text-xs px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition">
+          <button @click="clear"
+            class="text-xs px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition">
             Clear
           </button>
-          <button @click="copyMarkdown" class="text-xs px-2 py-1 bg-sky-500 text-white rounded hover:bg-sky-600 transition">
+          <button @click="copyMarkdown"
+            class="text-xs px-2 py-1 bg-sky-500 text-white rounded hover:bg-sky-600 transition">
             Copy
           </button>
         </div>
       </div>
-      <textarea
-        v-model="markdown"
-        class="flex-1 w-full px-3 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-sm resize-none font-mono outline-none focus:ring-2 focus:ring-sky-500"
-      />
+      <textarea v-model="markdown"
+        class="flex-1 w-full px-3 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-sm resize-none font-mono outline-none focus:ring-2 focus:ring-sky-500" />
     </div>
 
     <!-- Markdown Preview -->
     <div class="flex flex-col">
       <span class="text-sm font-medium mb-3">Preview</span>
       <div
-        class="flex-1 p-4 border border-gray-300 dark:border-gray-700 rounded-md overflow-auto prose dark:prose-invert bg-gray-50 dark:bg-gray-900 max-w-none"
-        v-html="rendered"
-      />
+        class="flex-1 p-4 border border-gray-300 dark:border-gray-700 rounded-md overflow-auto prose dark:prose-invert bg-gray-50 dark:bg-gray-900 max-w-none">
+          <iframe ref="preview" class="w-full h-full border-none"
+            :srcdoc="rendered"></iframe>
+      </div>
     </div>
   </div>
 </template>
