@@ -51,7 +51,6 @@ export const app = {
       {
         src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7479988152616473",
         async: true,
-        crossorigin: "anonymous",
       }
     ],
   },

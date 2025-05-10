@@ -20,6 +20,7 @@ export const i18n: ModuleOptions = {
     cookieKey: "i18n_redirected",
     fallbackLocale: "en",
 	 redirectOn: 'root',
+   alwaysRedirect: true,
   },
   langDir: "locales/",
   lazy: true,
