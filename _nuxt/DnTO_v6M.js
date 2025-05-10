@@ -1,0 +1,1 @@
+import{a3 as n,a4 as s,a5 as r,a6 as o,a7 as i}from"./CEnUzhl_.js";function u(t){var a;const e=t||s();return((a=e==null?void 0:e.ssrContext)==null?void 0:a.head)||(e==null?void 0:e.runWithContext(()=>{if(r())return o(i)}))}function d(t,e={}){const a=u(e.nuxt);if(a)return n(t,{head:a,...e})}export{d as u};
