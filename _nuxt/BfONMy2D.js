@@ -1,0 +1,1 @@
+import{aa as n,ab as s,ac as r,ad as o,ae as c}from"./Bfl3_qNn.js";function i(t){var a;const e=t||s();return((a=e==null?void 0:e.ssrContext)==null?void 0:a.head)||(e==null?void 0:e.runWithContext(()=>{if(r())return o(c)}))}function d(t,e={}){const a=i(e.nuxt);if(a)return n(t,{head:a,...e})}export{d as u};
