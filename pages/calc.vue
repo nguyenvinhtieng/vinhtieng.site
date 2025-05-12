@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import { computed } from "vue";
-const currentDate = new Date();
+import { computed, ref, onMounted} from "vue";
+const currentDate = ref(new Date());
+onMounted(() => {
+  currentDate.value = new Date();
+});
 const PER_DAY = 200_000;
 const LIVE = 3_500_000;
 
@@ -25,10 +28,9 @@ const isWeekendOrEvent = (date: Date) => {
 };
 
 const nextMonth = computed(() => {
-  const currentDate = new Date();
   let nextMonthDay = new Date(
-    currentDate.getFullYear(),
-    currentDate.getMonth() + 1,
+    currentDate.value.getFullYear(),
+    currentDate.value.getMonth() + 1,
     5
   );
   while (isWeekendOrEvent(nextMonthDay)) {
@@ -39,7 +41,7 @@ const nextMonth = computed(() => {
 
 const diffDateInclude2Day = computed(() => {
   const diff = Math.abs(
-    nextMonth.value.getTime() - currentDate.getTime()
+    nextMonth.value.getTime() - currentDate.value.getTime()
   );
   const diffDays = Math.ceil(diff / (1000 * 3600 * 24));
   return diffDays + 1; // include 2 day
@@ -73,6 +75,8 @@ const formatNumber = (num: number) => {
 </script>
 
 <template>
+  <ClientOnly>
+
   <main
     class="min-h-screen text-gray-800 dark:text-gray-100 p-container z-10 pt-10"
   >
@@ -83,4 +87,5 @@ const formatNumber = (num: number) => {
     <h2>Live: {{ formatNumber(LIVE) }}</h2>
     <h2>Total: {{ formatNumber(diffDateInclude2Day * PER_DAY + LIVE) }}</h2>
   </main>
+  </ClientOnly>
 </template>
