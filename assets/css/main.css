@@ -99,5 +99,8 @@
   .vjs-tree-node {
     @apply dark:hover:!bg-white/10;
   }
+  .vjs-carets {
+    @apply relative top-0.5 text-neutral-600 dark:text-neutral-200;
+  }
 }
 

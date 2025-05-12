@@ -64,7 +64,9 @@
             :data="formatted"
             :deep="Infinity"
             :showLine="true"
+            :showIcon="true"
             :showDoubleQuotes="false"
+            :showLength="true"
           />
         </div>
         <div
