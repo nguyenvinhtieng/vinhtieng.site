@@ -1,45 +1,50 @@
 export const app = {
   head: {
-    title: "Vinh Tieng | Technical Blog",
+    title: "Vinh Tieng | Portfolio & Software Engineer | Technical Blog",
     htmlAttrs: {
       lang: "en",
     },
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+
       {
         name: "description",
         content:
-          "A technical blog sharing tips, tutorials, and deep-dives on web development, JavaScript, TypeScript, and modern technologies.",
+          "Explore the professional portfolio of Vinh Tieng, a passionate software engineer specializing in modern web development, full-stack projects, and impactful user experiences.",
       },
       { name: "author", content: "Vinh Tieng" },
-      { name: "keywords", content:  "web development, JavaScript, TypeScript, programming, tutorials" },
+      {
+        name: "keywords",
+        content:
+          "vinh tieng, Vinh Tieng, portfolio, web developer, software engineer, frontend, backend, full-stack",
+      },
       {
         name: "description:vi",
         content:
-          "Blog kỹ thuật chia sẻ mẹo, hướng dẫn và bài viết chuyên sâu về phát triển web, JavaScript, TypeScript và công nghệ hiện đại.",
+          "Khám phá portfolio cá nhân của Vinh Tieng – kỹ sư phần mềm chuyên về phát triển web.",
       },
 
-      { property: "og:title", content: "Vinh Tieng | Technical Blog" },
+      { property: "og:title", content: "Vinh Tieng | Portfolio & Software Engineer | Technical Blog" },
       {
         property: "og:description",
         content:
-          "Explore web development tutorials, tips, and technical articles written by Vinh Tieng.",
+          "Discover the work and experience of Vinh Tieng, a web developer building clean, performant, and scalable applications.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://vinhtieng.site" },
       { property: "og:image", content: "https://vinhtieng.site/cover.webp" },
-
       { property: "og:locale:alternate", content: "vi_VN" },
 
-      { name: "twitter:title", content: "Vinh Tieng | Technical Blog" },
+      { name: "twitter:title", content: "Vinh Tieng | Portfolio & Software Engineer | Technical Blog" },
       {
         name: "twitter:description",
         content:
-          "Frontend and backend development guides, tips, and resources.",
+          "Showcasing development skills, real-world projects, and experience in full-stack web technologies.",
       },
       { name: "twitter:image", content: "https://vinhtieng.site/cover.webp" },
 
+      // SEO
       { name: "robots", content: "index, follow" },
       { name: "theme-color", content: "#0ea5e9" },
     ],

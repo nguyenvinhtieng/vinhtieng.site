@@ -7,6 +7,8 @@ import Tag from "~/components/Tag.vue";
 import useGetAllTag from "~/composables/useGetAllTag";
 import useUrlParams from "~/composables/useUrlParams";
 import type { BlogCollectionItem } from '@nuxt/content';
+import { useHead } from "#app";
+import { SITE } from "~/constants/common";
 
 const PER_PAGE = 9;
 const TAG_PARAM = "tags";
@@ -77,6 +79,27 @@ const refreshPost = () => {
   activeTags.value = [];
   fetchData();
 };
+
+useHead({
+  title: "Blog",
+  meta: [
+     { name: "description", content: "A technical blog sharing tips, tutorials, and deep-dives on web development, JavaScript, TypeScript, and modern technologies." },
+    { name: "author", content: "Vinh Tieng" },
+    { name: "keywords", content: "blog, web development, JavaScript, TypeScript, tutorials, tips" },
+    { name: "robots", content: "index, follow" },
+    { property: "og:title", content: "Blog" },
+    { property: "og:description", content: "A technical blog sharing tips, tutorials, and deep-dives on web development, JavaScript, TypeScript, and modern technologies." },
+    { property: "og:type", content: "website" },
+    { property: "og:url", content: `${SITE}/blog` },
+    { property: "og:image", content: `${SITE}/images/cover.webp` },
+    { property: "twitter:title", content: "Blog" },
+    { property: "twitter:description", content: "A technical blog sharing tips, tutorials, and deep-dives on web development, JavaScript, TypeScript, and modern technologies." },
+    { property: "twitter:image", content: `${SITE}/images/cover.webp` },
+    { property: "twitter:card", content: "summary_large_image" }
+  ],
+  link: [{ rel: "canonical", href: `${SITE}/blog` }],
+
+});
 </script>
 
 <template>
@@ -100,10 +123,10 @@ const refreshPost = () => {
 
     <!-- Posts display -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      <PostItem 
-        v-for="post in posts" 
-        :key="post.id" 
-        :post="post as BlogCollectionItem" 
+      <PostItem
+        v-for="post in posts"
+        :key="post.id"
+        :post="post as BlogCollectionItem"
       />
     </div>
 
