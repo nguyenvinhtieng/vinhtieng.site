@@ -1,80 +1,77 @@
 <template>
-  <section
-    id="projects"
-    class="relative flex flex-col items-center justify-center px-6 py-20 space-y-16 overflow-hidden text-gray-800 dark:text-white transition-colors duration-500"
-  >
-    <!-- Title -->
-    <div class="relative z-10 mb-10">
-      <h2
-        class="text-4xl md:text-5xl font-extrabold tracking-tight text-center"
-      >
-        Projects
+  <section id="projects" class="py-12">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-20 text-gray-900 dark:text-gray-100">
+        Some Things I’ve Built
       </h2>
-    </div>
 
-    <!-- Projects Grid -->
-    <div
-      class="relative z-10 w-full max-w-7xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
-    >
       <div
-        v-for="(project, index) in projects"
+        v-for="(project, index) in PROJECTS"
         :key="index"
-        class="group relative bg-white/90 dark:bg-neutral-900/70 rounded-xl shadow-md border border-gray-200 dark:border-neutral-900 overflow-hidden transform transition duration-300 hover:scale-[1.03] hover:shadow-xl animate-fadeInUp"
-        style="
-          animation-delay: calc(0.1s * var(--i));
-          animation-fill-mode: both;
-        "
-        :style="`--i:${index}`"
+        class="mb-28 flex flex-col md:flex-row items-center gap-10"
+        :class="{ 'md:flex-row-reverse': index % 2 !== 0 }"
       >
-        <div class="w-full overflow-hidden">
+        <!-- Image -->
+        <div class="w-full md:w-1/2 rounded-lg overflow-hidden">
           <NuxtImg
             :src="project.image || '/placeholder.svg'"
-            :alt="project.name + ' image'"
-            :title="project.name"
-            class="w-full aspect-video object-cover transition-transform duration-300 group-hover:scale-110"
-            width="500"
-            height="281"
-            sizes="(max-width: 768px) 288px, 384px"
-            format="webp"
-            quality="80"
-            loading="lazy"
+            :alt="project.name"
+            :width="800"
+            :height="450"
+            class="w-full aspect-video object-cover rounded-lg border border-neutral-200 dark:border-neutral-700"
           />
         </div>
-        <div class="p-4 flex flex-col space-y-3">
-          <h3 class="text-lg font-bold text-blue-600 dark:text-blue-400">
+
+        <!-- Content -->
+        <div class="w-full md:w-1/2 relative">
+          <p class="text-sm text-blue-500 mb-1 font-medium">Featured Project</p>
+          <h3 class="text-2xl font-semibold text-neutral-900 dark:text-neutral-100 mb-2">
             {{ project.name }}
           </h3>
-          <p class="text-sm text-gray-600 dark:text-neutral-300 line-clamp-3">
+
+          <p class="text-neutral-700 dark:text-neutral-200 text-sm leading-relaxed mb-4 border border-gray-200 dark:border-gray-700 rounded-lg bg-neutral-100/50 dark:bg-neutral-800/50 backdrop-blur-md p-4">
             {{ project.description }}
           </p>
-          <!-- Tech Tags -->
-          <div class="flex flex-wrap gap-1">
-            <span
-              v-for="(tech, idx) in project.technologies"
-              :key="idx"
-              class="px-4 py-1 bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-blue-100 text-xs rounded-full"
+
+          <!-- Tech stack -->
+          <ul class="flex flex-wrap gap-2 text-xs text-gray-600 dark:text-gray-300 mb-4">
+            <li
+              v-for="(tech, i) in project.technologies"
+              :key="i"
+              class="bg-neutral-200 dark:bg-gray-800 px-2 py-1 rounded"
             >
               {{ tech }}
-            </span>
-          </div>
-          <!-- Action Buttons -->
-          <div class="flex space-x-3 pt-2">
-            <a
-              v-if="project.demo"
-              :href="project.demo"
+            </li>
+          </ul>
+
+          <!-- Links -->
+          <div class="flex flex-wrap items-center gap-6 text-sm font-medium">
+            <NuxtLink
+              v-if="project.link?.github"
+              :external="true"
+              :href="project.link.github"
               target="_blank"
-              class="text-xs font-semibold text-blue-600 hover:underline dark:text-blue-400"
+              class="text-blue-500 hover:underline flex gap-1 items-center"
             >
-              Live
-            </a>
-            <a
-              v-if="project.github"
-              :href="project.github"
+              View Code
+              <NuxtIcon
+                name="external"
+                class="text-md text-inherit"
+              />
+            </NuxtLink>
+            <NuxtLink
+              v-if="project.link?.demo"
+              :external="true"
+              :href="project.link.demo"
               target="_blank"
-              class="text-xs font-semibold text-gray-600 hover:underline dark:text-neutral-300"
+              class="text-blue-500 hover:underline flex gap-1 items-center"
             >
-              GitHub
-            </a>
+              Live Demo
+              <NuxtIcon
+                name="external"
+                class="text-md text-inherit"
+              />
+            </NuxtLink>
           </div>
         </div>
       </div>
@@ -83,76 +80,5 @@
 </template>
 
 <script setup lang="ts">
-const projects = [
-  {
-    name: "Middo",
-    description:
-      "A next-generation communication platform featuring web chat, video calls, and real-time AI translation, designed for seamless global collaboration.",
-    technologies: ["Next.js", "NestJS", "MongoDB", "ElectronJS"],
-    image: "/images/home/projects/middo.webp",
-    demo: "https://middo.app",
-  },
-  {
-    name: "Code Space",
-    description:
-      "An online code editor offering AI-powered code suggestions and starter templates for Vue, React, and more — crafted for developers to build faster and smarter.",
-    technologies: ["NextJS", "ExpressJS"],
-    image: "/images/home/projects/code-space.webp",
-    demo: "https://code-space.site",
-  },
-  {
-    name: "My Personal Blog",
-    description:
-      "A personal tech blog focused on web development insights, built with Nuxt Content and optimized for readability and performance.",
-    technologies: ["Nuxt Content"],
-    image: "/images/home/projects/my-blog.webp",
-    demo: "https://vinhtieng.site",
-    github: "https://github.com/nguyenvinhtieng/vinhtieng.site",
-  },
-  {
-    name: "Light Chemical",
-    description:
-      "A professional corporate website developed for a chemical company, focusing on clean UI design and strong brand presentation.",
-    technologies: ["HTML", "CSS"],
-    image: "/images/home/projects/light-chemical.webp",
-    demo: "https://www.lightchemical.co.jp/",
-  },
-  {
-    name: "Nihon JG",
-    description:
-      "A sleek, responsive website designed for a Japanese medical company, delivering a trustworthy and modern user experience.",
-    technologies: ["HTML", "CSS"],
-    image: "/images/home/projects/nihon.webp",
-    demo: "https://www.nihon-generic.co.jp/",
-  },
-  {
-    name: "And many more...",
-    description:
-      "A growing collection of web apps, SaaS platforms, and digital experiences — continually pushing the boundaries of creativity and technology.",
-    technologies: [],
-    image: "/images/home/projects/many-more.webp",
-  },
-];
+import { PROJECTS } from '~/data/projects'
 </script>
-
-<style scoped>
-section {
-  scroll-margin-top: 100px;
-}
-
-/* Animation: Fade In Up */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fadeInUp {
-  animation: fadeInUp 0.6s ease-out;
-}
-</style>

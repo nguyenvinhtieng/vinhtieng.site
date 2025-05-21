@@ -81,7 +81,7 @@ const jobs = [
     duration: "Aug 2024 - Present",
     location: "Ho Chi Minh City, Vietnam",
     description:
-      "Creating frontend features for gaming platforms and internal tools using Vue.js, focusing on performance and UX.",
+      "Creating frontend features for gaming platforms and internal tools using NuxtJs, focusing on performance and UX.",
     logo: "/images/home/smilegate.webp",
   },
   {
