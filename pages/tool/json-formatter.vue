@@ -57,8 +57,18 @@
         </div>
         <div
           v-if="formatted"
+          ref="outputContainer"
           class="h-96 overflow-auto border border-gray-300 dark:border-gray-700 rounded-lg bg-gray-100 dark:bg-gray-900 p-4 relative"
         >
+          <!-- Add full screen button -->
+          <button
+            @click="toggleFullScreen"
+            class="ml-auto block text-xs px-2 py-1 bg-green-500 text-white rounded hover:bg-green-600 transition cursor-pointer disabled:pointer-none disabled:bg-gray-400"
+            title="Full Screen"
+          >
+          Toggle Full screen
+          </button>
+
           <!-- Formatted JSON -->
           <VueJsonPretty
             :data="formatted"
@@ -137,6 +147,7 @@ const { t } = useI18n();
 const rawJson = ref("");
 const formatted = ref<any>(null);
 const error = ref("");
+const outputContainer = ref<HTMLElement | null>(null);
 
 // Auto format on input
 watch([rawJson], () => {
@@ -202,5 +213,28 @@ const copyToClipboard = () => {
       }, 2000);
     })
     .catch();
+};
+
+const isFullScreen = ref<boolean>(false);
+const toggleFullScreen = () => {
+  if (!outputContainer.value) return;
+
+  if (!isFullScreen.value) {
+    outputContainer.value.style.position = "fixed";
+    // outputContainer.value.style.top = "0";
+    outputContainer.value.style.left = "0";
+    outputContainer.value.style.right = "0";
+    outputContainer.value.style.bottom = "0";
+    outputContainer.value.style.zIndex = "1000";
+    outputContainer.value.style.height = "calc(100vh - 64px)";
+  } else {
+    outputContainer.value.style.position = "";
+    outputContainer.value.style.left = "";
+    outputContainer.value.style.right = "";
+    outputContainer.value.style.bottom = "";
+    outputContainer.value.style.zIndex = "";
+    outputContainer.value.style.height = ""; // h-96
+  }
+  isFullScreen.value = !isFullScreen.value;
 };
 </script>
