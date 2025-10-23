@@ -189,9 +189,9 @@ const form = ref({
 
 const fileTypeOptions = ref([
   { label: "PNG", value: IMAGE_TYPE.PNG },
-  { label: "JPG", value: IMAGE_TYPE.JPEG },
-  { label: "JPEG", value: IMAGE_TYPE.JPEG },
-  { label: "GIF", value: IMAGE_TYPE.GIF },
+  { label: "JPG", value: IMAGE_TYPE.JPG },
+  { label: "SVG", value: IMAGE_TYPE.SVG },
+  // { label: "WEBP", value: IMAGE_TYPE.WEBP },
 ]);
 
 const unitOptions = ref([
