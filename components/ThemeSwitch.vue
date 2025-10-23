@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch } from 'vue'
+import { ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import useCommonStore  from '@/stores/common.store'
 
