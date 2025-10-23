@@ -76,7 +76,7 @@ const tools = [
     name: 'Image Generator',
     description: 'Generate images based on text prompts',
     url: localePath('/tool/image-generate'),
-    image: '/images/tools/image-generate.webp',
+    image: '/images/tools/image-generator.jpg',
   },
 ];
 

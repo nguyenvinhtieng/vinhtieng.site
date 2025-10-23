@@ -172,7 +172,7 @@ useHead({
       content:
         'Generate test images with custom dimensions and file size. Support PNG, JPG, JPEG, GIF formats for development.',
     },
-    { name: 'twitter:image', content: `${SITE}/images/tools/image-generator.webp` },
+    { name: 'twitter:image', content: `${SITE}/images/tools/image-generator.jpg` },
   ],
   link: [{ rel: 'canonical', href: `${SITE}/tool/image-generate` }],
 });
