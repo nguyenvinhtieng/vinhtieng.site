@@ -17,8 +17,8 @@
             type="number"
             min="1"
             placeholder="e.g. 1920"
-            @blur="updateUrl"
-            @keydown.enter="updateUrl"
+            @blur="handleGenerate"
+            @keydown.enter="handleGenerate"
             class="w-full border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
@@ -31,8 +31,8 @@
             type="number"
             min="1"
             placeholder="e.g. 1080"
-            @blur="updateUrl"
-            @keydown.enter="updateUrl"
+            @blur="handleGenerate"
+            @keydown.enter="handleGenerate"
             class="w-full border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
@@ -44,7 +44,7 @@
             <div class="flex items-center gap-2 flex-wrap">
               <select
                 v-model="capacityMode"
-                @change="updateUrl"
+                @change="handleGenerate"
                 class="border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-28"
               >
                 <option value="auto">Auto</option>
@@ -60,17 +60,20 @@
                   type="number"
                   min="1"
                   placeholder="e.g. 30"
-                  @blur="updateUrl"
-                  @keydown.enter="updateUrl"
+                  @blur="handleGenerate"
+                  @keydown.enter="handleGenerate"
                   class="border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-24"
                 />
                 <select
                   v-model="form.capacityUnit"
-                  @change="updateUrl"
+                  @change="handleGenerate"
                   class="border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-24"
                 >
-                  <option value="MB">MB</option>
-                  <option value="B">Byte</option>
+                  <option
+                    v-for="option in unitOptions"
+                    :key="option.value"
+                    :value="option.value"
+                  >{{ option.label }}</option>
                 </select>
               </div>
             </div>
@@ -82,7 +85,7 @@
           <label class="block mb-1 font-semibold">Image Type</label>
           <select
             v-model="form.type"
-            @change="updateUrl"
+            @change="handleGenerate"
             class="w-full border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option
@@ -92,37 +95,45 @@
             >{{ option.label }}</option>
           </select>
         </div>
+
+        <!-- Add text color and bg color field -->
+        <div>
+          <label class="block mb-1 font-semibold">Background Color</label>
+          <input
+            v-model="form.bgColor"
+            type="color"
+            @change="handleGenerate"
+            class="w-full h-10 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 p-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        <div>
+          <label class="block mb-1 font-semibold">Text Color</label>
+          <input
+            v-model="form.textColor"
+            type="color"
+            @change="handleGenerate"
+            class="w-full h-10 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 p-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
       </div>
 
       <!-- Result -->
-      <div
-        v-if="generatedUrl"
-        class="mt-6 border-t border-gray-200 dark:border-gray-700 pt-4"
-      >
-        <h2 class="text-xl font-semibold mb-2">Generated URL</h2>
+      <div v-if="previewUrl" class="mt-6 border-t border-gray-200 dark:border-gray-700 pt-4">
         <div class="flex items-center gap-2 relative">
-          <input
-            readonly
-            disabled
-            :value="generatedUrl"
-            class="flex-1 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm text-gray-700 dark:text-gray-300 cursor-not-allowed"
-          />
-          <button
-            @click="copyToClipboard"
-            class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-lg text-sm relative"
-          >
-            Copy
-            <span
-              v-if="copied"
-              class="absolute -top-6 right-1/2 translate-x-1/2 text-xs text-green-400"
-              >Copied!</span
+          <div class="mt-4 text-center">
+            <button
+              @click="handleDownload"
+              class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm"
             >
-          </button>
+              Download
+            </button>
+          </div>
         </div>
 
         <div class="mt-4 text-center">
           <img
-            :src="generatedUrl"
+            :src="previewUrl"
             alt="Generated"
             class="mx-auto rounded-xl shadow-md max-h-96 border border-gray-300 dark:border-gray-700"
           />
@@ -134,6 +145,7 @@
 
 <script setup lang="ts">
 import { useHead } from "#app";
+import { useImageGenerator } from "~/composables/useImageGenerator";
 import { onMounted, ref } from "vue";
 import { SITE } from "~/constants/common";
 import { IMAGE_TYPE, UNIT, UNIT_CONVERT } from "~/constants/tools/image-generate";
@@ -185,13 +197,15 @@ const form = ref({
   capacity: 30,
   capacityUnit: UNIT.MB,
   type: IMAGE_TYPE.PNG,
+  textColor: '#111827',
+  bgColor: '#E5E7EB',
 });
 
 const fileTypeOptions = ref([
   { label: "PNG", value: IMAGE_TYPE.PNG },
   { label: "JPG", value: IMAGE_TYPE.JPG },
   { label: "SVG", value: IMAGE_TYPE.SVG },
-  // { label: "WEBP", value: IMAGE_TYPE.WEBP },
+  { label: "WEBP", value: IMAGE_TYPE.WEBP },
 ]);
 
 const unitOptions = ref([
@@ -200,38 +214,39 @@ const unitOptions = ref([
 ]);
 
 const capacityMode = ref<"auto" | "custom">("auto");
-const generatedUrl = ref("");
-const copied = ref(false);
+let blobCache: Blob | null = null
+const previewUrl = ref<string | null>(null)
+const { generateImage, downloadImage } = useImageGenerator()
 
-// Update the generated URL based on form inputs
-const updateUrl = () => {
-  if (!form.value.width || !form.value.height) {
-    generatedUrl.value = "";
-    return;
-  }
 
-  const params = new URLSearchParams({
-    width: form.value.width.toString(),
-    height: form.value.height.toString(),
+async function handleGenerate() {
+  const bytes =
+    capacityMode.value === 'custom'
+      ? form.value.capacity * UNIT_CONVERT[form.value.capacityUnit]
+      : 0
+
+  const blob = await generateImage({
+    width: form.value.width,
+    height: form.value.height,
     type: form.value.type,
-  });
+    capacity: bytes,
+    textColor: form.value.textColor,
+    bgColor: form.value.bgColor,
+  })
 
-  if (capacityMode.value === "custom") {
-    const bytes = form.value.capacity * UNIT_CONVERT[form.value.capacityUnit];
-    params.append("capacity", bytes.toString());
-  }
+  blobCache = blob
+  previewUrl.value = URL.createObjectURL(blob)
+}
 
-  generatedUrl.value = `${window.location.origin}/api/test-image?${params.toString()}`;
-};
+async function handleDownload() {
+  if (!blobCache) return
+  const capacitySuffix = form.value.capacity ? `_${form.value.capacity}${form.value.capacityUnit}` : ''
+  const name = `${form.value.width}x${form.value.height}${capacityMode.value === 'custom' ? capacitySuffix : ''}.${form.value.type}`
+  await downloadImage(blobCache, name)
+}
 
-const copyToClipboard = async () => {
-  if (!generatedUrl.value) return;
-  await navigator.clipboard.writeText(generatedUrl.value);
-  copied.value = true;
-  setTimeout(() => (copied.value = false), 2000);
-};
 
 onMounted(() => {
-  updateUrl();
+  handleGenerate();
 });
 </script>
