@@ -85,10 +85,11 @@
             @change="updateUrl"
             class="w-full border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
-            <option value="png">PNG</option>
-            <option value="jpg">JPG</option>
-            <option value="jpeg">JPEG</option>
-            <option value="gif">GIF</option>
+            <option
+              v-for="option in fileTypeOptions"
+              :key="option.value"
+              :value="option.value"
+            >{{ option.label }}</option>
           </select>
         </div>
       </div>
@@ -135,6 +136,7 @@
 import { useHead } from "#app";
 import { onMounted, ref } from "vue";
 import { SITE } from "~/constants/common";
+import { IMAGE_TYPE, UNIT, UNIT_CONVERT } from "~/constants/tools/image-generate";
 
 useHead({
   title: 'Free Online Image Generator | Generate Test Images with Custom Size',
@@ -181,15 +183,27 @@ const form = ref({
   width: 1280,
   height: 720,
   capacity: 30,
-  capacityUnit: "MB",
-  type: "png",
+  capacityUnit: UNIT.MB,
+  type: IMAGE_TYPE.PNG,
 });
+
+const fileTypeOptions = ref([
+  { label: "PNG", value: IMAGE_TYPE.PNG },
+  { label: "JPG", value: IMAGE_TYPE.JPG },
+  { label: "SVG", value: IMAGE_TYPE.SVG },
+  // { label: "WEBP", value: IMAGE_TYPE.WEBP },
+]);
+
+const unitOptions = ref([
+  { label: "MB", value: UNIT.MB },
+  { label: "Byte", value: UNIT.BYTE },
+]);
 
 const capacityMode = ref<"auto" | "custom">("auto");
 const generatedUrl = ref("");
 const copied = ref(false);
 
-// ✅ Hàm update URL thủ công (chỉ gọi khi blur/change)
+// Update the generated URL based on form inputs
 const updateUrl = () => {
   if (!form.value.width || !form.value.height) {
     generatedUrl.value = "";
@@ -203,10 +217,7 @@ const updateUrl = () => {
   });
 
   if (capacityMode.value === "custom") {
-    const bytes =
-      form.value.capacityUnit === "MB"
-        ? form.value.capacity * 1024 * 1024
-        : form.value.capacity;
+    const bytes = form.value.capacity * UNIT_CONVERT[form.value.capacityUnit];
     params.append("capacity", bytes.toString());
   }
 
