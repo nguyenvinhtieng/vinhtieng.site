@@ -71,7 +71,13 @@ const tools = [
     description: 'Count words, characters, sentences, and paragraphs',
     url: localePath('/tool/word-counter'),
     image: '/images/tools/word-counter.webp',
-  }
+  },
+  {
+    name: 'Image Generator',
+    description: 'Generate images based on text prompts',
+    url: localePath('/tool/image-generate'),
+    image: '/images/tools/image-generate.webp',
+  },
 ];
 
 const filteredTools = computed(() =>
