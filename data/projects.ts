@@ -4,7 +4,7 @@ export const PROJECTS: ProjectItem[] = [
   {
     name: "Code Space",
     description:
-      "Code Space is an advanced online code editor designed for developers. It features AI-powered code suggestions, fast startup templates for Vue, React, and more — helping you prototype and build projects with maximum speed and efficiency.",
+      "Code Space is an advanced online code editor designed for developers. It features AI-powered code suggestions, fast startup templates for Vue, React, and more helping you prototype and build projects with maximum speed and efficiency.",
     technologies: ["Next.js", "Express.js"],
     image: "/images/home/projects/code-space.webp",
     link: {
@@ -33,13 +33,13 @@ export const PROJECTS: ProjectItem[] = [
     }
   },
   {
-    name: "Easy Git CLI",
+    name: "Tickets Since",
     description:
-      "Easy Git CLI is a powerful command-line tool built with Node.js to enhance your Git workflow. Features include removing unused branches, searching commits by message, and comparing diffs between commits — all with simple commands.",
+      "A lightweight CLI tool that extracts ticket IDs from git commit messages, supporting commits since a specific tag, commit hash, or date. This tool is useful for generating release notes, changelogs, or automating reporting of Jira/issue tickets.",
     technologies: ["Node.js", "Git"],
-    image: "/images/home/projects/git-cli-tool.webp",
+    image: "/images/home/projects/ticket-since-npm.webp",
     link: {
-      demo: "https://www.npmjs.com/package/@vinhtieng123/easy-git",
+      demo: "https://www.npmjs.com/package/tickets-since",
     }
   }
 ];

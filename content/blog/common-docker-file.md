@@ -28,31 +28,17 @@ files:
   - title: Dockerfile
     language: dockerfile
     content: |
-      # Stage 1: Build
-      FROM node:18-alpine AS build
+      FROM node:10-alpine
 
-      WORKDIR /app
+      RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
+      WORKDIR /home/node/app
       COPY package*.json ./
+      USER node
+      RUN npm install
+      COPY --chown=node:node . .
 
-      RUN npm ci --only=production
-
-      COPY . .
-
-      RUN npm run build
-
-      # Stage 2: Run
-      FROM node:18-alpine
-
-      WORKDIR /app
-      COPY --from=build /app/node_modules ./node_modules
-      COPY --from=build /app .
-
-      ENV NODE_ENV=production
-      ENV PORT=3000
-
-      EXPOSE 3000
-      CMD ["node", "server.js"]
-
+      EXPOSE 8080
+      CMD [ "node", "app.js" ]
 ---
 ::
 
@@ -93,72 +79,6 @@ files:
 ---
 ::
 
-## Dockerfile NodeJS (NestJS)
-
-::code-block
----
-files:
-  - title: Dockerfile
-    language: dockerfile
-    content: |
-      # Stage 1: Build
-      FROM node:18-alpine AS build
-
-      WORKDIR /app
-
-      COPY package*.json ./
-
-      RUN npm ci
-
-      COPY . .
-
-      RUN npm run build
-
-      # Stage 2: Run
-      FROM node:18-alpine
-
-      WORKDIR /app
-
-      COPY --from=build /app/node_modules ./node_modules
-      COPY --from=build /app/dist ./dist
-
-      EXPOSE 3000
-      CMD ["node", "dist/main"]
----
-::
-
-## Dockerfile NodeJS (Express.js)
-::code-block
----
-files:
-  - title: Dockerfile
-    language: dockerfile
-    content: |
-      # Stage 1: Build
-      FROM node:18-alpine AS build
-
-      WORKDIR /app
-
-      COPY package*.json ./
-
-      RUN npm ci
-
-      COPY . .
-
-      # Stage 2: Run
-      FROM node:18-alpine
-
-      WORKDIR /app
-
-      COPY --from=build /app/node_modules ./node_modules
-      COPY --from=build /app .
-
-      EXPOSE 3000
-      CMD ["node", "index.js"]
----
-::
-
-
 ## Dockerfile ReactJs
 
 Có thể sử dụng Dockerfile này cho các dự án như Vue, Angular,...
@@ -171,88 +91,50 @@ files:
   - title: Dockerfile
     language: dockerfile
     content: |
-      # Stage 1: Build
-      FROM node:18-alpine AS build
+      ## build stage ##
+      FROM node:18.18-alpine as build
       WORKDIR /app
-
-      COPY package*.json ./
-
-      RUN npm ci
-
       COPY . .
-
+      RUN npm install
       RUN npm run build
 
-      # Stage 2: Run
+      ## run stage ##
       FROM nginx:alpine
-
-      COPY --from=build /app/build /usr/share/nginx/html
+      RUN mkdir /run
+      COPY --from=build /app/build /run
       COPY nginx.conf /etc/nginx/nginx.conf
-
-      EXPOSE 3000
-      CMD ["nginx", "-g", "daemon off;"]
   - title: nginx.conf
     language: nginx
     content: |
-      worker_processes auto;
-      error_log /var/log/nginx/error.log warn;
-      pid /var/run/nginx.pid;
-
+      user  nginx;
+      worker_processes  1;
+      error_log  /var/log/nginx/error.log warn;
+      pid        /var/run/nginx.pid;
       events {
-          worker_connections 1024;
+        worker_connections  1024;
       }
-
       http {
-          include /etc/nginx/mime.types;
-          default_type application/octet-stream;
-
-          log_format main '$remote_addr - $remote_user [$time_local] "$request" '
-                        '$status $body_bytes_sent "$http_referer" '
-                        '"$http_user_agent" "$http_x_forwarded_for"';
-
-          access_log /var/log/nginx/access.log main;
-
-          server_tokens off;
-
-          gzip on;
-          gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
-
-          server {
-              listen 3000;  # Lắng nghe trên cổng 3000
-              server_name localhost;
-
-              root /usr/share/nginx/html;
-              index index.html;
-
-              location / {
-                  try_files $uri $uri/ /index.html;
-              }
-
-              location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ {
-                  expires 1y;
-                  add_header Cache-Control "public, no-transform";
-              }
-
-              error_page 404 /404.html;
-              location = /404.html {
-                  internal;
-              }
-
-              error_page 500 502 503 504 /50x.html;
-              location = /50x.html {
-                  internal;
-              }
-
-              location ~ /\.ht {
-                  deny all;
-              }
-
-              add_header X-Frame-Options "SAMEORIGIN";
-              add_header X-Content-Type-Options "nosniff";
-              add_header X-XSS-Protection "1; mode=block";
-              add_header Referrer-Policy "no-referrer-when-downgrade";
-              add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'self';";
+        include       /etc/nginx/mime.types;
+        default_type  application/octet-stream;
+        log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                          '$status $body_bytes_sent "$http_referer" '
+                          '"$http_user_agent" "$http_x_forwarded_for"';
+        access_log  /var/log/nginx/access.log  main;
+        sendfile        on;
+        keepalive_timeout  65;
+        server {
+          listen       80;
+          server_name  webclient;
+          location / {
+            root   /run;
+            index  index.html;
+            try_files $uri $uri/ /index.html;
           }
+          error_page   500 502 503 504  /50x.html;
+          location = /50x.html {
+            root   /usr/share/nginx/html;
+          }
+        }
       }
 ---
 ::
@@ -373,50 +255,47 @@ files:
   - title: Dockerfile
     language: dockerfile
     content: |
-      # Stage 1: Build
-      FROM node:18-alpine AS build
+      FROM node:18-alpine AS base
 
+      FROM base AS deps
+      RUN apk add --no-cache libc6-compat
       WORKDIR /app
-      COPY package*.json ./
 
-      RUN npm ci
-
+      COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
+      RUN npm install
+      FROM base AS builder
+      WORKDIR /app
+      COPY --from=deps /app/node_modules ./node_modules
       COPY . .
-
       RUN npm run build
 
-      # Stage 2: Run
-      FROM node:18-alpine
 
+      FROM base AS runner
       WORKDIR /app
-      COPY --from=build /app/node_modules ./node_modules
-      COPY --from=build /app .
 
-      ENV NODE_ENV=production
-      ENV PORT=3000
+      ENV NODE_ENV production
+
+      RUN addgroup --system --gid 1001 nodejs
+      RUN adduser --system --uid 1001 nextjs
+
+      COPY --from=builder /app/public ./public
+
+      RUN mkdir .next
+      RUN chown nextjs:nodejs .next
+
+      COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+      COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+      USER nextjs
 
       EXPOSE 3000
-      CMD ["npm", "start"]
-  - title: conf/nginx.conf
-    language: nginx
-    content: |
-      server {
-          listen 3000;
-          server_name localhost;
 
-          location / {
-              proxy_pass http://localhost:3000;
-              proxy_http_version 1.1;
-              proxy_set_header Upgrade $http_upgrade;
-              proxy_set_header Connection 'upgrade';
-              proxy_set_header Host $host;
-              proxy_cache_bypass $http_upgrade;
-          }
-      }
+      ENV PORT 3000
+      ENV HOSTNAME "0.0.0.0"
+
+      CMD ["node", "server.js"]
 ---
 ::
 
-
-## Đang cập nhật...
-
-Nếu bạn có các cấu hình hoặc Dockerfile khác muốn chia sẻ, vui lòng gửi email về [vinhtieng123@gmail.com](mailto:vinhtieng123@gmail.com). Mình rất trân trọng điều đó.
+## Tham khảo
+Một số Dockerfile được tham khảo từ [Devops Edu](https://elroydevops.tech/mau-dockerfile-cac-du-an/){:target="_blank"}

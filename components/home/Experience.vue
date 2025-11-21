@@ -63,9 +63,7 @@
             <div class="text-lg font-semibold mb-2">
               {{ job.position }}
             </div>
-            <p class="text-gray-700 dark:text-neutral-300 leading-relaxed">
-              {{ job.description }}
-            </p>
+            <p class="text-gray-700 dark:text-neutral-300 leading-relaxed" v-html="job.description"></p>
           </div>
         </div>
       </div>
@@ -81,7 +79,7 @@ const jobs = [
     duration: "Aug 2024 - Present",
     location: "Ho Chi Minh City, Vietnam",
     description:
-      "Creating frontend features for gaming platforms and internal tools using NuxtJs, focusing on performance and UX.",
+      'Creating front-end Operation Management System features for gaming platforms using Nuxt.js (<a href="https://onstove.com/" class="text-blue-600" target="_blank" rel="noopener noreferrer">onstove</a>), while collaborating closely with cross-functional teams to deliver polished, high-quality user experiences.',
     logo: "/images/home/smilegate.webp",
   },
   {
@@ -90,7 +88,7 @@ const jobs = [
     duration: "Dec 2023 - Aug 2024",
     location: "Ho Chi Minh City, Vietnam",
     description:
-      "Built fullstack applications with Next.js, Electron for desktop apps, and designed backend services using NestJS.",
+      "Built fullstack applications service with Next.js, Electron for desktop apps, and designed backend services using NestJS.",
     logo: "/images/home/dudaji.webp",
   },
   {

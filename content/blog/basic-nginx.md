@@ -1,29 +1,30 @@
 ---
 title: "Tổng quan và cấu hình thông dụng Nginx" 
-description: "Hướng dẫn chi tiết về cấu hình mặc định, PHP-FPM và thiết lập Load Balancer với Nginx." 
+description: "Hướng dẫn chi tiết về cấu hình và triển khai Nginx như web server, reverse proxy, load balancer, và các thiết lập nâng cao." 
 tags: ["nginx"] 
-keywords: "nginx, cấu hình, load balancer, php-fpm"
+keywords: "nginx, cấu hình, load balancer"
 image: "/images/blog/basic-nginx/banner.webp" 
 date: 2025-04-25 
 published: true
 ---
 
-**Hướng dẫn chi tiết về cấu hình và triển khai Nginx**
+**Giới thiệu về Nginx**
 
-Nginx là một web server mã nguồn mở mạnh mẽ, được sử dụng phổ biến để phục vụ nội dung tĩnh, reverse proxy, cân bằng tải, bảo mật và hỗ trợ PHP thông qua FastCGI. Trong bài viết này, chúng ta sẽ đi qua các cấu hình từ cơ bản đến nâng cao, bao gồm:
+::alert{type=info}
+nginx ("engine x") is an HTTP web server, reverse proxy, content cache, load balancer, TCP/UDP proxy server, and mail proxy server. Originally written by Igor Sysoev and distributed under the 2-clause BSD License. Enterprise distributions, commercial support and training are available from F5, Inc.
+::
+Nginx là một web server, phần mềm chạy trên máy chủ để nhận và xử lý các request (yêu cầu) từ trình duyệt hoặc client (như API request).
 
-- Cách cài đặt Nginx
-- Cấu hình máy chủ mặc định (default host)
-- Tích hợp với PHP-FPM
-- Thiết lập Load Balancer (cân bằng tải)
-- Gzip, HTTP/2, Rate limiting
-- Redirect, Rewrites
-- Hardening & Security
-- Logging nâng cao
+Ban đầu, Nginx được tạo ra để xử lý nhiều kết nối cùng lúc với hiệu năng cao, và ngày nay nó còn được dùng như:
+	•	Web Server (máy chủ web)
+	•	Reverse Proxy (proxy ngược)
+	•	Load Balancer (cân bằng tải)
+	•	Cache server (bộ nhớ đệm)
+	•	API Gateway (ở mức cơ bản)
 
 ---
 
-# 🛠️ Cài đặt Nginx
+# Cài đặt Nginx
 
 Hướng dẫn cài đặt Nginx trên Ubuntu:
 
@@ -50,6 +51,30 @@ files:
 ::
 
 **Kiểm tra tường lửa:**
+Để kiểm tra các cấu hình đang được chạy thì chạy lệnh
+::code-block
+---
+files:
+  - title: bash
+    language: nginx
+    content: sudo ufw app list
+---
+::
+
+Kết quả hiện ra ở terminal sẽ dạng như sau:
+::code-block
+---
+files:
+  - title: bash
+    language: nginx
+    content: |
+      Available applications:
+      Nginx Full
+      Nginx HTTP
+      Nginx HTTPS
+      OpenSSH
+---
+::
 
 Sau khi cài đặt Nginx, bạn nên đảm bảo rằng tường lửa (firewall) cho phép lưu lượng HTTP và HTTPS để máy chủ có thể phục vụ nội dung web.
 
@@ -59,7 +84,7 @@ files:
   - title: bash
     language: nginx
     content: |
-      sudo ufw allow ‘Nginx Full’
+      sudo ufw allow 'Nginx Full'
       sudo ufw status
 ---
 ::
@@ -176,43 +201,56 @@ files:
 ---
 ::
 
-# 🐘 Cấu hình Nginx với PHP-FPM
+# Cấu hình Deploy page tĩnh
 
-Để xử lý các file PHP, bạn cần kết nối Nginx với PHP-FPM qua socket hoặc TCP:
-
+Để phục vụ một trang web tĩnh với Nginx, bạn cần cấu hình server block để trỏ đến thư mục chứa các tệp HTML, CSS, JavaScript và các tài nguyên khác của trang web.
 ::code-block
 ---
 files:
-  - title: php-fpm.conf
+  - title: static-site.conf
     language: nginx
     content: |
-      location ~ \.php$ {
-        try_files $uri =404;
-        fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
-        fastcgi_index index.php;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        include fastcgi_params;
+      server {
+          listen 80 default_server;
+          server_name _;
+          root /var/www/my_static_site;
+          index index.html index.htm;
+
+          location / {
+              try_files $uri $uri/ =404;
+          }
       }
 ---
 ::
 
-**Lưu ý:**
+Trong đó:
+- `root /var/www/my_static_site;`: Đường dẫn tới thư mục chứa các tệp tin của trang web tĩnh. Hãy thay đổi đường dẫn này thành thư mục thực tế của bạn.
+- `index index.html index.htm;`: Xác định các tệp tin mặc định khi truy cập vào thư mục gốc.
 
-- Đường dẫn socket có thể thay đổi tùy phiên bản PHP.
-- Nếu dùng TCP:
-
+# Cấu hình revert proxy
+Để cấu hình Nginx làm reverse proxy, bạn cần thiết lập một server block để chuyển tiếp các yêu cầu từ Nginx đến một server backend khác (ví dụ: một ứng dụng web chạy trên cổng khác hoặc trên một máy chủ khác).
 ::code-block
 ---
 files:
-  - title: php-fpm.conf
+  - title: reverse-proxy.conf
     language: nginx
-    content: fastcgi_pass 127.0.0.1:9000;
+    content: |
+      server {
+          listen 80;
+          server_name example.com;
+
+          location / {
+              proxy_pass http://backend;
+              proxy_set_header Host $host;
+              proxy_set_header X-Real-IP $remote_addr;
+              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+              proxy_set_header X-Forwarded-Proto $scheme;
+          }
+      }
 ---
 ::
 
----
-
-# 🌐 Load Balancer trong Nginx
+# Load Balancer trong Nginx
 
 Nginx hỗ trợ cấu hình cân bằng tải với nhiều thuật toán lựa chọn backend:
 
@@ -266,7 +304,7 @@ files:
 
 ---
 
-# 📦 Gzip Compression
+# Gzip Compression
 
 Bật gzip giúp tăng tốc độ tải trang bằng cách nén nội dung trả về:
 
@@ -287,7 +325,7 @@ files:
 
 ---
 
-# ⚡ Kích hoạt HTTP/2
+# Kích hoạt HTTP/2
 
 HTTP/2 cải thiện hiệu suất thông qua multiplexing và header compression:
 
@@ -303,7 +341,7 @@ files:
 
 ---
 
-# 🚦 Rate Limiting
+# Rate Limiting
 
 Giới hạn số lượng request để tránh DDoS và abuse:
 
@@ -323,7 +361,7 @@ files:
 
 ---
 
-# 🔁 Redirect và Rewrites
+# Redirect và Rewrites
 
 Chuyển hướng toàn bộ traffic HTTP sang HTTPS:
 
@@ -363,7 +401,7 @@ files:
 
 ---
 
-# 🔐 Hardening & Security
+# Hardening & Security
 
 Bảo vệ server bằng cách từ chối truy cập file nhạy cảm:
 
@@ -408,7 +446,7 @@ files:
 
 ---
 
-# 📊 Logging nâng cao
+# Logging nâng cao
 
 Cấu hình custom log format để dễ debug:
 
@@ -429,10 +467,10 @@ files:
 
 # 📚 Tài liệu tham khảo
 
-- [Nginx Documentation](https://nginx.org/en/docs/)
-- [Nginx Load Balancing Guide](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/)
-- [Nginx + PHP-FPM Setup](https://www.php.net/manual/en/install.fpm.configuration.php)
-- [OWASP Nginx Hardening Guide](https://owasp.org/www-project-secure-headers/)
+- [Nginx Documentation](https://nginx.org/en/docs/){:target="_blank"}
+- [Nginx Load Balancing Guide](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/){:target="_blank"}
+- [Nginx + PHP-FPM Setup](https://www.php.net/manual/en/install.fpm.configuration.php){:target="_blank"}
+- [OWASP Nginx Hardening Guide](https://owasp.org/www-project-secure-headers/){:target="_blank"}
 
 ---
 

@@ -36,14 +36,17 @@
       >
         <p>
           Hi, I'm
-          <span class="font-semibold text-blue-500">Tieng Nguyen</span> — a
-          frontend developer who believes that great design starts with great
-          code. I transform ideas into fast, fluid, and intuitive web
-          experiences.
+          <span class="font-semibold text-blue-500">Tieng Nguyen</span>, a
+          web developer who focuses on building stable, clean, and reliable web
+          interfaces. With a passion for coding and a keen eye for design, I strive to
+          create seamless user experiences that leave a lasting impression.
         </p>
         <p>
-          With a mind wired for design and a heart beating in code, I craft web
-          products that are fast, intuitive, and unforgettable.
+          With a strong foundation in both front-end and back-end technologies, I
+          specialize in crafting responsive and dynamic websites that adapt to
+          various devices and screen sizes. My expertise lies in utilizing modern
+          frameworks and tools to deliver high-quality solutions that meet client
+          needs.
         </p>
       </div>
 
@@ -52,7 +55,7 @@
         <div
           class="text-center text-sm text-gray-400 dark:text-neutral-500 uppercase tracking-wider"
         >
-          Pushing Boundaries. Crafting Legends.
+          Beyond Limits. Building What Lasts.
         </div>
         <div class="flex justify-center space-x-8 mt-2">
           <div class="flex flex-col items-center">
