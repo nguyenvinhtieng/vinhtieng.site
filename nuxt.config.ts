@@ -13,7 +13,7 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap'
   ],
   content: {},
-  site: { url: 'vinhtieng.site' },
+  site: { url: 'vinhtieng.com' },
   css,
   vite,
   imports: {

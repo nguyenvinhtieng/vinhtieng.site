@@ -32,8 +32,8 @@ export const app = {
           "Discover the work and experience of Vinh Tieng, a web developer building clean, performant, and scalable applications.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://vinhtieng.site" },
-      { property: "og:image", content: "https://vinhtieng.site/cover.webp" },
+      { property: "og:url", content: "https://vinhtieng.com" },
+      { property: "og:image", content: "https://vinhtieng.com/cover.webp" },
       { property: "og:locale:alternate", content: "vi_VN" },
 
       { name: "twitter:title", content: "Vinh Tieng | Portfolio & Software Engineer | Technical Blog" },
@@ -42,7 +42,7 @@ export const app = {
         content:
           "Showcasing development skills, real-world projects, and experience in full-stack web technologies.",
       },
-      { name: "twitter:image", content: "https://vinhtieng.site/cover.webp" },
+      { name: "twitter:image", content: "https://vinhtieng.com/cover.webp" },
 
       // SEO
       { name: "robots", content: "index, follow" },
@@ -50,7 +50,7 @@ export const app = {
     ],
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-      { rel: "canonical", href: "https://vinhtieng.site/en" },
+      { rel: "canonical", href: "https://vinhtieng.com/en" },
     ],
     script: [
       {

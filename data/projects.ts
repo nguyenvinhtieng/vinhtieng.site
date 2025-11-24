@@ -18,8 +18,8 @@ export const PROJECTS: ProjectItem[] = [
     technologies: ["Nuxt Content", "Vue 3"],
     image: "/images/home/projects/my-blog.webp",
     link: {
-      demo: "https://vinhtieng.site",
-      github: "https://github.com/nguyenvinhtieng/vinhtieng.site",
+      demo: "https://vinhtieng.com",
+      github: "https://github.com/nguyenvinhtieng/vinhtieng.com",
     }
   },
   {

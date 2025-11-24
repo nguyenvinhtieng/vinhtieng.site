@@ -88,6 +88,6 @@ const headers = computed(() => [
   { title: t('header.home'), url: localePath('/'), type: 'link', icon: 'home' },
   { title: t('header.blog'), url: localePath('/blog'), type: 'link', icon: 'document' },
   { title: t('header.tool'), url: localePath('/tool'), type: 'link', icon: 'document' },
-  { title: t('header.github'), url: 'https://github.com/nguyenvinhtieng/vinhtieng.site', type: 'external', icon: 'github' },
+  { title: t('header.github'), url: 'https://github.com/nguyenvinhtieng/vinhtieng.com', type: 'external', icon: 'github' },
 ]);
 </script>
