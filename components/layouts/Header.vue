@@ -21,11 +21,19 @@
 						class="text-md opacity-60 text-inherit"
 					/>
 				</NuxtLink>
+        <NuxtLink class="flex items-center justify-center dark:hover:bg-neutral-800 dark:text-neutral-200 text-neutral-700 hover:bg-neutral-100 p-2 cursor-pointer rounded-full transition-all duration-200"
+          to="https://game.vinhtieng.com"
+          target="_blank"
+				>
+					<NuxtIcon name="game" class="text-lg bg-w" />
+				</NuxtLink>
+
 				<div class="flex items-center justify-center dark:hover:bg-neutral-800 dark:text-neutral-200 text-neutral-700 hover:bg-neutral-100 p-2 cursor-pointer rounded-full transition-all duration-200"
 					@click="commonStore.toggleOpenSearchDialog(true)"
 				>
 					<NuxtIcon name="search" class="text-lg bg-w" />
 				</div>
+
 				<ThemeSwitch />
 			</nav>
 
@@ -88,6 +96,6 @@ const headers = computed(() => [
   { title: t('header.home'), url: localePath('/'), type: 'link', icon: 'home' },
   { title: t('header.blog'), url: localePath('/blog'), type: 'link', icon: 'document' },
   { title: t('header.tool'), url: localePath('/tool'), type: 'link', icon: 'document' },
-  { title: t('header.github'), url: 'https://github.com/nguyenvinhtieng/vinhtieng.com', type: 'external', icon: 'github' },
+  { title: t('header.github'), url: 'https://github.com/nguyenvinhtieng/vinhtieng.site', type: 'external', icon: 'github' }
 ]);
 </script>

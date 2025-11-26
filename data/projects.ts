@@ -1,4 +1,5 @@
 import type { ProjectItem } from "~/types/project";
+import { SITE } from '@/constants/common';
 
 export const PROJECTS: ProjectItem[] = [
   {
@@ -18,8 +19,8 @@ export const PROJECTS: ProjectItem[] = [
     technologies: ["Nuxt Content", "Vue 3"],
     image: "/images/home/projects/my-blog.webp",
     link: {
-      demo: "https://vinhtieng.com",
-      github: "https://github.com/nguyenvinhtieng/vinhtieng.com",
+      demo: SITE,
+      github: "https://github.com/nguyenvinhtieng/vinhtieng.site",
     }
   },
   {
