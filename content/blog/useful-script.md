@@ -1,9 +1,11 @@
 ---
-title: "Tổng hợp các scripts hữu ích"
-description: "Danh sách các scripts hữu ích cho lập trình viên, giúp tiết kiệm thời gian và công sức trong quá trình phát triển phần mềm."
-tags: ["scripts"]
-keywords: "scripts, useful scripts"
-image: "/images/blog/useful-script/banner.webp"
+title: Tổng hợp các scripts hữu ích
+description: Danh sách các scripts hữu ích cho lập trình viên, giúp tiết kiệm
+  thời gian và công sức trong quá trình phát triển phần mềm.
+tags:
+  - scripts
+keywords: scripts, useful scripts
+image: /images/blog/useful-script/banner.webp
 date: 2025-05-06
 published: true
 ---
@@ -12,7 +14,7 @@ published: true
 
 - Cài đặt cwebp
 
-Đối với window thì có thể xem hướng dẫn tại: https://developers.google.com/speed/webp/download?hl=vi
+Đối với window thì có thể xem hướng dẫn tại: <https://developers.google.com/speed/webp/download?hl=vi>
 
 ::code-block
 ---
@@ -27,41 +29,7 @@ files:
 ---
 ::
 
-- Script nén ảnh
-::code-block
----
-files:
-  - title: compress-image.sh
-    language: bash
-    content: |
-      #!/bin/bash
-      # Kiểm tra đối số đầu vào
-      if [ -z "$1" ]; then
-        echo "❌ Vui lòng cung cấp đường dẫn file ảnh."
-        echo "👉 Ví dụ: ./compress-local-image.sh ./image.png"
-        exit 1
-      fi
-
-      INPUT="$1"
-
-      # Kiểm tra file tồn tại
-      if [ ! -f "$INPUT" ]; then
-        echo "❌ File không tồn tại: $INPUT"
-        exit 1
-      fi
-
-      # Lấy tên file
-      BASENAME=$(basename "$INPUT")
-      FILENAME="${BASENAME%.*}"
-      EXT="${BASENAME##*.}"
-
-      # Nén và chuyển sang WebP
-      echo "🔄 Đang nén và chuyển sang WebP..."
-      cwebp -q 80 "$INPUT" -o "${FILENAME}.webp"
-
-      echo "✅ Đã tạo file: ${FILENAME}.webp"
----
-::
+- Script nén ảnh :code-block{:files="[{&#x22;title&#x22;:&#x22;compress-image.sh&#x22;,&#x22;language&#x22;:&#x22;bash&#x22;,&#x22;content&#x22;:&#x22;#!/bin/bashn# Kiểm tra đối số đầu vàonif [ -z &#x22;$1&#x22; ]; thenn  echo &#x22;❌ Vui lòng cung cấp đường dẫn file ảnh.&#x22;n  echo &#x22;👉 Ví dụ: ./compress-local-image.sh ./image.png&#x22;n  exit 1nfinnINPUT=&#x22;$1&#x22;nn# Kiểm tra file tồn tạinif [ ! -f &#x22;$INPUT&#x22; ]; thenn  echo &#x22;❌ File không tồn tại: $INPUT&#x22;n  exit 1nfinn# Lấy tên filenBASENAME=$(basename &#x22;$INPUT&#x22;)nFILENAME=&#x22;${BASENAME%.*}&#x22;nEXT=&#x22;${BASENAME##*.}&#x22;nn# Nén và chuyển sang WebPnecho &#x22;🔄 Đang nén và chuyển sang WebP...&#x22;ncwebp -q 80 &#x22;$INPUT&#x22; -o &#x22;${FILENAME}.webp&#x22;nnecho &#x22;✅ Đã tạo file: ${FILENAME}.webp&#x22;n&#x22;}]"}
 
 Sau khi tạo xong file, cần phải gán quyền thực thi cho file script bằng lệnh sau:
 
@@ -87,3 +55,4 @@ files:
 ---
 ::
 
+## Đang cập nhật...
