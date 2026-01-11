@@ -3,10 +3,19 @@
 	  "home": "Trang chủ",
 	  "blog": "Bài viết",
 	  "github": "Github",
-	  "tool": "Công cụ"
+	  "tool": "Công cụ",
+	  "game": "Trò chơi",
+	  "theme": "Giao diện"
 	},
 	"search": {
 	  "placeholder": "Tìm kiếm bài viết theo tiêu đề, thẻ hoặc nội dung..."
+	},
+	"blog_list": {
+		"title": "Blog",
+		"subtitle": "Chia sẻ kiến thức, mẹo và hiểu biết về phát triển web"
+	},
+	"blog_detail": {
+		"table_of_contents": "Mục lục"
 	},
 	"related_posts": "Bài viết liên quan",
 	"post_not_found": "Bài viết không tồn tại hoặc đã bị xóa!",
@@ -35,6 +44,7 @@
 	},
 	"word_counter": {
 	  "title": "Đếm từ",
+	  "subtitle": "Đếm từ, ký tự, câu và đoạn văn",
 	  "enter_text": "Nhập văn bản của bạn",
 	  "placeholder": "Nhập hoặc dán văn bản của bạn vào đây...",
 	  "clear": "Xóa",
@@ -45,6 +55,119 @@
 	  "paragraphs": "Đoạn văn",
 	  "undo": "Hoàn tác",
 	  "redo": "Làm lại"
+	},
+	"tool_list": {
+	  "title": "Công cụ dành cho lập trình viên",
+	  "subtitle": "Công cụ trực tuyến miễn phí giúp bạn code nhanh hơn và làm việc thông minh hơn",
+	  "search_placeholder": "Tìm kiếm công cụ theo tên hoặc mô tả...",
+	  "tools": "Công cụ",
+	  "free": "Miễn phí",
+	  "no_signup": "Không cần đăng ký",
+	  "no_tools_found": "Không tìm thấy công cụ nào",
+	  "no_tools_found_desc": "Chúng tôi không tìm thấy công cụ nào phù hợp với",
+	  "clear_search": "Xóa tìm kiếm",
+	  "tools_data": {
+		"json_formatter": {
+		  "name": "Công cụ định dạng JSON",
+		  "description": "Định dạng và làm đẹp dữ liệu JSON với tô sáng cú pháp và xác thực. Hoàn hảo cho các nhà phát triển làm việc với API.",
+		  "category": "Bộ định dạng"
+		},
+		"base64_encoder": {
+		  "name": "Bộ mã hóa Base64",
+		  "description": "Mã hóa và giải mã dữ liệu sang định dạng Base64 ngay lập tức. Hỗ trợ văn bản, hình ảnh và dữ liệu nhị phân.",
+		  "category": "Bộ mã hóa"
+		},
+		"markdown_viewer": {
+		  "name": "Trình xem Markdown",
+		  "description": "Xem trước nội dung markdown theo thời gian thực với hiển thị đẹp mắt. Không cần cài đặt.",
+		  "category": "Trình xem"
+		},
+		"word_counter": {
+		  "name": "Đếm từ",
+		  "description": "Đếm từ, ký tự, câu và đoạn văn với thống kê chi tiết cho nội dung của bạn.",
+		  "category": "Phân tích văn bản"
+		},
+		"image_generator": {
+		  "name": "Tạo hình ảnh",
+		  "description": "Tạo hình ảnh thử nghiệm với kích thước, kích cỡ tệp và định dạng tùy chỉnh. Hoàn hảo cho phát triển và kiểm thử.",
+		  "category": "Bộ tạo"
+		}
+	  },
+	  "badge_popular": "Phổ biến"
+	},
+	"base64_encoder": {
+	  "title": "Bộ chuyển đổi Base64",
+	  "subtitle": "Mã hóa và giải mã dữ liệu Base64 ngay lập tức",
+	  "encode": "Mã hóa",
+	  "decode": "Giải mã",
+	  "input_text": "Văn bản đầu vào",
+	  "placeholder_encode": "Nhập hoặc dán văn bản để mã hóa...",
+	  "placeholder_decode": "Dán chuỗi Base64 để giải mã...",
+	  "result": "Kết quả",
+	  "result_encode": "Base64",
+	  "result_decode": "Đã giải mã",
+	  "placeholder_result_encode": "Base64 đã mã hóa sẽ xuất hiện ở đây...",
+	  "placeholder_result_decode": "Văn bản đã giải mã sẽ xuất hiện ở đây...",
+	  "clear": "Xóa",
+	  "invalid_base64": "Chuỗi Base64 không hợp lệ. Vui lòng kiểm tra lại đầu vào.",
+	  "encode_error": "Đã xảy ra lỗi trong quá trình mã hóa."
+	},
+	"json_format": {
+	  "title": "Công cụ định dạng JSON",
+	  "paste_json": "Dán JSON",
+	  "paste_placeholder": "Dán JSON của bạn vào đây...",
+	  "formatted_json": "JSON được định dạng",
+	  "no_result": "Không có kết quả được định dạng",
+	  "tab_size": "Cỡ tab",
+	  "clear": "Xóa",
+	  "copy": "Sao chép",
+	  "download_json": "Tải xuống JSON",
+	  "export_yaml": "Xuất YAML",
+	  "copied": "Đã sao chép",
+	  "error": "Lỗi",
+	  "invalid_json": "JSON không hợp lệ:",
+	  "full_screen": "Toàn màn hình",
+	  "exit_full_screen": "Thoát toàn màn hình",
+	  "subtitle": "Định dạng và làm đẹp dữ liệu JSON ngay lập tức"
+	},
+	"markdown_viewer": {
+	  "title": "Trình xem Markdown",
+	  "subtitle": "Xem trước nội dung markdown theo thời gian thực với hiển thị đẹp mắt",
+	  "markdown_input": "Đầu vào Markdown",
+	  "placeholder": "Nhập markdown của bạn vào đây...",
+	  "preview": "Xem trước",
+	  "clear": "Xóa",
+	  "copy": "Sao chép",
+	  "copied": "Đã sao chép!"
+	},
+	"image_generator": {
+	  "title": "Tạo hình ảnh",
+	  "subtitle": "Tạo hình ảnh thử nghiệm với kích thước và kích cỡ tệp tùy chỉnh",
+	  "width": "Chiều rộng (px)",
+	  "height": "Chiều cao (px)",
+	  "image_type": "Loại hình ảnh",
+	  "capacity": "Dung lượng",
+	  "auto": "Tự động",
+	  "custom": "Tùy chỉnh",
+	  "background_color": "Màu nền",
+	  "text_color": "Màu chữ",
+	  "download_image": "Tải xuống hình ảnh",
+	  "range": "Phạm vi",
+	  "minimum": "Tối thiểu",
+	  "maximum": "Tối đa"
+	},
+	"game_list": {
+	  "title": "Trò chơi trực tuyến",
+	  "subtitle": "Khám phá các trò chơi trực tuyến miễn phí hay nhất để chơi ngay trên trình duyệt",
+	  "search_placeholder": "Tìm kiếm trò chơi theo tên hoặc mô tả...",
+	  "games": "Trò chơi",
+	  "free": "Miễn phí",
+	  "available": "Có sẵn",
+	  "no_games_found": "Không tìm thấy trò chơi nào",
+	  "no_games_found_desc": "Chúng tôi không tìm thấy trò chơi nào phù hợp với",
+	  "clear_search": "Xóa tìm kiếm",
+	  "play_now": "Chơi ngay",
+	  "made_by_me": "Tôi làm"
 	}
   }
   

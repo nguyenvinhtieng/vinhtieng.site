@@ -3,8 +3,11 @@ import { useAsyncData, useHead } from "#app";
 import { queryCollection } from "#imports";
 import { useRoute } from "vue-router";
 import { computed, nextTick, onMounted } from "vue";
-import { useLocalePath } from "#i18n";
+import { useLocalePath, useI18n } from "#i18n";
 import { SITE } from "~/constants/common";
+import Tag from "~/components/Tag.vue";
+
+const { locale } = useI18n();
 
 const localePath = useLocalePath();
 
@@ -55,7 +58,8 @@ const relatedDisplayPosts = computed(() => {
 
 const formattedDate = computed(() => {
   const date = new Date(post?.value?.date || '');
-  return date.toLocaleDateString("en-US", {
+  const localeCode = locale.value === 'vi' ? 'vi-VN' : 'en-US';
+  return date.toLocaleDateString(localeCode, {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -111,62 +115,90 @@ useHead({
 </script>
 
 <template>
-  <main
-    class="min-h-screen text-gray-800 dark:text-gray-100 p-container z-10 pt-10 relative"
-  >
-    <div v-if="post" class="max-w-4xl mx-auto relative flex gap-8">
-      <div class="fixed top-24 left-2 right-0 w-[300px]">
-        <aside class="hidden xl:block">
+  <main class="min-h-screen text-gray-800 dark:text-gray-100 relative z-10">
+    <div v-if="post" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-12 sm:pb-16">
+      <div class="relative flex gap-8">
+        <!-- Main Content -->
+        <article class="flex-1 min-w-0">
+          <!-- Header Section -->
+          <header class="mb-8">
+            <h1 class="text-4xl sm:text-5xl font-bold mb-4 tracking-tight text-gray-900 dark:text-gray-100">
+              {{ post.title }}
+            </h1>
+            
+            <!-- Metadata -->
+            <div class="flex flex-wrap items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-6">
+              <div class="flex items-center gap-2">
+                <NuxtIcon name="document" class="text-base" />
+                <time :datetime="post.date">{{ formattedDate }}</time>
+              </div>
+              <div v-if="post.tags && post.tags.length" class="flex flex-wrap items-center gap-2">
+                <NuxtIcon name="tag" class="text-base" />
+                <Tag
+                  v-for="tag in post.tags"
+                  :key="tag"
+                  :label="tag"
+                  size="sm"
+                />
+              </div>
+            </div>
+
+            <!-- Hero Image -->
+            <div v-if="post.image" class="mb-8 rounded-xl overflow-hidden shadow-xl">
+              <NuxtImg
+                :src="post.image"
+                class="w-full aspect-video object-cover"
+                width="1200"
+                :alt="post.title"
+                :title="post.title"
+                format="webp"
+              />
+            </div>
+          </header>
+
+          <!-- Content -->
+          <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm p-6 sm:p-8 lg:p-10">
+            <div class="prose prose-lg dark:prose-invert max-w-none">
+              <ContentRenderer
+                :value="post"
+                class="post-content"
+              />
+            </div>
+          </div>
+
+          <!-- Related posts -->
+          <div class="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700" v-if="relatedDisplayPosts.length">
+            <h2 class="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100">
+              {{ $t("related_posts") }}
+            </h2>
+            <div class="grid gap-6 sm:gap-8 grid-cols-1 lg:grid-cols-2">
+              <PostItem
+                v-for="relatedPost in relatedDisplayPosts"
+                :key="relatedPost.id"
+                :post="relatedPost"
+              />
+            </div>
+          </div>
+        </article>
+
+        <!-- TOC Sidebar -->
+        <aside class="hidden xl:block w-64 flex-shrink-0">
           <div class="sticky top-24 max-h-[calc(100vh-6rem)] overflow-y-auto">
             <TOC :items="post.body.value" />
           </div>
         </aside>
       </div>
-
-      <section class="flex-1 overflow-hidden">
-        <h1 class="text-4xl dark:text-neutral-200 font-bold mb-2">
-          {{ post.title }}
-        </h1>
-        <p class="text-gray-500 dark:text-neutral-400 text-sm mb-4">
-          {{ formattedDate }}
-        </p>
-
-        <div v-if="post.image" class="mb-6 rounded-lg overflow-hidden">
-          <NuxtImg
-            :src="post.image"
-            class="rounded-lg shadow-md object-cover w-full aspect-video max-w-[800px] mx-auto"
-            width="800"
-            :alt="post.title"
-            :title="post.title"
-            format="webp"
-          />
-        </div>
-        <ContentRenderer
-          :value="post"
-          class="post-content max-w-full bg-white dark:bg-neutral-900 p-4 rounded-lg"
-        />
-
-        <!-- Related posts -->
-        <div class="mt-10" v-if="relatedDisplayPosts.length">
-          <h2 class="text-2xl font-bold mb-4 dark:text-neutral-300">
-            {{ $t("related_posts") }}
-          </h2>
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-2">
-            <PostItem
-              v-for="relatedPost in relatedDisplayPosts"
-              :key="relatedPost.id"
-              :post="relatedPost"
-            />
-          </div>
-        </div>
-      </section>
     </div>
 
-    <div v-else class="text-center text-gray-400 py-20">
-      <p class="mb-4 text-lg">{{ $t("post_not_found") }}</p>
+    <!-- Not Found -->
+    <div v-else class="text-center py-20">
+      <div class="inline-flex items-center justify-center w-20 h-20 bg-gray-200 dark:bg-gray-800 rounded-full mb-6">
+        <NuxtIcon name="document" class="text-4xl text-gray-400" />
+      </div>
+      <p class="mb-4 text-lg text-gray-600 dark:text-gray-400">{{ $t("post_not_found") }}</p>
       <NuxtLink
         :to="localePath('/blog')"
-        class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition"
+        class="inline-flex items-center gap-2 px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg transition-colors"
       >
         {{ $t("back_to_blog") }}
       </NuxtLink>

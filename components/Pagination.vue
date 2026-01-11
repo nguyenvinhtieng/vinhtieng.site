@@ -1,13 +1,17 @@
 <template>
-  <nav class="flex justify-center mt-4" v-if="totalPages > 1">
-    <ul class="inline-flex items-center gap-1">
+  <nav class="flex justify-center mt-8" v-if="totalPages > 1">
+    <ul class="inline-flex items-center gap-2">
       <li>
         <button
-          :class="cn('w-10 rounded border border-neutral-200 aspect-square hover:bg-neutral-100 cursor-pointer disabled:bg-neutral-200 dark:border-neutral-800 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:disabled:bg-neutral-700 dark:text-neutral-400', {
-			'cursor-not-allowed': currentPage === 1,
-		  })"
+          :class="cn(
+            'flex items-center justify-center w-10 h-10 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium transition-all duration-200 shadow-sm hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-700 hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-sm',
+            {
+              'cursor-not-allowed': currentPage === 1,
+            }
+          )"
           :disabled="currentPage === 1"
           @click="goToPage(currentPage - 1)"
+          aria-label="Previous page"
         >
           &laquo;
         </button>
@@ -15,12 +19,16 @@
 
       <li v-for="page in visiblePages" :key="page">
         <button
-          class="w-10 rounded border border-neutral-200 aspect-square dark:border-neutral-800"
-          :class="{
-            'bg-blue-500 text-white cursor-not-allowed': page === currentPage,
-            'hover:bg-gray-100 cursor-pointer dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200': page !== currentPage,
-          }"
+          :class="cn(
+            'flex items-center justify-center min-w-10 h-10 px-3 rounded-lg border font-medium transition-all duration-200 shadow-sm hover:shadow-md active:scale-95',
+            {
+              'bg-sky-500 text-white border-sky-500 cursor-default shadow-md hover:shadow-md hover:scale-100': page === currentPage,
+              'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 hover:scale-105 hover:border-sky-300 dark:hover:border-sky-700': page !== currentPage,
+            }
+          )"
           @click="goToPage(page)"
+          :aria-label="`Go to page ${page}`"
+          :aria-current="page === currentPage ? 'page' : undefined"
         >
           {{ page }}
         </button>
@@ -28,11 +36,15 @@
 
       <li>
         <button
-			:class="cn('w-10 rounded border border-neutral-200 aspect-square hover:bg-neutral-100 cursor-pointer disabled:bg-neutral-200 dark:border-neutral-800 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:disabled:bg-neutral-600 dark:text-neutral-400', {
-			'cursor-not-allowed': currentPage === totalPages,
-		  })"
+          :class="cn(
+            'flex items-center justify-center w-10 h-10 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium transition-all duration-200 shadow-sm hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-700 hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-sm',
+            {
+              'cursor-not-allowed': currentPage === totalPages,
+            }
+          )"
           :disabled="currentPage === totalPages"
           @click="goToPage(currentPage + 1)"
+          aria-label="Next page"
         >
           &raquo;
         </button>

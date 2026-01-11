@@ -48,6 +48,35 @@ export function useImageGenerator() {
     })
   }
 
+  async function getMinCapacity({
+    width,
+    height,
+    type = 'png',
+    bgColor = '#d1d5db',
+    textColor = '#111827',
+  }: {
+    width: number
+    height: number
+    type?: string
+    bgColor?: string
+    textColor?: string
+  }): Promise<number> {
+    const blob = await generateImage({
+      width,
+      height,
+      type,
+      bgColor,
+      textColor,
+      capacity: 0,
+    })
+    return blob.size
+  }
+
+  function getMaxCapacity(): number {
+    // Max capacity: 100MB
+    return 100 * 1024 * 1024
+  }
+
   async function downloadImage(blob: Blob, filename: string) {
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
@@ -57,5 +86,5 @@ export function useImageGenerator() {
     URL.revokeObjectURL(url)
   }
 
-  return { generateImage, downloadImage }
+  return { generateImage, downloadImage, getMinCapacity, getMaxCapacity }
 }
