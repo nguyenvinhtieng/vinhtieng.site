@@ -4,7 +4,7 @@
       <h1 class="text-4xl font-bold mb-2 bg-gradient-to-r from-sky-500 to-purple-600 bg-clip-text text-transparent">
         🔁 {{ $t('base64_encoder.title') }}
       </h1>
-      <p class="text-gray-600 dark:text-gray-400">{{ $t('base64_encoder.subtitle') }}</p>
+      <p class="text-gray-700 dark:text-gray-300">{{ $t('base64_encoder.subtitle') }}</p>
     </div>
 
     <div class="mb-6 flex justify-center">

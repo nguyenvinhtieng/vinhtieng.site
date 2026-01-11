@@ -1,6 +1,6 @@
 <template>
 	<span
-	 :class="cn('bg-neutral-100 text-neutral-600 font-semibold px-3 py-1 rounded-full flex items-center gap-1 cursor-pointer hover:bg-neutral-200 transition dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 duration-200 ease-in-out border border-neutral-200 dark:border-neutral-700', {
+	 :class="cn('bg-neutral-100 text-neutral-700 font-semibold px-3 py-1 rounded-full flex items-center gap-1 cursor-pointer hover:bg-neutral-200 transition dark:bg-neutral-800 dark:text-neutral-100 dark:hover:bg-neutral-700 duration-200 ease-in-out border border-neutral-200 dark:border-neutral-700', {
 		'text-xs px-2 py-1': size === 'sm',
 		'text-base px-4 py-2': size === 'lg',
 		'text-sm px-3 py-1': size === 'md',

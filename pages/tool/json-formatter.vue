@@ -4,7 +4,7 @@
       <h1 class="text-4xl font-bold mb-2 bg-gradient-to-r from-sky-500 to-purple-600 bg-clip-text text-transparent">
         🧹 {{ $t("json_format.title") }}
       </h1>
-      <p class="text-gray-600 dark:text-gray-400">{{ $t("json_format.subtitle") }}</p>
+      <p class="text-gray-700 dark:text-gray-300">{{ $t("json_format.subtitle") }}</p>
     </div>
 
     <div class="flex flex-col lg:flex-row gap-6">
@@ -120,7 +120,7 @@
 
         <div
           v-else
-          class="flex-1 text-gray-400 dark:text-gray-500 flex items-center justify-center border border-dashed border-gray-300 dark:border-gray-700 rounded-lg"
+          class="flex-1 text-gray-600 dark:text-gray-400 flex items-center justify-center border border-dashed border-gray-300 dark:border-gray-700 rounded-lg"
         >
           {{ $t("json_format.no_result") }}
         </div>

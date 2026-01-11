@@ -11,7 +11,7 @@
           🛠️ {{ $t('tool_list.title') }}
         </h1>
         
-        <p class="text-xl sm:text-2xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
+        <p class="text-xl sm:text-2xl text-gray-700 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
           {{ $t('tool_list.subtitle') }}
         </p>
 
@@ -40,7 +40,7 @@
         </div>
 
         <!-- Stats -->
-        <div class="flex flex-wrap justify-center gap-6 text-gray-600 dark:text-gray-400">
+        <div class="flex flex-wrap justify-center gap-6 text-gray-700 dark:text-gray-300">
           <div class="flex items-center gap-2">
             <span class="text-2xl font-bold text-gray-900 dark:text-gray-100">{{ tools.length }}</span>
             <span class="text-sm">{{ $t('tool_list.tools') }}</span>
@@ -56,32 +56,35 @@
       </div>
 
       <!-- Tools Grid -->
-      <div v-if="filteredTools.length > 0" class="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        <ToolCard
-          v-for="tool in filteredTools"
-          :key="tool.name"
-          :name="tool.name"
-          :description="tool.description"
-          :url="tool.url"
-          :image="tool.image"
-          :category="tool.category"
-          :badge="tool.badge"
-        />
-      </div>
+      <section v-if="filteredTools.length > 0" aria-labelledby="tools-heading">
+        <h2 id="tools-heading" class="sr-only">Available Tools</h2>
+        <div class="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          <ToolCard
+            v-for="tool in filteredTools"
+            :key="tool.name"
+            :name="tool.name"
+            :description="tool.description"
+            :url="tool.url"
+            :image="tool.image"
+            :category="tool.category"
+            :badge="tool.badge"
+          />
+        </div>
+      </section>
 
       <div v-else class="text-center py-20">
         <div class="inline-flex items-center justify-center w-20 h-20 bg-gray-200 dark:bg-gray-800 rounded-full mb-6">
-          <NuxtIcon name="search" class="text-4xl text-gray-400 animate-bounce" />
+          <NuxtIcon name="search" class="text-4xl text-gray-500 dark:text-gray-400 animate-bounce" />
         </div>
-        <h3 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
+        <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
           {{ $t('tool_list.no_tools_found') }}
-        </h3>
-        <p class="text-gray-600 dark:text-gray-400 mb-6">
+        </h2>
+        <p class="text-gray-700 dark:text-gray-300 mb-6">
           {{ $t('tool_list.no_tools_found_desc') }} "<strong class="text-gray-900 dark:text-gray-100">{{ search }}</strong>"
         </p>
         <button
           @click="search = ''"
-          class="inline-flex items-center gap-2 px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition-colors"
+          class="inline-flex items-center gap-2 px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 transition-colors"
         >
           {{ $t('tool_list.clear_search') }}
         </button>

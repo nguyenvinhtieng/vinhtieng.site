@@ -9,7 +9,18 @@
         <div
           class="w-32 h-32 rounded-full overflow-hidden border-2 border-gray-200 dark:border-white/20 shadow-xl transition-colors duration-500"
         >
-          <NuxtImg src="/images/home/avatar.webp" alt="Vinh Tieng" width="200" height="200" title="Vinh Tieng"/>
+          <NuxtImg 
+            src="/images/home/avatar.webp" 
+            alt="Vinh Tieng" 
+            width="200" 
+            height="200" 
+            title="Vinh Tieng"
+            sizes="128px"
+            format="webp"
+            quality="80"
+            fetchpriority="high"
+            priority
+          />
         </div>
         <div
           class="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 blur-xl opacity-20 dark:opacity-30 animate-pulse"

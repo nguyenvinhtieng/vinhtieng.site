@@ -13,9 +13,9 @@
 					{
 						'text-sm font-semibold text-gray-900 dark:text-gray-100': toc[0] === 'h1',
 						'text-sm text-gray-700 dark:text-gray-300 ml-3': toc[0] === 'h2',
-						'text-xs text-gray-600 dark:text-gray-400 ml-6': toc[0] === 'h3',
-						'bg-sky-50 dark:bg-sky-900/20 text-sky-600 dark:text-sky-400 border-l-2 border-sky-500': activeId === toc[1].id,
-						'hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-sky-600 dark:hover:text-sky-400': activeId !== toc[1].id,
+						'text-xs text-gray-700 dark:text-gray-300 ml-6': toc[0] === 'h3',
+						'bg-sky-50 dark:bg-sky-900/20 text-sky-700 dark:text-sky-300 border-l-2 border-sky-500': activeId === toc[1].id,
+						'hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-sky-700 dark:hover:text-sky-300': activeId !== toc[1].id,
 					}
 				)"
 			>

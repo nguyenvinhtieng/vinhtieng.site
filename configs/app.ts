@@ -54,11 +54,5 @@ export const app = {
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       { rel: "canonical", href: `${SITE}/en` },
     ],
-    script: [
-      {
-        src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7479988152616473",
-        async: true,
-      }
-    ],
   },
 };

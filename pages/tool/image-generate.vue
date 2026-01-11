@@ -4,7 +4,7 @@
       <h1 class="text-4xl font-bold mb-2 bg-gradient-to-r from-sky-500 to-purple-600 bg-clip-text text-transparent">
         🖼️ {{ $t('image_generator.title') }}
       </h1>
-      <p class="text-gray-600 dark:text-gray-400">{{ $t('image_generator.subtitle') }}</p>
+      <p class="text-gray-700 dark:text-gray-300">{{ $t('image_generator.subtitle') }}</p>
     </div>
 
     <div
@@ -97,7 +97,7 @@
                 </select>
               </div>
             </div>
-            <div v-if="capacityMode === 'custom'" class="text-xs ml-0" :class="capacityError ? 'text-red-500 dark:text-red-400' : 'text-gray-500 dark:text-gray-400'">
+            <div v-if="capacityMode === 'custom'" class="text-xs ml-0" :class="capacityError ? 'text-red-500 dark:text-red-400' : 'text-gray-600 dark:text-gray-400'">
               <span v-if="capacityError">{{ capacityError }}</span>
               <span v-else>{{ $t('image_generator.range') }}: {{ minCapacityDisplay }} - {{ maxCapacityDisplay }} {{ form.capacityUnit }}</span>
             </div>
