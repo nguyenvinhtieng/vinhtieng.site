@@ -3,7 +3,9 @@
 		"home": "Home",
 		"blog": "Blog",
 		"github": "Github",
-    "tool": "Tool"
+    "tool": "Tool",
+		"game": "Game",
+		"theme": "Theme"
 	},
 	"search": {
 		"placeholder": "Search posts by title, tags, or content..."
@@ -153,5 +155,18 @@
     "range": "Range",
     "minimum": "Minimum",
     "maximum": "Maximum"
+  },
+  "game_list": {
+    "title": "Online Games",
+    "subtitle": "Discover the best free online games to play instantly in your browser",
+    "search_placeholder": "Search games by name or description...",
+    "games": "Games",
+    "free": "Free",
+    "available": "Available",
+    "no_games_found": "No games found",
+    "no_games_found_desc": "We couldn't find any games matching",
+    "clear_search": "Clear search",
+    "play_now": "Play Now",
+    "made_by_me": "Made by me"
   }
 }

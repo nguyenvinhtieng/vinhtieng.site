@@ -3,7 +3,9 @@
 	  "home": "Trang chủ",
 	  "blog": "Bài viết",
 	  "github": "Github",
-	  "tool": "Công cụ"
+	  "tool": "Công cụ",
+	  "game": "Trò chơi",
+	  "theme": "Giao diện"
 	},
 	"search": {
 	  "placeholder": "Tìm kiếm bài viết theo tiêu đề, thẻ hoặc nội dung..."
@@ -153,6 +155,19 @@
 	  "range": "Phạm vi",
 	  "minimum": "Tối thiểu",
 	  "maximum": "Tối đa"
+	},
+	"game_list": {
+	  "title": "Trò chơi trực tuyến",
+	  "subtitle": "Khám phá các trò chơi trực tuyến miễn phí hay nhất để chơi ngay trên trình duyệt",
+	  "search_placeholder": "Tìm kiếm trò chơi theo tên hoặc mô tả...",
+	  "games": "Trò chơi",
+	  "free": "Miễn phí",
+	  "available": "Có sẵn",
+	  "no_games_found": "Không tìm thấy trò chơi nào",
+	  "no_games_found_desc": "Chúng tôi không tìm thấy trò chơi nào phù hợp với",
+	  "clear_search": "Xóa tìm kiếm",
+	  "play_now": "Chơi ngay",
+	  "made_by_me": "Tôi làm"
 	}
   }
   
