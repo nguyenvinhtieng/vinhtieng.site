@@ -1,62 +1,99 @@
 <template>
-  <div class="p-6 max-w-screen-xl w-full mx-auto text-gray-900 dark:text-gray-100">
-    <h1 class="text-3xl font-bold mb-6 text-center">
-      🧹 {{ $t("json_format.title") }}
-    </h1>
+  <div class="p-6 pt-10 max-w-screen-xl w-full mx-auto text-gray-900 dark:text-gray-100">
+    <div class="text-center mb-8">
+      <h1 class="text-4xl font-bold mb-2 bg-gradient-to-r from-sky-500 to-purple-600 bg-clip-text text-transparent">
+        🧹 {{ $t("json_format.title") }}
+      </h1>
+      <p class="text-gray-600 dark:text-gray-400">{{ $t("json_format.subtitle") }}</p>
+    </div>
 
     <div class="flex flex-col lg:flex-row gap-6">
 
       <!-- Input -->
-      <div class="flex-1">
+      <div class="flex-1 flex flex-col">
         <div class="flex justify-between items-center mb-2">
-          <span class="text-sm font-medium">{{ $t("json_format.paste_json") }}</span>
-          <button @click="clear"
-            class="text-xs px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition cursor-pointer">
+          <span class="text-sm font-medium text-gray-700 dark:text-gray-300">{{ $t("json_format.paste_json") }}</span>
+          <ToolButton
+            variant="secondary"
+            size="xs"
+            @click="clear"
+          >
             {{ $t("json_format.clear") }}
-          </button>
+          </ToolButton>
         </div>
 
-        <textarea
+        <ToolInput
           v-model="rawText"
-          spellcheck="false"
+          type="textarea"
           :placeholder="$t('json_format.paste_placeholder')"
-          class="w-full h-96 p-4 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-sm font-mono placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-sky-500 transition resize-none"
-        ></textarea>
+          :rows="25"
+          :spellcheck="false"
+          class="flex-1"
+        />
       </div>
 
       <!-- Output -->
-      <div class="flex-1">
+      <div class="flex-1 flex flex-col">
         <div class="flex justify-between items-center mb-2">
-          <span class="text-sm font-medium">{{ $t("json_format.formatted_json") }}</span>
+          <span class="text-sm font-medium text-gray-700 dark:text-gray-300">{{ $t("json_format.formatted_json") }}</span>
 
-          <div class="space-x-2">
-            <button
+          <div class="flex gap-2">
+            <ToolButton
+              variant="primary"
+              size="xs"
               :disabled="blocks.length === 0"
               @click="copyAll"
-              class="text-xs px-2 py-1 bg-sky-500 text-white rounded hover:bg-sky-600 transition cursor-pointer disabled:pointer-none disabled:bg-gray-400">
+            >
+              <template #icon>
+                <NuxtIcon name="content-copy" />
+              </template>
               {{ copied ? $t("json_format.copied") : $t("json_format.copy") }}
-            </button>
+            </ToolButton>
 
-            <button
+            <ToolButton
+              variant="success"
+              size="xs"
               :disabled="blocks.length === 0"
               @click="downloadAll"
-              class="text-xs px-2 py-1 bg-green-500 text-white rounded hover:bg-green-600 transition cursor-pointer disabled:pointer-none disabled:bg-gray-400">
+            >
               {{ $t("json_format.download_json") }}
-            </button>
+            </ToolButton>
+
+            <ToolButton
+              v-if="blocks.length > 0"
+              variant="secondary"
+              size="xs"
+              @click="toggleFullScreen"
+              :title="isFullScreen ? $t('json_format.exit_full_screen') : $t('json_format.full_screen')"
+            >
+              {{ isFullScreen ? $t('json_format.exit_full_screen') : $t('json_format.full_screen') }}
+            </ToolButton>
           </div>
         </div>
 
         <div
           v-if="blocks.length"
           ref="outputContainer"
-          class="h-96 overflow-auto border border-gray-300 dark:border-gray-700 rounded-lg bg-gray-100 dark:bg-gray-900 p-4 space-y-3"
+          :class="[
+            'flex-1 overflow-auto border border-gray-300 dark:border-gray-700 rounded-lg bg-gray-100 dark:bg-gray-900 p-4 space-y-3 relative',
+            isFullScreen ? 'pb-20' : ''
+          ]"
         >
-          <button
-            @click="toggleFullScreen"
-            class="ml-auto block text-xs px-2 py-1 bg-green-500 text-white rounded hover:bg-green-600 transition cursor-pointer"
-            title="Full Screen">
-            Toggle Full Screen
-          </button>
+          <!-- Full Screen Exit Button (only visible when in fullscreen) -->
+          <div
+            v-if="isFullScreen"
+            class="absolute top-4 right-4 z-10"
+          >
+            <ToolButton
+              variant="danger"
+              size="sm"
+              @click="toggleFullScreen"
+              :title="$t('json_format.exit_full_screen')"
+            >
+              {{ $t('json_format.exit_full_screen') }}
+            </ToolButton>
+          </div>
+
           <!-- Render blocks -->
           <div>
             <div v-for="(b, idx) in blocks" :key="idx">
@@ -83,7 +120,7 @@
 
         <div
           v-else
-          class="text-gray-400 dark:text-gray-500 h-96 flex items-center justify-center border border-dashed border-gray-300 dark:border-gray-700 rounded-lg"
+          class="flex-1 text-gray-400 dark:text-gray-500 flex items-center justify-center border border-dashed border-gray-300 dark:border-gray-700 rounded-lg"
         >
           {{ $t("json_format.no_result") }}
         </div>
@@ -92,9 +129,12 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { ref, watch, onMounted, onUnmounted } from "vue";
 import VueJsonPretty from "vue-json-pretty";
 import "vue-json-pretty/lib/styles.css";
+import ToolButton from "~/components/tool/ToolButton.vue";
+import ToolInput from "~/components/tool/ToolInput.vue";
+
 interface Block {
   type: "text" | "json";
   content: string | object;
@@ -210,16 +250,48 @@ const toggleFullScreen = () => {
   if (!outputContainer.value) return;
 
   if (!isFullScreen.value) {
+    // Enter fullscreen
     outputContainer.value.style.position = "fixed";
     outputContainer.value.style.left = "0";
     outputContainer.value.style.right = "0";
+    outputContainer.value.style.top = "56px"; // Header height (pt-14 = 3.5rem = 56px)
     outputContainer.value.style.bottom = "0";
     outputContainer.value.style.zIndex = "1000";
-    outputContainer.value.style.height = "calc(100vh - 64px)";
+    outputContainer.value.style.height = "calc(100vh - 56px)";
+    outputContainer.value.style.width = "100vw";
+    outputContainer.value.style.borderRadius = "0";
+    outputContainer.value.style.margin = "0";
+    outputContainer.value.style.overflow = "auto";
   } else {
-    outputContainer.value.style = "";
+    // Exit fullscreen
+    outputContainer.value.style.position = "";
+    outputContainer.value.style.left = "";
+    outputContainer.value.style.right = "";
+    outputContainer.value.style.top = "";
+    outputContainer.value.style.bottom = "";
+    outputContainer.value.style.zIndex = "";
+    outputContainer.value.style.height = "";
+    outputContainer.value.style.width = "";
+    outputContainer.value.style.borderRadius = "";
+    outputContainer.value.style.margin = "";
+    outputContainer.value.style.overflow = "";
   }
 
   isFullScreen.value = !isFullScreen.value;
 };
+
+// Handle ESC key to exit fullscreen
+const handleKeyDown = (event: KeyboardEvent) => {
+  if (event.key === 'Escape' && isFullScreen.value) {
+    toggleFullScreen();
+  }
+};
+
+onMounted(() => {
+  window.addEventListener('keydown', handleKeyDown);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleKeyDown);
+});
 </script>

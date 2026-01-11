@@ -102,49 +102,96 @@ useHead({
 });
 </script>
 
+<style scoped>
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+</style>
+
 <template>
-  <main class="min-h-screen text-gray-800 dark:text-gray-100 p-container z-10 pt-10">
-    <div class="flex items-center justify-center mb-4">
-      <SearchInput />
-    </div>
+  <main class="min-h-screen text-gray-800 dark:text-gray-100 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-12 sm:pb-16">
+      <!-- Header Section -->
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center justify-center w-16 h-16 mb-6">
+          <NuxtIcon name="document-text-bold" class="text-4xl text-sky-500 dark:text-sky-400 animate-float" />
+        </div>
+        
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 tracking-tight text-gray-900 dark:text-gray-100">
+          📝 {{ $t('blog_list.title') }}
+        </h1>
+        
+        <p class="text-xl sm:text-2xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
+          {{ $t('blog_list.subtitle') }}
+        </p>
 
-    <!-- Tag display -->
-    <div class="flex flex-wrap gap-2 mb-4">
-      <Tag
-        v-for="tag in tags"
-        :key="tag"
-        :label="tag"
-        :is-active="activeTags.includes(tag)"
-        @click="handleFilterTag(tag)"
-      >
-        {{ tag }}
-      </Tag>
-    </div>
+        <!-- Search Bar -->
+        <div class="flex justify-center mb-8">
+          <div class="w-full max-w-2xl">
+            <SearchInput />
+          </div>
+        </div>
+      </div>
 
-    <!-- Posts display -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      <PostItem
-        v-for="post in posts"
-        :key="post.id"
-        :post="post as BlogCollectionItem"
+      <!-- Tag display -->
+      <div class="flex flex-wrap justify-center gap-3 mb-8">
+        <Tag
+          v-for="tag in tags"
+          :key="tag"
+          :label="tag"
+          :is-active="activeTags.includes(tag)"
+          @click="handleFilterTag(tag)"
+        >
+          {{ tag }}
+        </Tag>
+      </div>
+
+      <!-- Posts display -->
+      <div v-if="posts.length > 0" class="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-12">
+        <PostItem
+          v-for="post in posts"
+          :key="post.id"
+          :post="post as BlogCollectionItem"
+        />
+      </div>
+
+      <!-- Empty State -->
+      <div v-else class="text-center py-20">
+        <div class="inline-flex items-center justify-center w-20 h-20 bg-gray-200 dark:bg-gray-800 rounded-full mb-6">
+          <NuxtIcon name="document" class="text-4xl text-gray-400 animate-bounce" />
+        </div>
+        <h3 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
+          {{ $t("no_posts") }}
+        </h3>
+        <p class="text-gray-600 dark:text-gray-400 mb-6">
+          No posts found matching your criteria
+        </p>
+        <button
+          @click="refreshPost"
+          class="inline-flex items-center gap-2 px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition-colors"
+        >
+          {{ $t("refresh") }}
+        </button>
+      </div>
+
+      <!-- Pagination -->
+      <Pagination
+        v-if="posts.length > 0"
+        :currentPage="currentPage"
+        :totalItems="totalPosts"
+        :perPage="PER_PAGE"
+        :maxVisiblePages="5"
+        @update:page="handlePageChange"
       />
     </div>
-
-    <div v-if="posts.length === 0" class="text-center text-gray-500">
-      <p>{{ $t("no_posts") }}
-        <span @click="refreshPost" class="text-blue-500 hover:underline cursor-pointer">
-          {{ $t("refresh") }}
-        </span>
-      </p>
-    </div>
-
-    <!-- Pagination -->
-    <Pagination
-      :currentPage="currentPage"
-      :totalItems="totalPosts"
-      :perPage="PER_PAGE"
-      :maxVisiblePages="5"
-      @update:page="handlePageChange"
-    />
   </main>
 </template>

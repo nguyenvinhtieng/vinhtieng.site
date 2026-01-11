@@ -32,7 +32,13 @@
       <!-- Copy Button -->
       <button
         @click="copyToClipboard"
-        class="flex items-center gap-2 text-neutral-500 dark:text-neutral-300 hover:text-green-500 cursor-pointer transition-colors px-2 py-1 rounded-md hover:bg-gray-200 active:scale-95 dark:hover:bg-neutral-800"
+        :class="cn(
+          'flex items-center gap-2 cursor-pointer transition-colors px-2 py-1 rounded-md hover:bg-gray-200 active:scale-95 dark:hover:bg-neutral-800',
+          {
+            'text-sky-500 dark:text-sky-400': copied,
+            'text-neutral-500 dark:text-neutral-300 hover:text-sky-500 dark:hover:text-sky-400': !copied,
+          }
+        )"
       >
         <NuxtIcon name="content-copy" class="text-md" />
         <span class="inline">{{ copied ? "Copied!" : "Copy" }}</span>
@@ -50,6 +56,7 @@
 
 <script setup lang="ts">
 import { ref, computed, watch, onMounted, nextTick } from "vue";
+import { cn } from "~/utils/cn";
 
 // Import highlight.js and support languages
 import hljs from "highlight.js/lib/core";

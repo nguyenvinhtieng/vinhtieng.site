@@ -8,6 +8,13 @@
 	"search": {
 		"placeholder": "Search posts by title, tags, or content..."
 	},
+	"blog_list": {
+		"title": "Blog",
+		"subtitle": "Sharing knowledge, tips, and insights on web development"
+	},
+	"blog_detail": {
+		"table_of_contents": "Table of Contents"
+	},
 	"related_posts": "Related Posts",
 	"post_not_found": "Post not found or has been deleted!",
 	"back_to_blog": "Back to blog list",
@@ -35,6 +42,7 @@
   },
   "word_counter": {
     "title": "Word Counter",
+    "subtitle": "Count words, characters, sentences, and paragraphs",
     "enter_text": "Enter your text",
     "placeholder": "Type or paste your text here...",
     "clear": "Clear",
@@ -45,5 +53,105 @@
     "paragraphs": "Paragraphs",
     "undo": "Undo",
     "redo": "Redo"
+  },
+  "tool_list": {
+    "title": "Developer Tools",
+    "subtitle": "Free online tools to help you code faster and work smarter",
+    "search_placeholder": "Search tools by name or description...",
+    "tools": "Tools",
+    "free": "Free",
+    "no_signup": "No Signup",
+    "no_tools_found": "No tools found",
+    "no_tools_found_desc": "We couldn't find any tools matching",
+    "clear_search": "Clear search",
+    "tools_data": {
+      "json_formatter": {
+        "name": "JSON Formatter",
+        "description": "Format and beautify JSON data with syntax highlighting and validation. Perfect for developers working with APIs.",
+        "category": "Formatter"
+      },
+      "base64_encoder": {
+        "name": "Base64 Encoder",
+        "description": "Encode and decode data to Base64 format instantly. Supports text, images, and binary data.",
+        "category": "Encoder"
+      },
+      "markdown_viewer": {
+        "name": "Markdown Viewer",
+        "description": "Preview markdown content in real-time with beautiful rendering. No installation required.",
+        "category": "Viewer"
+      },
+      "word_counter": {
+        "name": "Word Counter",
+        "description": "Count words, characters, sentences, and paragraphs with detailed statistics for your content.",
+        "category": "Text Analysis"
+      },
+      "image_generator": {
+        "name": "Image Generator",
+        "description": "Generate test images with custom dimensions, file size, and format. Perfect for development and testing.",
+        "category": "Generator"
+      }
+    },
+    "badge_popular": "Popular"
+  },
+  "base64_encoder": {
+    "title": "Base64 Converter",
+    "subtitle": "Encode and decode Base64 data instantly",
+    "encode": "Encode",
+    "decode": "Decode",
+    "input_text": "Input Text",
+    "placeholder_encode": "Type or paste text to encode...",
+    "placeholder_decode": "Paste Base64 string to decode...",
+    "result": "Result",
+    "result_encode": "Base64",
+    "result_decode": "Decoded",
+    "placeholder_result_encode": "Encoded Base64 will appear here...",
+    "placeholder_result_decode": "Decoded text will appear here...",
+    "clear": "Clear",
+    "invalid_base64": "Invalid Base64 string. Please check your input.",
+    "encode_error": "An error occurred during encoding."
+  },
+  "json_format": {
+    "title": "JSON Formatter",
+    "paste_json": "Paste JSON",
+    "paste_placeholder": "Paste your JSON here...",
+    "formatted_json": "Formatted JSON",
+    "no_result": "No formatted result",
+    "tab_size": "Tab Size",
+    "clear": "Clear",
+    "copy": "Copy",
+    "download_json": "Download JSON",
+    "export_yaml": "Export YAML",
+    "copied": "Copied",
+    "error": "Error",
+    "invalid_json": "Invalid JSON: ",
+    "full_screen": "Full Screen",
+    "exit_full_screen": "Exit Full Screen",
+    "subtitle": "Format and beautify JSON data instantly"
+  },
+  "markdown_viewer": {
+    "title": "Markdown Viewer",
+    "subtitle": "Preview markdown content in real-time with beautiful rendering",
+    "markdown_input": "Markdown Input",
+    "placeholder": "Enter your markdown here...",
+    "preview": "Preview",
+    "clear": "Clear",
+    "copy": "Copy",
+    "copied": "Copied!"
+  },
+  "image_generator": {
+    "title": "Generate Image",
+    "subtitle": "Generate test images with custom dimensions and file size",
+    "width": "Width (px)",
+    "height": "Height (px)",
+    "image_type": "Image Type",
+    "capacity": "Capacity",
+    "auto": "Auto",
+    "custom": "Custom",
+    "background_color": "Background Color",
+    "text_color": "Text Color",
+    "download_image": "Download Image",
+    "range": "Range",
+    "minimum": "Minimum",
+    "maximum": "Maximum"
   }
 }

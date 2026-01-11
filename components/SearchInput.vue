@@ -3,7 +3,7 @@
     @click="openShortcutModal"
     :class="
       cn(
-        'relative w-full max-w-md border-gray-300 rounded-lg shadow-sm flex focus:ring-2 cursor-pointer dark:border-white dark:shadow-neutral-800',
+        'relative w-full border border-gray-300 dark:border-gray-700 rounded-lg shadow-sm bg-white dark:bg-gray-800 flex items-center focus:ring-2 focus:ring-sky-500 cursor-pointer transition-all',
         {
           'text-sm px-4 py-2': size === 'md',
           'text-lg px-6 py-3': size === 'lg',

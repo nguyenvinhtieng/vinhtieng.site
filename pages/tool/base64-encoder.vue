@@ -1,43 +1,77 @@
 <template>
-  <div class="p-6 max-w-screen-xl w-full mx-auto text-gray-900 dark:text-gray-100 relative">
-    <h1 class="text-3xl font-bold mb-6 text-center">🔁 Base64 Converter</h1>
+  <div class="p-6 pt-10 max-w-screen-xl w-full mx-auto text-gray-900 dark:text-gray-100 relative">
+    <div class="text-center mb-8">
+      <h1 class="text-4xl font-bold mb-2 bg-gradient-to-r from-sky-500 to-purple-600 bg-clip-text text-transparent">
+        🔁 {{ $t('base64_encoder.title') }}
+      </h1>
+      <p class="text-gray-600 dark:text-gray-400">{{ $t('base64_encoder.subtitle') }}</p>
+    </div>
+
+    <div class="mb-6 flex justify-center">
+      <ToolButton
+        :variant="mode === 'encode' ? 'primary' : 'secondary'"
+        size="sm"
+        @click="mode = 'encode'"
+      >
+        {{ $t('base64_encoder.encode') }}
+      </ToolButton>
+      <ToolButton
+        :variant="mode === 'decode' ? 'primary' : 'secondary'"
+        size="sm"
+        @click="mode = 'decode'"
+        class="ml-2"
+      >
+        {{ $t('base64_encoder.decode') }}
+      </ToolButton>
+    </div>
 
     <div class="flex flex-col lg:flex-row gap-6">
       <!-- Input Area -->
-      <div class="w-full">
-        <div class="flex justify-between items-center mb-2">
-          <label class="block text-sm font-medium">Input Text</label>
-          <button
-            @click="mode = mode === 'encode' ? 'decode' : 'encode'"
-            class="text-xs px-2 py-1 rounded bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition"
-          >
-            Switch to {{ mode === 'encode' ? 'Decode' : 'Encode' }}
-          </button>
-        </div>
-        <textarea
+      <div class="flex-1">
+        <ToolInput
           v-model="input"
-          placeholder="Type or paste text here..."
-          class="w-full h-64 px-4 py-2 rounded-md border bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 border-gray-300 dark:border-gray-700 shadow-sm resize-none focus:outline-none focus:ring-2 focus:ring-sky-500"
+          type="textarea"
+          :label="$t('base64_encoder.input_text')"
+          :placeholder="mode === 'encode' ? $t('base64_encoder.placeholder_encode') : $t('base64_encoder.placeholder_decode')"
+          :rows="15"
+          spellcheck
         />
       </div>
 
       <!-- Output Area -->
-      <div class="w-full relative">
+      <div class="flex-1 relative">
         <div class="flex justify-between items-center mb-2">
-          <span class="text-sm font-medium">Result ({{ mode === 'encode' ? 'Base64' : 'Decoded' }})</span>
-          <div class="space-x-2">
-            <button
-              @click="copyToClipboard"
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+            {{ $t('base64_encoder.result') }} ({{ mode === 'encode' ? $t('base64_encoder.result_encode') : $t('base64_encoder.result_decode') }})
+          </label>
+          <div class="flex gap-2">
+            <ToolButton
+              variant="primary"
+              size="xs"
               :disabled="!result"
-              class="text-xs px-2 py-1 bg-sky-500 text-white rounded hover:bg-sky-600 transition cursor-pointer disabled:pointer-none disabled:bg-gray-400">
+              @click="copyToClipboard"
+            >
+              <template #icon>
+                <NuxtIcon name="content-copy" />
+              </template>
               {{ copied ? $t("json_format.copied") : $t("json_format.copy") }}
-            </button>
+            </ToolButton>
+            <ToolButton
+              variant="secondary"
+              size="xs"
+              @click="input = ''"
+            >
+              {{ $t('base64_encoder.clear') }}
+            </ToolButton>
           </div>
         </div>
-        <textarea
-          :value="result"
+        <ToolInput
+          :model-value="result"
+          type="textarea"
+          :rows="15"
           readonly
-          class="w-full h-64 px-4 py-2 rounded-md border bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100 border-gray-300 dark:border-gray-700 shadow-sm resize-none"
+          :placeholder="mode === 'encode' ? $t('base64_encoder.placeholder_result_encode') : $t('base64_encoder.placeholder_result_decode')"
+          :error="error"
         />
       </div>
     </div>
@@ -47,10 +81,15 @@
 <script setup lang="ts">
 import { useHead } from '#app';
 import { ref, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { SITE } from '~/constants/common';
+import ToolButton from '~/components/tool/ToolButton.vue';
+import ToolInput from '~/components/tool/ToolInput.vue';
 
+const { t } = useI18n();
 const input = ref('');
 const mode = ref<'encode' | 'decode'>('encode');
+const error = ref('');
 
 useHead({
   title: 'Free Online Base64 Encoder | Encode Text to Base64 Easily',
@@ -95,12 +134,21 @@ useHead({
 
 const result = computed(() => {
   try {
+    error.value = '';
     if (!input.value) return '';
-    return mode.value === 'encode'
-      ? btoa(unescape(encodeURIComponent(input.value)))
-      : decodeURIComponent(escape(atob(input.value)));
-  } catch {
-    return '[Error decoding input]';
+    
+    if (mode.value === 'encode') {
+      return btoa(unescape(encodeURIComponent(input.value)));
+    } else {
+      // Decode mode
+      if (!input.value.trim()) return '';
+      return decodeURIComponent(escape(atob(input.value)));
+    }
+  } catch (e) {
+    error.value = mode.value === 'decode' 
+      ? t('base64_encoder.invalid_base64')
+      : t('base64_encoder.encode_error');
+    return '';
   }
 });
 
