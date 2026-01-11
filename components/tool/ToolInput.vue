@@ -19,7 +19,7 @@
         @keydown="handleKeydown"
         :spellcheck="spellcheck"
       />
-      <div v-if="showCharacterCount && maxLength" class="absolute bottom-2 right-2 text-xs text-gray-400 dark:text-gray-500">
+      <div v-if="showCharacterCount && maxLength" class="absolute bottom-2 right-2 text-xs text-gray-600 dark:text-gray-400">
         {{ characterCount }} / {{ maxLength }}
       </div>
     </div>
@@ -43,7 +43,7 @@
     />
 
     <p v-if="error && error.trim()" class="mt-1 text-xs text-red-500 dark:text-red-400 break-words">{{ error }}</p>
-    <p v-if="helperText && !error" class="mt-1 text-xs text-gray-500 dark:text-gray-400">{{ helperText }}</p>
+    <p v-if="helperText && !error" class="mt-1 text-xs text-gray-600 dark:text-gray-400">{{ helperText }}</p>
   </div>
 </template>
 

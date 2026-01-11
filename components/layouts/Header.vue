@@ -10,8 +10,8 @@
 					:to="header.url"
 					:target="header.type === 'external' ? '_blank' : undefined"
 					:external="header.type === 'external'"
-					class="flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-200 hover:bg-sky-50 hover:text-sky-600 group dark:hover:bg-neutral-800 dark:text-neutral-200 dark:hover:text-sky-400"
-					active-class="text-sky-600 bg-sky-50 font-semibold dark:bg-neutral-800 dark:text-sky-400"
+					class="flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-200 hover:bg-sky-100 hover:text-sky-700 group dark:hover:bg-neutral-800 dark:text-neutral-200 dark:hover:text-sky-400"
+					active-class="text-sky-700 bg-sky-100 font-semibold dark:bg-neutral-800 dark:text-sky-400"
 				>
 					<NuxtIcon v-if="header.icon" :name="header.icon" class="text-md text-inherit" />
 					<span>{{ header.title }}</span>
@@ -25,6 +25,7 @@
           :to="localePath('/game')"
           class="flex items-center justify-center w-9 h-9 dark:hover:bg-neutral-800 dark:text-neutral-200 text-neutral-700 hover:bg-sky-50 hover:text-sky-600 dark:hover:text-sky-400 rounded-lg transition-all duration-200"
           active-class="dark:bg-neutral-800 bg-sky-50 text-sky-600 dark:text-sky-400"
+          :aria-label="$t('header.game')"
         >
           <NuxtIcon name="game" class="text-lg" />
         </NuxtLink>
@@ -82,8 +83,8 @@
 						:to="header.url"
 						:target="header.type === 'external' ? '_blank' : undefined"
 						:external="header.type === 'external'"
-						class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-sky-50 hover:text-sky-600 dark:hover:bg-neutral-800 dark:hover:text-sky-400 transition-all duration-200 text-gray-700 dark:text-neutral-200"
-						active-class="text-sky-600 bg-sky-50 font-semibold dark:bg-neutral-800 dark:text-sky-400"
+						class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-sky-100 hover:text-sky-700 dark:hover:bg-neutral-800 dark:hover:text-sky-400 transition-all duration-200 text-gray-700 dark:text-neutral-200"
+						active-class="text-sky-700 bg-sky-100 font-semibold dark:bg-neutral-800 dark:text-sky-400"
 						@click="closeMenu"
 					>
 						<NuxtIcon v-if="header.icon" :name="header.icon" class="text-lg text-inherit" />
@@ -97,8 +98,8 @@
 					
 					<NuxtLink
 						:to="localePath('/game')"
-						class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-sky-50 hover:text-sky-600 dark:hover:bg-neutral-800 dark:hover:text-sky-400 transition-all duration-200 text-gray-700 dark:text-neutral-200"
-						active-class="text-sky-600 bg-sky-50 font-semibold dark:bg-neutral-800 dark:text-sky-400"
+						class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-sky-100 hover:text-sky-700 dark:hover:bg-neutral-800 dark:hover:text-sky-400 transition-all duration-200 text-gray-700 dark:text-neutral-200"
+						active-class="text-sky-700 bg-sky-100 font-semibold dark:bg-neutral-800 dark:text-sky-400"
 						@click="closeMenu"
 					>
 						<NuxtIcon name="game" class="text-lg" />

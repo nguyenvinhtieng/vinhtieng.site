@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { ref, watch, computed } from "vue";
 import { queryCollection } from "#imports";
 import Pagination from "~/components/Pagination.vue";
 import SearchInput from "~/components/SearchInput.vue";
@@ -80,6 +80,12 @@ const refreshPost = () => {
   fetchData();
 };
 
+const firstPostImage = computed(() => {
+  return posts.value.length > 0 && posts.value[0].image 
+    ? posts.value[0].image 
+    : null;
+});
+
 useHead({
   title: "Blog",
   meta: [
@@ -97,7 +103,17 @@ useHead({
     { property: "twitter:image", content: `${SITE}/images/cover.webp` },
     { property: "twitter:card", content: "summary_large_image" }
   ],
-  link: [{ rel: "canonical", href: `${SITE}/blog` }],
+  link: computed(() => [
+    { rel: "canonical", href: `${SITE}/blog` },
+    ...(firstPostImage.value 
+      ? [{ 
+          rel: "preload", 
+          as: "image", 
+          href: firstPostImage.value,
+          fetchpriority: "high"
+        }]
+      : [])
+  ]),
 
 });
 </script>
@@ -130,7 +146,7 @@ useHead({
           📝 {{ $t('blog_list.title') }}
         </h1>
         
-        <p class="text-xl sm:text-2xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
+        <p class="text-xl sm:text-2xl text-gray-700 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
           {{ $t('blog_list.subtitle') }}
         </p>
 
@@ -156,28 +172,32 @@ useHead({
       </div>
 
       <!-- Posts display -->
-      <div v-if="posts.length > 0" class="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-12">
-        <PostItem
-          v-for="post in posts"
-          :key="post.id"
-          :post="post as BlogCollectionItem"
-        />
-      </div>
+      <section v-if="posts.length > 0" aria-labelledby="posts-heading">
+        <h2 id="posts-heading" class="sr-only">Blog Posts</h2>
+        <div class="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-12">
+          <PostItem
+            v-for="(post, index) in posts"
+            :key="post.id"
+            :post="post as BlogCollectionItem"
+            :is-first="index === 0"
+          />
+        </div>
+      </section>
 
       <!-- Empty State -->
       <div v-else class="text-center py-20">
         <div class="inline-flex items-center justify-center w-20 h-20 bg-gray-200 dark:bg-gray-800 rounded-full mb-6">
           <NuxtIcon name="document" class="text-4xl text-gray-400 animate-bounce" />
         </div>
-        <h3 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
+        <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
           {{ $t("no_posts") }}
-        </h3>
-        <p class="text-gray-600 dark:text-gray-400 mb-6">
+        </h2>
+        <p class="text-gray-700 dark:text-gray-300 mb-6">
           No posts found matching your criteria
         </p>
         <button
           @click="refreshPost"
-          class="inline-flex items-center gap-2 px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition-colors"
+          class="inline-flex items-center gap-2 px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 transition-colors"
         >
           {{ $t("refresh") }}
         </button>

@@ -4,7 +4,7 @@
       <h1 class="text-4xl font-bold mb-2 bg-gradient-to-r from-sky-500 to-purple-600 bg-clip-text text-transparent">
         🔡 {{ $t("word_counter.title") }}
       </h1>
-      <p class="text-gray-600 dark:text-gray-400">{{ $t("word_counter.subtitle") }}</p>
+      <p class="text-gray-700 dark:text-gray-300">{{ $t("word_counter.subtitle") }}</p>
     </div>
 
     <div class="flex flex-col lg:flex-row gap-6">
@@ -57,19 +57,19 @@
           class="h-96 overflow-auto border border-gray-300 dark:border-gray-700 rounded-lg bg-gray-100 dark:bg-gray-900 p-6 grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm items-stretch">
           <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow text-center flex flex-col justify-center">
             <div class="text-xl font-semibold text-sky-600 dark:text-sky-400">{{ wordCount }}</div>
-            <div class="text-gray-600 dark:text-gray-400 mt-1">{{ $t("word_counter.words") }}</div>
+            <div class="text-gray-700 dark:text-gray-300 mt-1">{{ $t("word_counter.words") }}</div>
           </div>
           <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow text-center flex flex-col justify-center">
             <div class="text-xl font-semibold text-green-600 dark:text-green-400">{{ characterCount }}</div>
-            <div class="text-gray-600 dark:text-gray-400 mt-1">{{ $t("word_counter.characters") }}</div>
+            <div class="text-gray-700 dark:text-gray-300 mt-1">{{ $t("word_counter.characters") }}</div>
           </div>
           <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow text-center flex flex-col justify-center">
             <div class="text-xl font-semibold text-purple-600 dark:text-purple-400">{{ sentenceCount }}</div>
-            <div class="text-gray-600 dark:text-gray-400 mt-1">{{ $t("word_counter.sentences") }}</div>
+            <div class="text-gray-700 dark:text-gray-300 mt-1">{{ $t("word_counter.sentences") }}</div>
           </div>
           <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow text-center flex flex-col justify-center">
             <div class="text-xl font-semibold text-pink-600 dark:text-pink-400">{{ paragraphCount }}</div>
-            <div class="text-gray-600 dark:text-gray-400 mt-1">{{ $t("word_counter.paragraphs") }}</div>
+            <div class="text-gray-700 dark:text-gray-300 mt-1">{{ $t("word_counter.paragraphs") }}</div>
           </div>
         </div>
       </div>

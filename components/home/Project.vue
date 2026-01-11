@@ -18,6 +18,9 @@
             :alt="project.name"
             :width="800"
             :height="450"
+            sizes="(max-width: 768px) 100vw, 50vw"
+            format="webp"
+            quality="85"
             class="w-full aspect-video object-cover rounded-lg border border-neutral-200 dark:border-neutral-700"
           />
         </div>
@@ -51,7 +54,7 @@
               :external="true"
               :href="project.link.github"
               target="_blank"
-              class="text-blue-500 hover:underline flex gap-1 items-center"
+              class="text-blue-600 dark:text-blue-400 hover:underline flex gap-1 items-center"
             >
               View Code
               <NuxtIcon
@@ -64,7 +67,7 @@
               :external="true"
               :href="project.link.demo"
               target="_blank"
-              class="text-blue-500 hover:underline flex gap-1 items-center"
+              class="text-blue-600 dark:text-blue-400 hover:underline flex gap-1 items-center"
             >
               Live Demo
               <NuxtIcon

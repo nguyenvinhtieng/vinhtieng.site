@@ -3,6 +3,7 @@
     :to="url"
     :class="cardClasses"
     :external="external"
+    :aria-label="`View tool: ${name}`"
     @mouseenter="isHovered = true"
     @mouseleave="isHovered = false"
   >
@@ -16,25 +17,25 @@
       <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-300" :class="{ 'opacity-100': isHovered }" />
       
       <!-- Badge/Icon overlay -->
-      <div v-if="badge" class="absolute top-3 right-3 px-2 py-1 bg-sky-500 text-white text-xs font-semibold rounded-full shadow-lg">
+      <div v-if="badge" class="absolute top-3 right-3 px-2 py-1 bg-blue-600 text-white text-xs font-semibold rounded-full shadow-lg">
         {{ badge }}
       </div>
     </div>
     
     <div class="p-5 flex flex-col flex-1">
-      <h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-gray-100 line-clamp-1 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
+      <h2 class="text-lg font-semibold mb-2 text-gray-900 dark:text-gray-100 line-clamp-1 group-hover:text-sky-700 dark:group-hover:text-sky-300 transition-colors">
         {{ name }}
-      </h3>
-      <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2 flex-1">
+      </h2>
+      <p class="text-sm text-gray-700 dark:text-gray-300 line-clamp-2 flex-1">
         {{ description }}
       </p>
       
       <div class="mt-4 flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
-        <span class="text-xs text-gray-500 dark:text-gray-500 flex items-center gap-1">
+        <span class="text-xs text-gray-600 dark:text-gray-400 flex items-center gap-1">
           <NuxtIcon name="tag" class="text-xs animate-float-icon" />
           {{ category || 'Tool' }}
         </span>
-        <span class="text-xs text-sky-600 dark:text-sky-400 font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
+        <span class="text-xs text-sky-700 dark:text-sky-300 font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
           Try it
           <NuxtIcon name="external" class="text-xs transform group-hover:translate-x-0.5 transition-transform animate-float-icon" />
         </span>

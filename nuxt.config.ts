@@ -14,6 +14,18 @@ export default defineNuxtConfig({
   ],
   content: {},
   site: { url: 'vinhtieng.com' },
+  image: {
+    quality: 85,
+    format: ['webp'],
+    screens: {
+      xs: 320,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+      xxl: 1536,
+    },
+  },
   css,
   vite,
   imports: {
@@ -29,6 +41,7 @@ export default defineNuxtConfig({
         weights: [400, 500, 600, 700],
         styles: ["normal", "italic"],
         fallbacks: ["sans-serif"],
+        display: "swap",
       },
     ],
   },
@@ -36,5 +49,42 @@ export default defineNuxtConfig({
     enabled: true,
     minify: true,
     xslTips: false
+  },
+  nitro: {
+    routeRules: {
+      '/_nuxt/**': { 
+        headers: { 
+          'Cache-Control': 'public, max-age=31536000, immutable',
+          'cache-control': 'public, max-age=31536000, immutable'
+        } 
+      },
+      '/_fonts/**': { 
+        headers: { 
+          'Cache-Control': 'public, max-age=31536000, immutable',
+          'cache-control': 'public, max-age=31536000, immutable'
+        } 
+      },
+      '/images/**': { 
+        headers: { 
+          'Cache-Control': 'public, max-age=31536000, immutable',
+          'cache-control': 'public, max-age=31536000, immutable'
+        } 
+      },
+      '/icons/**': { 
+        headers: { 
+          'Cache-Control': 'public, max-age=31536000, immutable',
+          'cache-control': 'public, max-age=31536000, immutable'
+        } 
+      },
+      '/**': { 
+        headers: { 
+          'Cache-Control': 'public, max-age=3600',
+          'cache-control': 'public, max-age=3600'
+        } 
+      }
+    },
+    prerender: {
+      crawlLinks: true
+    }
   }
 });

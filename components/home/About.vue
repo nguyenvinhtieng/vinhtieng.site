@@ -17,9 +17,9 @@
           height="500"
           sizes="(max-width: 768px) 288px, 384px"
           format="webp"
-          quality="80"
-          loading="lazy"
+          quality="75"
           priority
+          fetchpriority="high"
         />
       </div>
     </div>

@@ -27,21 +27,6 @@
 	  "copyright": "Bản quyền thuộc về vinhtieng.com",
 	  "author": "Được tạo với ❤️ bởi"
 	},
-	"json_format": {
-	  "title": "Công cụ định dạng JSON",
-	  "paste_json": "Dán JSON",
-	  "paste_placeholder": "Dán JSON của bạn vào đây...",
-	  "formatted_json": "JSON được định dạng",
-	  "no_result": "Không có kết quả được định dạng",
-	  "tab_size": "Cỡ tab",
-	  "clear": "Xóa",
-	  "copy": "Sao chép",
-	  "download_json": "Tải xuống JSON",
-	  "export_yaml": "Xuất YAML",
-	  "copied": "Đã sao chép",
-	  "error": "Lỗi",
-	  "invalid_json": "JSON không hợp lệ:"
-	},
 	"word_counter": {
 	  "title": "Đếm từ",
 	  "subtitle": "Đếm từ, ký tự, câu và đoạn văn",
