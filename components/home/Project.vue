@@ -18,7 +18,6 @@
             :alt="project.name"
             :width="800"
             :height="450"
-            sizes="(max-width: 768px) 100vw, 50vw"
             format="webp"
             quality="85"
             class="w-full aspect-video object-cover rounded-lg border border-neutral-200 dark:border-neutral-700"
